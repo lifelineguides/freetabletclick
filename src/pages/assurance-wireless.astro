@@ -2,10 +2,74 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+
+const pageUrl = "https://freetablet.click/assurance-wireless";
+const siteUrl = "https://freetablet.click/";
+const pageTitle = "Assurance Wireless Lifeline Review | Phone, Tablet, Eligibility Guide 2026";
+const pageDescription =
+  "Review Assurance Wireless Lifeline service, phone and device options, eligibility rules, and official next steps. Plan details and availability vary by state and ZIP code.";
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": { "@id": `${siteUrl}#website` },
+      "about": [
+        { "@type": "Thing", "name": "Assurance Wireless" },
+        { "@type": "Thing", "name": "Lifeline Program" },
+        { "@type": "Thing", "name": "Free Government Tablet" }
+      ],
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Assurance Wireless give free tablets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Assurance Wireless primarily promotes Lifeline phone service. Tablet or other device availability can vary by state, ZIP code, inventory, and current offers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What network does Assurance Wireless use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Assurance Wireless uses the T-Mobile network for its service, although coverage quality can still vary by device and location."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I bring my own phone to Assurance Wireless?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Assurance Wireless offers a bring-your-own-phone option for many compatible devices. Check compatibility before starting enrollment."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      "url": siteUrl,
+      "name": "FreeTablet.click",
+      "inLanguage": "en-US"
+    }
+  ]
+};
 ---
 
-<Layout title="Assurance Wireless Free Tablet & Phone Program | 2026 Review">
+<Layout title={pageTitle} description={pageDescription}>
   <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
   
   <main id="main-content" class="w-full flex-1 flex flex-col items-center">
     
@@ -28,7 +92,7 @@ import Footer from "@/components/Footer.astro";
         
         <!-- Subtitle -->
         <p class="text-lg text-blue-100 sm:text-xl leading-relaxed font-medium max-w-3xl mx-auto mb-10">
-          Get a free 4G/5G Android smartphone or discounted tablet with free monthly data, talk, and text on the reliable T-Mobile network. Find out if you qualify today.
+          Review Assurance Wireless Lifeline service, device options, and application steps. Phone offers are common, while tablet availability and plan details can vary by state, ZIP code, and current inventory.
         </p>
 
         <!-- CTAs -->
@@ -46,57 +110,34 @@ import Footer from "@/components/Footer.astro";
     </section>
 
     <!-- ==========================================
-         SECTION 2: QUICK OVERVIEW & RATING CARD
+         SECTION 2: QUICK OVERVIEW & INTERNAL SUPPORT
     =========================================== -->
     <section class="relative w-full bg-muted/30 pb-16 lg:pb-24" style="content-visibility: auto;">
       <div class="relative z-20 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 -mt-16 sm:-mt-20 mb-8">
-        <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-border flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          <!-- Rating -->
-          <div class="flex flex-col items-center md:items-start text-center md:text-left">
-            <span class="text-sm font-bold text-foreground/50 uppercase tracking-wider mb-2">Provider Rating</span>
-            <div class="flex items-center gap-2">
-              <span class="text-4xl font-extrabold text-foreground">4.2</span>
-              <div class="flex text-yellow-400">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 text-yellow-400/30 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
+        <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-border">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <span class="text-sm font-bold text-foreground/50 uppercase tracking-wider mb-2 block">Quick Provider Snapshot</span>
+              <p class="text-foreground/80 font-medium leading-relaxed">
+                Assurance Wireless is a Lifeline provider. Availability, data allowances, device stock, and any low-cost device offers vary by state and ZIP code.
+              </p>
             </div>
-            <span class="text-sm text-foreground/60 font-medium mt-1">Based on nationwide availability</span>
-          </div>
-          
-          <div class="hidden md:block w-px h-16 bg-border"></div>
-
-          <!-- Key Specs -->
-          <div class="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full md:w-auto justify-around">
-            <div class="flex flex-col items-center md:items-start">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-5 h-5 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" /></svg>
-                <span class="font-bold text-foreground">Network</span>
-              </div>
-              <span class="text-foreground/75 font-medium">T-Mobile 4G/5G</span>
+            <div>
+              <span class="text-sm font-bold text-foreground/50 uppercase tracking-wider mb-2 block">Best Next Step</span>
+              <p class="text-foreground/80 font-medium leading-relaxed">
+                Confirm your eligibility first, then compare Assurance Wireless with other provider pages before you apply on the official site.
+              </p>
             </div>
-            
-            <div class="flex flex-col items-center md:items-start">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-5 h-5 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.82 1.508-2.316a7.5 7.5 0 10-7.516 0c.85.496 1.508 1.333 1.508 2.316V18" /></svg>
-                <span class="font-bold text-foreground">Plan Specs</span>
+            <div>
+              <span class="text-sm font-bold text-foreground/50 uppercase tracking-wider mb-2 block">Useful Internal Links</span>
+              <div class="flex flex-wrap gap-2">
+                <a href="/" class="px-3 py-2 rounded-lg bg-blue-50 text-primary-light text-sm font-bold hover:bg-blue-100 transition-colors">Homepage</a>
+                <a href="/eligibility" class="px-3 py-2 rounded-lg bg-blue-50 text-primary-light text-sm font-bold hover:bg-blue-100 transition-colors">Eligibility</a>
+                <a href="/how-to-apply" class="px-3 py-2 rounded-lg bg-blue-50 text-primary-light text-sm font-bold hover:bg-blue-100 transition-colors">How to Apply</a>
+                <a href="/states" class="px-3 py-2 rounded-lg bg-blue-50 text-primary-light text-sm font-bold hover:bg-blue-100 transition-colors">States</a>
               </div>
-              <span class="text-foreground/75 font-medium">Free Data, Talk & Text</span>
-            </div>
-
-            <div class="flex flex-col items-center md:items-start">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-5 h-5 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
-                <span class="font-bold text-foreground">Devices</span>
-              </div>
-              <span class="text-foreground/75 font-medium">Androids & Tablets*</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -134,7 +175,7 @@ import Footer from "@/components/Footer.astro";
             </div>
             <h3 class="text-xl font-bold text-foreground mb-3">Free Monthly Data</h3>
             <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              Get an allowance of free high-speed monthly data on the T-Mobile network. Note that specific data caps (usually starting at 4.5GB) vary depending on your residential state.
+              Plan data amounts and service details can vary by state offer. Check the official availability page for your ZIP code before relying on any specific allowance.
             </p>
           </div>
 
@@ -144,7 +185,7 @@ import Footer from "@/components/Footer.astro";
             </div>
             <h3 class="text-xl font-bold text-foreground mb-3">Free Smartphone</h3>
             <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              New, qualifying Lifeline customers are typically provided with a free Android smartphone to utilize their free monthly data, talk, and text services immediately.
+              Phone offers are common for qualifying customers, but the exact model and availability depend on state offer terms and current stock.
             </p>
           </div>
 
@@ -155,7 +196,7 @@ import Footer from "@/components/Footer.astro";
             </div>
             <h3 class="text-xl font-bold text-foreground mb-3">Discounted Tablet</h3>
             <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              While phones are standard, Assurance Wireless occasionally offers an internet-connected tablet. When available, these require a mandatory, one-time copay (typically $10.01).
+              Assurance Wireless primarily promotes phone service. Other device availability, if offered, can vary by state, inventory, and current promotions, so always confirm the official offer before applying.
             </p>
           </div>
 
@@ -231,6 +272,10 @@ import Footer from "@/components/Footer.astro";
                 <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
                 Veterans Pension and Survivors Benefit
               </li>
+              <li class="flex items-start gap-3 text-sm text-foreground/80 font-medium">
+                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                Federal Public Housing Assistance (FPHA)
+              </li>
             </ul>
           </div>
 
@@ -293,7 +338,7 @@ import Footer from "@/components/Footer.astro";
               </span>
             </summary>
             <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Their primary focus for the Lifeline program is providing free Android smartphones. However, depending on state regulations and current warehouse inventory, they occasionally offer internet-connected tablets. Federal rules stipulate that tablet offers typically require a mandatory $10.01 co-pay from the consumer.
+              Assurance Wireless mainly promotes Lifeline phone service. Device availability beyond the standard phone offer can vary by state, ZIP code, inventory, and current offer terms, so check the official site before applying.
             </div>
           </details>
 
@@ -305,7 +350,7 @@ import Footer from "@/components/Footer.astro";
               </span>
             </summary>
             <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Assurance Wireless operates on the T-Mobile network. This ensures that their users have access to one of the largest and most reliable 4G LTE and 5G networks nationwide.
+              Assurance Wireless uses the T-Mobile network, but actual coverage and device performance can still vary by ZIP code, building conditions, and phone compatibility.
             </div>
           </details>
 
@@ -317,7 +362,7 @@ import Footer from "@/components/Footer.astro";
               </span>
             </summary>
             <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Yes. If you prefer to keep your current device rather than accepting a free Android smartphone, Assurance Wireless offers a "Bring Your Own Phone" (BYOP) program. Your phone must be unlocked and compatible with the T-Mobile network. They will ship you a free SIM card to activate your service.
+              Yes. Assurance Wireless offers a bring-your-own-phone option for many compatible devices. Your phone should be unlocked and compatible with the network before you start enrollment.
             </div>
           </details>
 
@@ -326,17 +371,38 @@ import Footer from "@/components/Footer.astro";
     </section>
 
     <!-- ==========================================
-         SECTION 7: BOTTOM CTA & DISCLAIMER
+         SECTION 7: INTERNAL COMPARISON HUB
+    =========================================== -->
+    <section class="relative w-full py-12 lg:py-16 bg-white border-t border-border">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-border bg-muted/20 p-6 sm:p-8">
+          <h2 class="text-2xl font-bold text-foreground mb-3">Compare before you apply</h2>
+          <p class="text-foreground/75 leading-relaxed mb-6">
+            Use Assurance Wireless as one option, not your only option. Compare provider details, check eligibility, and review the homepage guide first so the homepage keeps strong topical support.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">Free Tablet Homepage</a>
+            <a href="/how-to-apply" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">Application Guide</a>
+            <a href="/eligibility" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">Eligibility Guide</a>
+            <a href="/safelink-wireless" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">SafeLink Review</a>
+            <a href="/airtalk-wireless" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">AirTalk Review</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 8: BOTTOM CTA & DISCLAIMER
     =========================================== -->
     <section class="relative w-full py-20 lg:py-24 bg-[#0f172a] text-white overflow-hidden">
       <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" style="background-image: radial-gradient(circle at center, rgba(37, 99, 235, 0.2), transparent 50%);"></div>
 
       <div class="relative z-10 mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8 text-white">
-          Ready to apply with Assurance Wireless?
+          Ready to review Assurance Wireless officially?
         </h2>
         
-        <a href="https://www.assurancewireless.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-10 py-5 text-xl font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto mb-10">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"><a href="https://www.assurancewireless.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-10 py-5 text-xl font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto">
           Apply Now on Official Site
         </a>
 
