@@ -3,27 +3,13 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const pageUrl = "https://freetablet.click/states/";
+const pageUrl = "https://freetablet.click/states/texas";
 const siteUrl = "https://freetablet.click/";
-const pageTitle = "Free Government Tablet Programs by State | 2026 Directory";
+const pageTitle = "Free Government Tablet in Texas | Free Tablet With EBT in 2026";
 const pageDescription =
-  "Use this 2026 state directory to review location-based free government tablet information, compare approved Lifeline resources, and move into the right eligibility and application pages.";
+  "Learn how Texas residents may qualify for a free government tablet, Lifeline phone service, or a free tablet with EBT through Texas Lifeline rules, approved providers, and the right documents.";
 
-// Complete 50-State Array for the A-Z Directory
-const allStates = [
-  "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
-  "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
-  "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
-  "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
-  "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
-  "New Hampshire", "New Jersey", "New Mexico", "New York",
-  "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon",
-  "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
-  "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
-  "West Virginia", "Wisconsin", "Wyoming"
-];
-
-const schema = {
+const schemaGraph = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -32,11 +18,20 @@ const schema = {
       "url": pageUrl,
       "name": pageTitle,
       "description": pageDescription,
-      "isPartOf": { "@id": `${siteUrl}#website` },
+      "isPartOf": {
+        "@id": `${siteUrl}#website`
+      },
+      "about": [
+        { "@type": "Thing", "name": "Texas Lifeline" },
+        { "@type": "Thing", "name": "Free Government Tablet" },
+        { "@type": "Thing", "name": "SNAP in Texas" },
+        { "@type": "Thing", "name": "Free Tablet With EBT in Texas" }
+      ],
       "inLanguage": "en-US"
     },
     {
       "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -48,447 +43,489 @@ const schema = {
           "@type": "ListItem",
           "position": 2,
           "name": "States",
+          "item": `${siteUrl}states`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Texas",
           "item": pageUrl
         }
       ]
     },
     {
       "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I keep my tablet if I move to another state?",
+          "name": "Can I get a free tablet with EBT in Texas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You may be able to keep the device, but you should update your address and check whether your current provider still serves the new state."
+            "text": "If you receive SNAP benefits in Texas, you may qualify for Lifeline because SNAP is a standard qualifying program. A free phone is more common than a guaranteed free tablet, and tablet offers depend on provider inventory and current offers."
           }
         },
         {
           "@type": "Question",
-          "name": "Do some states have their own tablet programs besides Lifeline?",
+          "name": "Does Texas use the regular National Verifier application?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Some states, cities, libraries, schools, housing authorities, and nonprofits run separate digital access programs depending on local funding."
+            "text": "Texas is one of the states with a state-specific Lifeline application path. Texas residents should check with their provider or use the Texas Lifeline application process instead of assuming the standard national online flow applies."
           }
         },
         {
           "@type": "Question",
-          "name": "What if my preferred provider does not operate in my state?",
+          "name": "Are tablets really free in Texas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Use the USAC Companies Near Me tool to see which approved Lifeline providers serve your ZIP code or state."
+            "text": "Not always. In Texas, the Lifeline benefit lowers the cost of service. Some providers may include a phone, and some may occasionally offer a tablet with a small required co-pay or limited stock."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can more than one person at my Texas address get Lifeline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually no. Lifeline is limited to one benefit per household. If more than one adult lives at the same address but does not share income and expenses, a household worksheet may be required."
           }
         }
       ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}#website`,
-      "url": siteUrl,
-      "name": "FreeTablet.click",
-      "inLanguage": "en-US"
     }
   ]
 };
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <Header />
 
+  <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
+
   <main id="main-content" class="w-full flex-1 flex flex-col items-center">
-
-    <!-- ==========================================
-         SECTION 1: PREMIUM HERO
-    =========================================== -->
-    <section class="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#0f172a] text-white pt-20 pb-24 lg:pt-28 lg:pb-32" style="background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent 40%);">
+    <!-- HERO -->
+    <section class="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#0f172a] text-white pt-20 pb-24 lg:pt-28 lg:pb-32" style="background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 45%), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.12), transparent 45%);">
       <div class="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-
         <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-blue-100 mb-6 shadow-sm">
-          <svg class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-          <span>Nationwide Program Directory</span>
+          <svg class="w-4 h-4 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+          <span>Texas-specific Lifeline guide, updated for 2026</span>
         </div>
 
         <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-white mb-6">
-          Find Free Government Tablet Programs By <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">State</span>
+          Free Government Tablet in <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-emerald-300">Texas</span>
         </h1>
 
         <p class="text-lg text-blue-100 sm:text-xl leading-relaxed font-medium max-w-3xl mx-auto mb-8">
-          Eligibility rules, participating providers, and device inventory vary by location. Use this directory to start with the right state, then move into the eligibility guide, application steps, and provider pages that support the homepage.
+          Looking for a free tablet with EBT in Texas, or trying to figure out whether Texas Lifeline can help with a phone, tablet, or internet plan? This page gives you the real answer, the right application path, and the common mistakes that slow people down.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="/" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto">
-            Free Government Tablet Guide
-          </a>
-          <a href="/eligibility" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-            Check Eligibility
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 2: WHY LOCATION MATTERS (INFO BOX)
-    =========================================== -->
-    <section class="relative w-full py-12 bg-white border-b border-border">
-      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-center shadow-sm">
-          <div class="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <svg class="w-8 h-8 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div>
-            <h2 class="text-xl font-bold text-primary mb-2">Why Your Location Matters</h2>
-            <p class="text-foreground/80 leading-relaxed font-medium">
-              While Lifeline is a federal initiative, the specific wireless providers (such as Assurance Wireless or AirTalk Wireless) operate on a state-by-state basis. Many states also offer local digital inclusion grants and broadband support separate from federal funding. Checking state-specific details helps you avoid missing local opportunities.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 2.25: INTERNAL START HERE LINKS
-    =========================================== -->
-    <section class="relative w-full py-12 bg-white">
-      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-2xl border border-border bg-muted/20 p-6 sm:p-8 shadow-sm">
-          <div class="max-w-3xl">
-            <h2 class="text-2xl font-bold text-foreground mb-2">Start Here Before You Check Your State</h2>
-            <p class="text-foreground/75 leading-relaxed">
-              For the safest path, start with the <a href="/" class="font-bold text-primary-light hover:underline">free government tablet guide</a>, confirm your rules on the <a href="/eligibility" class="font-bold text-primary-light hover:underline">eligibility page</a>, then use <a href="/how-to-apply" class="font-bold text-primary-light hover:underline">how to apply</a> and the provider pages to compare your next move.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-            <a href="/" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-              <h3 class="font-bold text-foreground mb-1">Homepage Guide</h3>
-              <p class="text-sm text-foreground/70 leading-relaxed">Main free tablet overview, program summary, and core internal paths.</p>
-            </a>
-            <a href="/eligibility" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-              <h3 class="font-bold text-foreground mb-1">Eligibility Rules</h3>
-              <p class="text-sm text-foreground/70 leading-relaxed">Income limits, approved programs, household rules, and survivor protections.</p>
-            </a>
-            <a href="/how-to-apply" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-              <h3 class="font-bold text-foreground mb-1">Application Steps</h3>
-              <p class="text-sm text-foreground/70 leading-relaxed">Use this before you upload documents or choose a provider.</p>
-            </a>
-            <a href="/assurance-wireless" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-              <h3 class="font-bold text-foreground mb-1">Provider Example</h3>
-              <p class="text-sm text-foreground/70 leading-relaxed">Start comparing live provider pages while more state pages roll out.</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ==========================================
-         SECTION 2.5: OFFICIAL RESOURCES (EXTERNAL LINKS ONLY)
-    =========================================== -->
-    <section class="relative w-full py-12 bg-white">
-      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-2xl border border-border bg-muted/20 p-6 sm:p-8 shadow-sm">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-            <div>
-              <h2 class="text-2xl font-bold text-foreground">Official Resources</h2>
-              <p class="text-foreground/75 mt-1">Use these official pages for eligibility checks and provider lookup. If you live in Texas or Oregon, application steps may route through state-specific processes.</p>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a
-              href="https://www.checklifeline.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors"
-            >
-              <h3 class="font-bold text-foreground mb-1">National Verifier</h3>
-              <p class="text-sm text-foreground/70 leading-relaxed">Official Lifeline eligibility and application portal.</p>
-            </a>
-
-            <a
-              href="https://www.lifelinesupport.org/companies-near-me/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors"
-            >
-              <h3 class="font-bold text-foreground mb-1">USAC Companies Near Me</h3>
-              <p class="text-sm text-foreground/70 leading-relaxed">Find approved Lifeline providers by state and ZIP code.</p>
-            </a>
-
-            <a
-              href="https://www.fcc.gov/lifeline-consumers"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors"
-            >
-              <h3 class="font-bold text-foreground mb-1">FCC Lifeline Info</h3>
-              <p class="text-sm text-foreground/70 leading-relaxed">Program rules, consumer protections, and official guidance.</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 3: FEATURED STATES
-    =========================================== -->
-    <section class="relative w-full py-16 lg:py-24 bg-muted/30">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            High-Demand Service Areas
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            These states currently feature large provider footprints and strong community support demand.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-
-          <!-- California -->
-          <div class="bg-white rounded-3xl p-8 border border-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-primary-light/5 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
-            <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary-light flex items-center justify-center mb-6 relative z-10">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
-            </div>
-            <h3 class="text-2xl font-bold text-foreground mb-3 relative z-10">California</h3>
-            <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
-              California has immense provider coverage and high demand for low-income connectivity. Device inventory moves fast, so provider comparison matters.
-            </p>
-            <a href="/" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
-              See Free Tablet Guide
-              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-          <!-- Texas -->
-          <div class="bg-white rounded-3xl p-8 border border-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-primary-light/5 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
-            <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary-light flex items-center justify-center mb-6 relative z-10">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
-            </div>
-            <h3 class="text-2xl font-bold text-foreground mb-3 relative z-10">Texas</h3>
-            <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
-              Texas offers broad coverage, though ZIP-level differences strongly affect provider options. Many applicants qualify through EBT or Medicaid.
-            </p>
-            <a href="/eligibility" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
-              Check Eligibility Rules
-              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-          <!-- Florida -->
-          <div class="bg-white rounded-3xl p-8 border border-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-primary-light/5 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
-            <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary-light flex items-center justify-center mb-6 relative z-10">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
-            </div>
-            <h3 class="text-2xl font-bold text-foreground mb-3 relative z-10">Florida</h3>
-            <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
-              Florida sees strong mobile network demand and rotating provider inventory. Compare shipping and co-pay terms carefully.
-            </p>
-            <a href="/how-to-apply" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
-              See Application Steps
-              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-          <!-- New York -->
-          <div class="bg-white rounded-3xl p-8 border border-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-primary-light/5 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
-            <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary-light flex items-center justify-center mb-6 relative z-10">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
-            </div>
-            <h3 class="text-2xl font-bold text-foreground mb-3 relative z-10">New York</h3>
-            <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
-              New York residents may find city-funded and nonprofit support options alongside standard provider offers, especially for seniors.
-            </p>
-            <a href="/assurance-wireless" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
-              View Provider Example
-              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 4: 50-STATE DIRECTORY (A-Z)
-    =========================================== -->
-    <section class="relative w-full py-16 lg:py-24 bg-white border-t border-border">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            Comprehensive State Directory (A-Z)
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            State-specific content is still growing. For now, use this directory as a clean navigation hub, then move into the homepage, eligibility, application, and provider pages for live guidance.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
-          {allStates.map((state) => (
-            <div
-              class="flex items-center justify-between px-4 py-3 bg-muted/30 border border-border rounded-lg text-sm font-semibold text-foreground"
-            >
-              <span>{state}</span>
-              <span class="text-xs font-bold uppercase tracking-wide text-foreground/40">Guide</span>
-            </div>
-          ))}
-        </div>
-        <div class="mt-10 rounded-2xl border border-border bg-muted/20 p-6 sm:p-8 shadow-sm">
-          <h3 class="text-2xl font-bold text-foreground mb-3">Use These Core Guides While State Pages Expand</h3>
-          <p class="text-foreground/75 leading-relaxed mb-6">
-            These pages are the safest internal next steps and they also strengthen the main site architecture around free government tablet searches.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <a href="/" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-              <h4 class="font-bold text-foreground mb-1">Free Government Tablet Guide</h4>
-              <p class="text-sm text-foreground/70 leading-relaxed">Main topical hub for free tablet, providers, programs, and safety guidance.</p>
-            </a>
-            <a href="/eligibility" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-              <h4 class="font-bold text-foreground mb-1">Eligibility Guide</h4>
-              <p class="text-sm text-foreground/70 leading-relaxed">Best page for income rules, program qualifiers, and household requirements.</p>
-            </a>
-            <a href="/how-to-apply" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
-              <h4 class="font-bold text-foreground mb-1">How to Apply</h4>
-              <p class="text-sm text-foreground/70 leading-relaxed">Use before sending documents or choosing your provider.</p>
-            </a>
-          </div>
-        </div>
-
-
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 5: TRIBAL LANDS BENEFIT
-    =========================================== -->
-    <section class="relative w-full py-16 bg-[#fff7ed] border-y border-[#ffedd5]">
-      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-          <div class="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md">
-            <svg class="w-8 h-8 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div>
-            <h2 class="text-2xl font-extrabold text-orange-950 mb-3">Enhanced Tribal Lands Benefit</h2>
-            <p class="text-orange-900/80 leading-relaxed font-medium mb-4">
-              If you live on federally recognized Tribal lands, you may be eligible for an enhanced Lifeline benefit. This expanded program provides a discount of up to <strong>$34.25 per month</strong> on qualifying voice and broadband services, which can improve your options for a connected device.
-            </p>
-            <p class="text-sm text-orange-800 font-bold uppercase tracking-wider">
-              Verify your address during the National Verifier application process to claim this enhanced discount.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 6: STATE-SPECIFIC FAQ
-    =========================================== -->
-    <section class="relative w-full py-16 lg:py-24 bg-white">
-      <div class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            State Application FAQs
-          </h2>
-        </div>
-
-        <div class="space-y-4">
-
-          <details class="group bg-muted/30 border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
-              Can I keep my tablet if I move to another state?
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Yes, the device belongs to you. However, you must update your address with the National Verifier and your current service provider within 30 days of moving. If your current provider does not offer service in your new state, you will need to transfer your Lifeline benefit to a provider operating in that area to maintain service.
-            </div>
-          </details>
-
-          <details class="group bg-muted/30 border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
-              Do some states have their own tablet programs besides Lifeline?
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Yes. Beyond federal Lifeline support, some state agencies, local housing authorities, schools, and nonprofits may run device or digital access programs depending on funding availability.
-            </div>
-          </details>
-
-          <details class="group bg-muted/30 border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
-              What if my preferred provider does not operate in my state?
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Telecommunications coverage is regional. If a provider is unavailable in your ZIP code, choose from companies officially authorized for your area using the
-              <a
-                href="https://www.lifelinesupport.org/companies-near-me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-primary-light font-bold hover:underline ml-1"
-              >
-                USAC Companies Near Me tool
-              </a>.
-            </div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 7: BOTTOM CTA (OFFICIAL LINK)
-    =========================================== -->
-    <section class="relative w-full py-20 lg:py-24 bg-[#0f172a] text-white overflow-hidden">
-      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" style="background-image: radial-gradient(circle at center, rgba(37, 99, 235, 0.2), transparent 50%);"></div>
-
-      <div class="relative z-10 mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6 text-white">
-          Not sure where to start?
-        </h2>
-        <p class="text-lg text-blue-100 leading-relaxed mb-10 font-medium">
-          If you are unsure which state-level programs apply to you, start with the homepage and eligibility guide, then use the official Lifeline tools to verify your provider options.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="/"
-            class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-10 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group"
-          >
-            Free Government Tablet Guide
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+          <a href="https://www.texaslifeline.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group">
+            Start Texas Application
             <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </a>
-          <a
-            href="https://www.checklifeline.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-10 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto"
-          >
-            Check National Verifier
+          <a href="/eligibility" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+            Check Eligibility First
           </a>
         </div>
       </div>
     </section>
 
+    <!-- QUICK ANSWER -->
+    <section class="relative w-full bg-muted/30 pb-16 lg:pb-20">
+      <div class="relative z-20 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 -mt-14 sm:-mt-16">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] border border-border">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-8">
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mb-4">
+                Quick answer for Texas applicants
+              </h2>
+              <p class="text-foreground/80 leading-relaxed font-medium mb-4">
+                Yes, Texas residents can qualify for Lifeline through SNAP, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension or Survivors Benefit, or income at or below 135% of the federal poverty guidelines.
+              </p>
+              <p class="text-foreground/80 leading-relaxed font-medium">
+                What you should not assume is that Texas has one guaranteed free tablet offer for everyone. In most cases, the real benefit is the service discount. Free phones are more common, and tablets usually depend on provider inventory, current Texas offers, and whether a co-pay is required.
+              </p>
+            </div>
+
+            <div class="lg:col-span-4">
+              <div class="rounded-2xl border border-blue-100 bg-blue-50 p-6">
+                <h3 class="text-lg font-bold text-primary mb-4">Texas facts that matter</h3>
+                <ul class="space-y-3 text-sm text-foreground/85 font-medium">
+                  <li class="flex items-start gap-2">
+                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Texas uses a state-specific application path
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    SNAP / EBT can qualify you
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    One Lifeline benefit per household
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Tablet availability changes by ZIP code and stock
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TEXAS WORKS -->
+    <section class="relative w-full py-16 lg:py-24 bg-white border-t border-border">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
+            How the Texas application process works
+          </h2>
+          <p class="text-lg text-foreground/75 leading-relaxed">
+            Texas is not the same as the standard national flow. This is the part many people miss.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary-light flex items-center justify-center mb-6">
+              <span class="font-extrabold text-lg">1</span>
+            </div>
+            <h3 class="text-xl font-bold text-foreground mb-3">Use the Texas route</h3>
+            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
+              Texas residents should start with the Texas Lifeline process, not by assuming the standard national online application is the only path. You can apply online, request a mailed application, or complete forms through the Texas system.
+            </p>
+          </div>
+
+          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary-light flex items-center justify-center mb-6">
+              <span class="font-extrabold text-lg">2</span>
+            </div>
+            <h3 class="text-xl font-bold text-foreground mb-3">Keep documents ready</h3>
+            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
+              Texas applications still need the same core proof: identity, address, and either program participation or income proof. If another person at your address already gets Lifeline, expect the household worksheet issue to come up.
+            </p>
+          </div>
+
+          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary-light flex items-center justify-center mb-6">
+              <span class="font-extrabold text-lg">3</span>
+            </div>
+            <h3 class="text-xl font-bold text-foreground mb-3">Then compare companies</h3>
+            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
+              After you qualify, the next step is choosing a provider that actually serves your Texas ZIP code. That is where phone models, tablet offers, shipping rules, and co-pay terms start to differ.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELIGIBILITY -->
+    <section class="relative w-full py-16 lg:py-24 bg-slate-50 border-t border-border">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
+            Who qualifies in Texas
+          </h2>
+          <p class="text-lg text-foreground/75 leading-relaxed">
+            Texas follows the standard Lifeline eligibility rules. The easiest approvals usually come from current program participation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+          <div class="bg-white rounded-2xl p-8 border border-border shadow-sm">
+            <h3 class="text-xl font-bold text-foreground mb-4">Program-based eligibility</h3>
+            <ul class="space-y-3 text-sm text-foreground/80 font-medium">
+              <li>SNAP, also called EBT or food stamps</li>
+              <li>Medicaid</li>
+              <li>Supplemental Security Income, SSI</li>
+              <li>Federal Public Housing Assistance</li>
+              <li>Veterans Pension or Survivors Benefit</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 border border-border shadow-sm">
+            <h3 class="text-xl font-bold text-foreground mb-4">Income-based eligibility</h3>
+            <p class="text-foreground/80 leading-relaxed text-sm font-medium mb-4">
+              For the 48 contiguous states, including Texas, the 2026 Lifeline income limits are:
+            </p>
+            <ul class="space-y-2 text-sm text-foreground/80 font-medium">
+              <li>1 person: $21,546</li>
+              <li>2 people: $29,214</li>
+              <li>3 people: $36,882</li>
+              <li>4 people: $44,550</li>
+              <li>Add $7,668 for each extra person</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 border border-border shadow-sm">
+            <h3 class="text-xl font-bold text-foreground mb-4">Special note for Texas households</h3>
+            <p class="text-foreground/80 leading-relaxed text-sm font-medium">
+              Lifeline is one benefit per household, not one benefit per person. If you live with roommates, relatives, or at a shared address, the household rule can become the main reason an approval gets delayed.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-blue-100 bg-blue-50 p-6 sm:p-8">
+          <h3 class="text-xl font-bold text-primary mb-3">Free tablet with EBT in Texas, what this really means</h3>
+          <p class="text-foreground/85 leading-relaxed font-medium">
+            If you get SNAP in Texas, you may qualify for Lifeline. That does not automatically mean every provider will hand you a tablet. What it usually means is that you qualify for the program, then you compare Texas providers to see whether the current offer is a phone, a tablet with co-pay, bring-your-own-device service, or just the service discount itself.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU MAY GET -->
+    <section class="relative w-full py-16 lg:py-24 bg-white border-t border-border">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
+            What you may actually get in Texas
+          </h2>
+          <p class="text-lg text-foreground/75 leading-relaxed">
+            Honest expectations help rankings, and they also help users. So here is the straight version.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm">
+            <h3 class="text-xl font-bold text-foreground mb-3">Most common outcome</h3>
+            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
+              A free or low-cost Lifeline phone plan, often with a smartphone or a bring-your-own-device option, is more common than a guaranteed tablet offer.
+            </p>
+          </div>
+
+          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm">
+            <h3 class="text-xl font-bold text-foreground mb-3">Tablet outcome</h3>
+            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
+              Texas applicants may sometimes see a connected tablet offer, but it can be limited by provider inventory, ZIP code, and whether a federal minimum co-pay applies.
+            </p>
+          </div>
+
+          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm">
+            <h3 class="text-xl font-bold text-foreground mb-3">Best move before applying</h3>
+            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
+              Compare provider pages first, then apply. That way you are not surprised by device substitutions, out-of-stock notices, or service-area issues.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/assurance-wireless" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+            <h3 class="font-bold text-foreground mb-1">Assurance Wireless</h3>
+            <p class="text-sm text-foreground/70 leading-relaxed">Check network, phone, tablet, and Texas availability details.</p>
+          </a>
+          <a href="/safelink-wireless" class="block rounded-xl border border-border bg-white p-5 hover:border-emerald-300 hover:bg-emerald-50 transition-colors">
+            <h3 class="font-bold text-foreground mb-1">SafeLink Wireless</h3>
+            <p class="text-sm text-foreground/70 leading-relaxed">Review BYOP, device offers, and support information.</p>
+          </a>
+          <a href="/how-to-apply" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+            <h3 class="font-bold text-foreground mb-1">Application Guide</h3>
+            <p class="text-sm text-foreground/70 leading-relaxed">Use the step-by-step process before you upload documents.</p>
+          </a>
+          <a href="/" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+            <h3 class="font-bold text-foreground mb-1">Main Homepage</h3>
+            <p class="text-sm text-foreground/70 leading-relaxed">Go back to the main free tablet guide for provider and eligibility help.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTS -->
+    <section class="relative w-full py-16 lg:py-24 bg-slate-50 border-t border-border">
+      <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
+            Documents Texas applicants should have ready
+          </h2>
+          <p class="text-lg text-foreground/75 leading-relaxed">
+            Most delays happen here, not on the first screen.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
+            <h3 class="font-bold text-foreground text-lg mb-3">Identity</h3>
+            <ul class="space-y-2 text-sm text-foreground/80 font-medium">
+              <li>Texas ID or driver license</li>
+              <li>Passport</li>
+              <li>Tribal ID</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
+            <h3 class="font-bold text-foreground text-lg mb-3">Address</h3>
+            <ul class="space-y-2 text-sm text-foreground/80 font-medium">
+              <li>Utility bill</li>
+              <li>Lease or mortgage statement</li>
+              <li>Official mail showing your residence</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
+            <h3 class="font-bold text-foreground text-lg mb-3">Program proof</h3>
+            <ul class="space-y-2 text-sm text-foreground/80 font-medium">
+              <li>SNAP or Medicaid letter</li>
+              <li>SSI award letter</li>
+              <li>Housing or veterans benefit proof</li>
+              <li>Recent portal screenshot can work if it includes required details</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
+            <h3 class="font-bold text-foreground text-lg mb-3">Income proof</h3>
+            <ul class="space-y-2 text-sm text-foreground/80 font-medium">
+              <li>Recent tax return</li>
+              <li>Three consecutive pay stubs</li>
+              <li>Benefits statement</li>
+              <li>Documents should be recent and readable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISTAKES -->
+    <section class="relative w-full py-16 lg:py-24 bg-white border-t border-border">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
+            Texas mistakes that slow people down
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {[
+            "Applying twice, once through the wrong route and once through a provider, which creates confusion.",
+            "Uploading an old benefit letter that does not show a recent date or a future expiration date.",
+            "Name or address mismatch between your ID and your benefits record.",
+            "Ignoring the household worksheet issue when another adult at the same address already has Lifeline.",
+            "Assuming a tablet is guaranteed before checking actual Texas provider availability."
+          ].map((item) => (
+            <div class="bg-muted/30 border border-border rounded-xl p-5 flex items-start gap-3">
+              <div class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full bg-red-50 text-red-500 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+              <p class="text-foreground/85 font-medium leading-relaxed">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="relative w-full py-16 lg:py-24 bg-muted/30 border-t border-border">
+      <div class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
+            Texas free tablet FAQ
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
+              Can I get a free tablet with EBT in Texas?
+              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+              </span>
+            </summary>
+            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
+              SNAP can qualify you for Lifeline in Texas, but the device offer still depends on the company you choose. A free phone is usually easier to find than a guaranteed free tablet.
+            </div>
+          </details>
+
+          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
+              Does Texas have its own Lifeline application?
+              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+              </span>
+            </summary>
+            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
+              Yes. Texas is one of the states with a state-specific application route, so use the Texas process or follow instructions from your Texas provider.
+            </div>
+          </details>
+
+          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
+              Are tablets really free in Texas?
+              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+              </span>
+            </summary>
+            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
+              Sometimes, but not as a blanket rule. In Texas, tablet offers can be limited, swapped, delayed, or tied to a small co-pay.
+            </div>
+          </details>
+
+          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
+              What if another person at my Texas address already gets Lifeline?
+              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+              </span>
+            </summary>
+            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
+              You may need to prove you are a separate household. If you do not share income and expenses, the household worksheet becomes important.
+            </div>
+          </details>
+
+          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
+              Where should I start if I just want the safest path?
+              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+              </span>
+            </summary>
+            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
+              Start with eligibility, then use the Texas Lifeline application route, then compare provider pages before you submit personal documents.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative w-full py-20 lg:py-24 bg-[#0f172a] text-white overflow-hidden">
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" style="background-image: radial-gradient(circle at center, rgba(37, 99, 235, 0.2), transparent 50%);"></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6 text-white">
+          Ready to move forward in Texas?
+        </h2>
+        <p class="text-lg text-blue-100 leading-relaxed mb-10 font-medium">
+          Use the Texas application route if you want the cleanest start, then compare provider pages before choosing your device offer.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+          <a href="https://www.texaslifeline.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto">
+            Open Texas Lifeline
+          </a>
+          <a href="/states" class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+            Browse More State Guides
+          </a>
+          <a href="/" class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+            Back to Homepage
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />
