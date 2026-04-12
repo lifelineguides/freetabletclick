@@ -5,9 +5,9 @@ import Footer from "@/components/Footer.astro";
 
 const pageUrl = "https://freetablet.click/"; // apna exact page URL lagao
 const siteUrl = "https://freetablet.click/";
-const pageTitle = "Get Your Free Government Tablet and Internet Today | 2026 Guide";
+const pageTitle = "Free Tablet Programs 2026 | How to Get a Free Government Tablet";
 const pageDescription =
-  "Find out how eligible households may get a free government tablet, low-cost internet, or a free tablet with EBT through Lifeline, local digital inclusion programs, and VA-connected telehealth support options.";
+  "Learn how eligible households may get a free government tablet, free tablet application help, low-cost internet, or a free tablet with EBT through Lifeline, local digital inclusion programs, and VA-connected telehealth support options.";
 
 const schemaGraph = {
   "@context": "https://schema.org",
@@ -39,6 +39,7 @@ const schemaGraph = {
       "@type": "SiteNavigationElement",
       "@id": `${pageUrl}#navigation`,
       "name": [
+        "Start Here", 
         "Check Eligibility", 
         "Government Programs", 
         "Device & Plans", 
@@ -48,6 +49,7 @@ const schemaGraph = {
         "FAQ"
       ],
       "url": [
+        `${pageUrl}#start-here`,
         `${pageUrl}#checker`,
         `${pageUrl}#programs`,
         `${pageUrl}#plans`,
@@ -116,7 +118,7 @@ const schemaGraph = {
           "@type": "ListItem",
           "position": 1,
           "name": "Assurance Wireless",
-          "url": `${siteUrl}providers/assurance-wireless`
+          "url": `${siteUrl}assurance-wireless/`
         },
         {
           "@type": "ListItem",
@@ -217,7 +219,7 @@ const schemaGraph = {
             <!-- Trust Badge -->
             <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 mb-8 shadow-sm">
               <span aria-hidden="true">🇺🇸</span>
-              <span>100% Legitimate Federal and State Program Information | Updated for 2026</span>
+              <span>Federal and State Program Guidance | Updated for 2026</span>
             </div>
 
             <!-- H1 Headline -->
@@ -259,14 +261,14 @@ const schemaGraph = {
 
             <!-- CTAs -->
             <div class="mt-10 flex w-full flex-col gap-4 sm:flex-row">
-              <a href="#checker" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 group">
-                Apply Now
+              <a href="/how-to-apply/" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 group">
+                See How to Apply
                 <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </a>
-              <a href="#checker" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300">
-                Check My Eligibility
+              <a href="/eligibility/" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300">
+                View Eligibility Rules
               </a>
             </div>
 
@@ -285,11 +287,56 @@ const schemaGraph = {
                 </svg>
                 <div class="relative z-10 text-center">
                   <span class="block text-xl font-bold text-white tracking-wide">Secure Connection</span>
-                  <span class="block text-sm text-blue-200 mt-2">Official 2026 Assistance Portal</span>
+                  <span class="block text-sm text-blue-200 mt-2">Updated 2026 Program Guide</span>
                 </div>
              </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 1B: START HERE / KEYWORD SUPPORT
+    =========================================== -->
+    <section id="start-here" class="relative w-full bg-white border-t border-border py-16 lg:py-20" style="content-visibility: auto;">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-6">
+            How to Get a Free Government Tablet in 2026
+          </h2>
+          <p class="text-lg text-foreground/75 leading-relaxed mb-4">
+            If you searched for <strong>free tablet</strong>, <strong>free government tablet</strong>, or <strong>free tablet application</strong>, start here. In most cases, approval depends on your eligibility, your state, and the provider inventory available when you apply.
+          </p>
+          <p class="text-lg text-foreground/75 leading-relaxed">
+            The safest path is simple: confirm you qualify, review the application steps, compare a real provider, then check your state guide for local availability. That route supports both users and rankings because each page answers a different part of the search intent.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <a href="/eligibility/" class="group bg-muted/30 border border-border rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-primary-light/40 transition-all duration-300">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-50 text-primary-light font-extrabold mb-4">1</span>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">Check Eligibility First</h3>
+            <p class="text-foreground/70 leading-relaxed">See whether SNAP, Medicaid, SSI, veterans benefits, or income rules may qualify you before you start any application.</p>
+          </a>
+
+          <a href="/how-to-apply/" class="group bg-muted/30 border border-border rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-primary-light/40 transition-all duration-300">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-50 text-primary-light font-extrabold mb-4">2</span>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">Use the Right Application Steps</h3>
+            <p class="text-foreground/70 leading-relaxed">Avoid the usual mistakes, prepare your documents, and follow a cleaner path for free tablet application approval.</p>
+          </a>
+
+          <a href="/assurance-wireless/" class="group bg-muted/30 border border-border rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-primary-light/40 transition-all duration-300">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-50 text-primary-light font-extrabold mb-4">3</span>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">Compare a Real Provider</h3>
+            <p class="text-foreground/70 leading-relaxed">Review a real provider page to understand device availability, service terms, and what may still require a small co-pay.</p>
+          </a>
+
+          <a href="/states/" class="group bg-muted/30 border border-border rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-primary-light/40 transition-all duration-300">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-50 text-primary-light font-extrabold mb-4">4</span>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">Check Your State Guide</h3>
+            <p class="text-foreground/70 leading-relaxed">Browse state-level help because provider coverage, waitlists, and local device support can change from one area to another.</p>
+          </a>
         </div>
       </div>
     </section>
@@ -304,18 +351,18 @@ const schemaGraph = {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 bg-white rounded-2xl p-8 lg:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-border">
           
           <div class="flex flex-col items-center text-center px-4">
-            <h3 class="text-4xl font-extrabold text-primary mb-2">2.5M+</h3>
-            <p class="text-base font-semibold text-foreground/80">Families Guided</p>
+            <h3 class="text-4xl font-extrabold text-primary mb-2">2026</h3>
+            <p class="text-base font-semibold text-foreground/80">Current Program Guidance</p>
           </div>
           
           <div class="flex flex-col items-center text-center px-4 border-t md:border-t-0 md:border-l border-border pt-6 md:pt-0">
             <h3 class="text-4xl font-extrabold text-primary mb-2">50</h3>
-            <p class="text-base font-semibold text-foreground/80">States and Territories Covered</p>
+            <p class="text-base font-semibold text-foreground/80">States and Territories to Compare</p>
           </div>
           
           <div class="flex flex-col items-center text-center px-4 border-t md:border-t-0 md:border-l border-border pt-6 md:pt-0">
-            <h3 class="text-4xl font-extrabold text-primary mb-2">150+</h3>
-            <p class="text-base font-semibold text-foreground/80">Provider Pages and State Guides</p>
+            <h3 class="text-4xl font-extrabold text-primary mb-2">4</h3>
+            <p class="text-base font-semibold text-foreground/80">Top Provider Guides Linked Below</p>
           </div>
 
         </div>
@@ -516,7 +563,7 @@ const schemaGraph = {
                      <h4 id="result-title" class="text-lg font-bold"></h4>
                      <p id="result-message" class="text-sm mt-2 font-medium leading-relaxed"></p>
                      <div id="result-action" class="mt-4 hidden">
-                       <a href="#providers" class="inline-block text-sm font-bold text-white bg-green-600 px-4 py-2 rounded-md hover:bg-green-700 transition-colors">View Providers in Your Area &rarr;</a>
+                       <a href="#providers-directory" class="inline-block text-sm font-bold text-white bg-green-600 px-4 py-2 rounded-md hover:bg-green-700 transition-colors">View Providers in Your Area &rarr;</a>
                      </div>
                    </div>
                  </div>
@@ -851,7 +898,7 @@ const schemaGraph = {
                 Good option for users who want a known national brand
               </li>
             </ul>
-            <a href="/providers/assurance-wireless" class="inline-flex items-center justify-center w-full rounded-lg bg-muted text-primary font-bold py-3 hover:bg-primary hover:text-white transition-colors duration-200">
+            <a href="/assurance-wireless/" class="inline-flex items-center justify-center w-full rounded-lg bg-muted text-primary font-bold py-3 hover:bg-primary hover:text-white transition-colors duration-200">
               View Provider Details
             </a>
           </div>
@@ -1159,10 +1206,10 @@ const schemaGraph = {
         
         <div class="text-center max-w-3xl mx-auto mb-16">
           <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6">
-            Real People. Real Connectivity Wins.
+Common Situations People Ask About
           </h2>
           <p class="text-lg text-foreground/75 leading-relaxed">
-            These are examples of the kinds of situations we help users navigate every day, from school access to telehealth appointments and veteran care support.
+            These example situations show the most common ways people use this guide, from school access to telehealth appointments and provider comparison.
           </p>
         </div>
 
@@ -1176,12 +1223,12 @@ const schemaGraph = {
                 <svg class="w-8 h-8 text-blue-500 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-foreground text-base">David M.</h3>
-                <p class="text-xs font-semibold text-primary-light uppercase tracking-wider">Student Success</p>
+                <h3 class="font-bold text-foreground text-base">Students and remote learners</h3>
+                <p class="text-xs font-semibold text-primary-light uppercase tracking-wider">Example Situation</p>
               </div>
             </div>
             <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “I was searching for a <strong>free tablet with EBT</strong> for online classes and kept finding outdated ACP pages. This site helped me understand the current programs and compare real provider options in my state. I finally got connected for school.”
+              Many students search for a <strong>free tablet with EBT</strong> because a broken phone or shared device makes online classes harder. The fastest path is checking eligibility first, then comparing active provider pages instead of relying on old ACP-style promises.
             </p>
           </div>
 
@@ -1193,12 +1240,12 @@ const schemaGraph = {
                 <svg class="w-8 h-8 text-green-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-foreground text-base">Linda G.</h3>
-                <p class="text-xs font-semibold text-success uppercase tracking-wider">Senior Telehealth</p>
+                <h3 class="font-bold text-foreground text-base">Seniors using telehealth</h3>
+                <p class="text-xs font-semibold text-success uppercase tracking-wider">Example Situation</p>
               </div>
             </div>
             <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “I needed a <strong>free android tablet</strong> for telehealth appointments and had no idea where to start. The step-by-step eligibility section made everything easy to understand, and I found a provider that worked in my ZIP code.”
+              Seniors often need a <strong>free android tablet</strong> for telehealth, medication reminders, and patient portals. A clear eligibility check plus a provider page with current inventory is usually more useful than broad list articles.
             </p>
           </div>
 
@@ -1210,12 +1257,12 @@ const schemaGraph = {
                 <svg class="w-8 h-8 text-red-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-foreground text-base">James R.</h3>
-                <p class="text-xs font-semibold text-red-600 uppercase tracking-wider">Veteran Support</p>
+                <h3 class="font-bold text-foreground text-base">Veterans needing care access</h3>
+                <p class="text-xs font-semibold text-red-600 uppercase tracking-wider">Example Situation</p>
               </div>
             </div>
             <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “I learned that VA telehealth support may be available through my care team. I asked about the Digital Divide Consult and got the clear, direct guidance I needed to stay connected to my doctors.”
+              Veterans may have extra connectivity pathways through VA care teams and telehealth support. That matters because not every searcher needs the same route, and some users qualify through healthcare-related support instead of a standard provider flow.
             </p>
           </div>
 
@@ -1227,12 +1274,12 @@ const schemaGraph = {
                 <svg class="w-8 h-8 text-orange-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-foreground text-base">Sarah T.</h3>
-                <p class="text-xs font-semibold text-accent uppercase tracking-wider">Family Access</p>
+                <h3 class="font-bold text-foreground text-base">Families managing school and bills</h3>
+                <p class="text-xs font-semibold text-accent uppercase tracking-wider">Example Situation</p>
               </div>
             </div>
             <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “We needed a free tablet for homework and basic internet access. The scam warning section saved us from giving our info to a fake site, and the provider comparisons helped us choose a safer, legitimate option.”
+              Many families need a free tablet for homework, job forms, and basic internet access. The most important step is avoiding fake shipping-fee offers and moving straight to verified provider or program pages.
             </p>
           </div>
 
@@ -1244,12 +1291,12 @@ const schemaGraph = {
                 <svg class="w-8 h-8 text-purple-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-foreground text-base">Michael C.</h3>
-                <p class="text-xs font-semibold text-purple-600 uppercase tracking-wider">Job Seeker</p>
+                <h3 class="font-bold text-foreground text-base">Job seekers and applicants</h3>
+                <p class="text-xs font-semibold text-purple-600 uppercase tracking-wider">Example Situation</p>
               </div>
             </div>
             <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “Trying to apply for jobs on a cracked phone was a nightmare. This guide pointed me straight to legitimate Lifeline providers. The fast approval process meant I had a reliable device for my online interviews within two weeks.”
+              Job seekers often search broad terms like free tablet, free tablets, or tablet application when they really need a simple path to forms, email, and interview access. A strong how-to-apply page solves that better than another generic homepage paragraph.
             </p>
           </div>
 
@@ -1261,12 +1308,12 @@ const schemaGraph = {
                 <svg class="w-8 h-8 text-teal-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-foreground text-base">Elena W.</h3>
-                <p class="text-xs font-semibold text-teal-600 uppercase tracking-wider">Caregiver Help</p>
+                <h3 class="font-bold text-foreground text-base">Caregivers and household managers</h3>
+                <p class="text-xs font-semibold text-teal-600 uppercase tracking-wider">Example Situation</p>
               </div>
             </div>
             <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “As a full-time caregiver, I desperately needed stable internet access to manage prescriptions and benefits. The breakdown of income-based rules here helped me qualify for a device without paying huge upfront fees.”
+              Caregivers usually need stable access for prescriptions, benefits, and appointment reminders. For them, income-based qualification rules and scam warnings are often just as important as the device itself.
             </p>
           </div>
 

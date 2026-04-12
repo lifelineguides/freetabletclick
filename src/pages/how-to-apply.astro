@@ -3,47 +3,51 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
+const pageTitle = "How to Apply for a Free Government Tablet | 2026 Step-by-Step Guide";
+const pageDescription =
+  "Follow a safer 2026 Lifeline application flow: check eligibility, gather documents, use the official verifier, compare providers, and avoid common mistakes.";
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How to Apply for a Free Government Tablet in 2026",
-  "description": "A complete, step-by-step guide to checking your eligibility, gathering your documents, and securing your free device and internet service without getting scammed.",
+  "description": "A safer, step-by-step guide to checking your eligibility, gathering documents, and applying through official Lifeline channels.",
   "step": [
     {
       "@type": "HowToStep",
       "name": "Check Your Eligibility",
-      "text": "Determine if you qualify based on your household income (at or below 135% of the Federal Poverty Guidelines) or through participation in government assistance programs like SNAP, Medicaid, or SSI.",
+      "text": "Determine if you qualify based on income or participation in a qualifying assistance program.",
       "url": "https://freetablet.click/how-to-apply#step-1"
     },
     {
       "@type": "HowToStep",
       "name": "Gather Required Documents",
-      "text": "Collect official documents proving your identity, residential address, and your qualifying income or program participation. Digital scans or clear photos are accepted.",
+      "text": "Collect identity, address, and income or program documents before you apply.",
       "url": "https://freetablet.click/how-to-apply#step-2"
     },
     {
       "@type": "HowToStep",
-      "name": "Apply via the National Verifier",
-      "text": "Submit your application securely through the official USAC National Verifier website to get federal approval for the Lifeline program.",
+      "name": "Use the Official Lifeline Verifier",
+      "text": "Apply through the official Lifeline flow and follow any state-specific instructions if you live in Oregon or Texas.",
       "url": "https://freetablet.click/how-to-apply#step-3"
     },
     {
       "@type": "HowToStep",
       "name": "Choose an Approved Provider",
-      "text": "Once approved, select an FCC-authorized wireless provider operating in your state to receive your device and service plan.",
+      "text": "Compare approved providers in your state before completing enrollment.",
       "url": "https://freetablet.click/how-to-apply#step-4"
     },
     {
       "@type": "HowToStep",
-      "name": "Receive & Activate Your Device",
-      "text": "Wait 7 to 14 days for your new smartphone or tablet to arrive by mail, then follow the provider's instructions to activate your service.",
+      "name": "Receive and Activate Service",
+      "text": "Follow provider delivery and activation instructions after enrollment is completed.",
       "url": "https://freetablet.click/how-to-apply#step-5"
     }
   ]
 };
 ---
 
-<Layout title="How to Apply for a Free Government Tablet | 2026 Step-by-Step Guide">
+<Layout title={pageTitle} description={pageDescription}>
   
   <!-- Injecting HowTo Schema for Google Rich Snippets -->
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -80,7 +84,28 @@ const schema = {
     </section>
 
     <!-- ==========================================
-         SECTION 2: THE 5-STEP PROCESS
+         SECTION 2: INTERNAL GUIDE HUB
+    =========================================== -->
+    <section class="relative w-full py-10 bg-white border-b border-border">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-border bg-muted/20 p-6 sm:p-8">
+          <h2 class="text-2xl font-bold text-foreground mb-3">Use this page as part of a safer flow</h2>
+          <p class="text-foreground/75 leading-relaxed mb-5">
+            Start with the homepage for the full overview, confirm your rules on the eligibility page, then come back here to follow the application steps in order.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">Homepage</a>
+            <a href="/eligibility" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">Eligibility</a>
+            <a href="/states" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">States</a>
+            <a href="/assurance-wireless" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">Assurance</a>
+            <a href="/safelink-wireless" class="px-4 py-3 rounded-lg bg-blue-50 text-primary-light font-bold hover:bg-blue-100 transition-colors">SafeLink</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: THE 5-STEP PROCESS
     =========================================== -->
     <section id="steps" class="relative w-full py-16 lg:py-24 bg-muted/30 scroll-mt-10" style="content-visibility: auto;">
       <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -143,15 +168,16 @@ const schema = {
             <div class="relative z-10 w-full">
               <h3 class="text-2xl font-bold text-foreground mb-3">Apply via the National Verifier</h3>
               <p class="text-foreground/75 leading-relaxed font-medium mb-6">
-                The absolute safest way to apply is directly through the government's centralized system. Do not give your Social Security Number to unverified, sketchy websites.
+                The safest path is to start with the official Lifeline flow. Do not send your Social Security Number or document uploads to random social pages, ads, or unverified websites.
               </p>
               <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <span class="font-bold text-primary">Official Portal:</span>
-                <a href="https://www.usac.org/lifeline/national-verifier/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-bold hover:underline flex items-center">
-                  usac.org/lifeline/national-verifier
+                <span class="font-bold text-primary">Official Lifeline Start Page:</span>
+                <a href="https://www.lifelinesupport.org/get-started/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-bold hover:underline flex items-center">
+                  lifelinesupport.org/get-started
                   <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                 </a>
               </div>
+              <p class="text-sm text-foreground/65 font-medium mt-4">If you live in Oregon or Texas, follow your state-specific Lifeline application route instead of assuming the standard online flow will apply.</p>
             </div>
           </div>
 
@@ -164,7 +190,7 @@ const schema = {
             <div class="relative z-10 w-full">
               <h3 class="text-2xl font-bold text-foreground mb-3">Choose an Approved Provider</h3>
               <p class="text-foreground/75 leading-relaxed font-medium mb-6">
-                Once the National Verifier approves your eligibility, it is time to choose the telecom company that will actually ship your device and provide your internet service. Compare some of our top-rated, authorized providers below to see who operates in your state:
+                Once your eligibility is confirmed, compare approved providers in your state before you enroll. Use provider pages and state pages together so you do not apply with a company that is a poor fit for your ZIP code:
               </p>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <a href="/airtalk-wireless" class="text-center px-4 py-3 bg-muted/50 hover:bg-red-50 border border-border hover:border-red-200 rounded-lg text-sm font-bold text-foreground hover:text-red-600 transition-colors">AirTalk Wireless</a>
@@ -172,6 +198,7 @@ const schema = {
                 <a href="/safelink-wireless" class="text-center px-4 py-3 bg-muted/50 hover:bg-emerald-50 border border-border hover:border-emerald-200 rounded-lg text-sm font-bold text-foreground hover:text-emerald-600 transition-colors">SafeLink Wireless</a>
                 <a href="/standup-wireless" class="text-center px-4 py-3 bg-muted/50 hover:bg-orange-50 border border-border hover:border-orange-200 rounded-lg text-sm font-bold text-foreground hover:text-orange-600 transition-colors">StandUp Wireless</a>
               </div>
+              <p class="text-sm text-foreground/65 font-medium mt-4">You can also verify availability using the official Companies Near Me lookup tool before choosing a provider.</p>
             </div>
           </div>
 
@@ -184,7 +211,7 @@ const schema = {
             <div class="relative z-10">
               <h3 class="text-2xl font-bold text-foreground mb-3">Receive & Activate Your Device</h3>
               <p class="text-foreground/75 leading-relaxed font-medium">
-                After you complete enrollment with your chosen provider, they will process your order. You can generally expect your new smartphone, tablet, or SIM card to arrive by mail within a <strong>7 to 14 business day shipping window</strong>. Follow the instructions included in the box to activate your service and enjoy your connectivity!
+                After provider enrollment, review the confirmation email, watch for document follow-ups, and follow the activation instructions that arrive with your device or SIM. Delivery and activation timelines can vary by provider, state, stock, and verification checks.
               </p>
             </div>
           </div>
@@ -232,7 +259,7 @@ const schema = {
               <li>• Recent Utility Bill</li>
               <li>• Current Lease / Mortgage</li>
               <li>• Mortgage Statement</li>
-              <li>• Most recent W-2 or Tax Return</li>
+              <li>• Current mortgage or lease statement</li>
             </ul>
           </div>
 
@@ -255,8 +282,8 @@ const schema = {
               <h3 class="font-bold text-foreground text-lg">Program</h3>
             </div>
             <ul class="space-y-2 text-sm text-foreground/80 font-medium">
-              <li>• SNAP Benefit Letter or EBT Card</li>
-              <li>• Official Medicaid Approval Letter</li>
+              <li>• SNAP or other program benefit letter</li>
+              <li>• Official Medicaid or other program approval letter</li>
               <li>• SSI Award Letter</li>
               <li>• Public Housing Assistance Letter</li>
             </ul>
@@ -267,7 +294,7 @@ const schema = {
         <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-4 shadow-sm max-w-4xl mx-auto">
           <svg class="w-6 h-6 text-primary-light shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           <p class="text-blue-900 leading-relaxed font-medium text-sm">
-            <strong>Pro Tip:</strong> You only need to provide ONE document from each required category (e.g., you do not need income proof if you provide program proof like a SNAP letter). Digital scans or clear smartphone photos of these documents are perfectly acceptable to upload!
+            <strong>Pro Tip:</strong> You only need to provide ONE document from each required category (e.g., you do not need income proof if you provide program proof like a SNAP letter). Digital scans or clear smartphone photos can work, but make sure your name and address match across the documents you upload.
           </p>
         </div>
 
@@ -375,14 +402,15 @@ const schema = {
           Ready to get started?
         </h2>
         <p class="text-lg text-blue-100 leading-relaxed mb-10 font-medium">
-          Head straight to the official USAC National Verifier to submit your application securely, or explore providers available specifically in your state.
+          Start with the official Lifeline flow, then compare providers and state pages so the homepage and support pages work together instead of sending mixed signals.
         </p>
         
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-          <a href="https://www.usac.org/lifeline/national-verifier/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group">
+          <a href="https://www.lifelinesupport.org/get-started/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group">
             Go to National Verifier
             <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
           </a>
+          <a href="/" class="inline-flex items-center justify-center rounded-lg border-2 border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">Back to Homepage</a>
           <a href="/states" class="inline-flex items-center justify-center rounded-lg border-2 border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
             View State Directory
           </a>

@@ -3,6 +3,12 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
+const pageUrl = "https://freetablet.click/states/";
+const siteUrl = "https://freetablet.click/";
+const pageTitle = "Free Government Tablet Programs by State | 2026 Directory";
+const pageDescription =
+  "Use this 2026 state directory to review location-based free government tablet information, compare approved Lifeline resources, and move into the right eligibility and application pages.";
+
 // Complete 50-State Array for the A-Z Directory
 const allStates = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -16,9 +22,78 @@ const allStates = [
   "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
   "West Virginia", "Wisconsin", "Wyoming"
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": { "@id": `${siteUrl}#website` },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "States",
+          "item": pageUrl
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I keep my tablet if I move to another state?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You may be able to keep the device, but you should update your address and check whether your current provider still serves the new state."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do some states have their own tablet programs besides Lifeline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Some states, cities, libraries, schools, housing authorities, and nonprofits run separate digital access programs depending on local funding."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my preferred provider does not operate in my state?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the USAC Companies Near Me tool to see which approved Lifeline providers serve your ZIP code or state."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      "url": siteUrl,
+      "name": "FreeTablet.click",
+      "inLanguage": "en-US"
+    }
+  ]
+};
 ---
 
-<Layout title="Free Government Tablet Programs by State | 2026 Directory">
+<Layout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <Header />
 
   <main id="main-content" class="w-full flex-1 flex flex-col items-center">
@@ -38,9 +113,18 @@ const allStates = [
           Find Free Government Tablet Programs By <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">State</span>
         </h1>
 
-        <p class="text-lg text-blue-100 sm:text-xl leading-relaxed font-medium max-w-3xl mx-auto">
-          Eligibility rules, participating providers, and device inventory vary by location. Select your state below to review location-based availability and official eligibility resources for 2026.
+        <p class="text-lg text-blue-100 sm:text-xl leading-relaxed font-medium max-w-3xl mx-auto mb-8">
+          Eligibility rules, participating providers, and device inventory vary by location. Use this directory to start with the right state, then move into the eligibility guide, application steps, and provider pages that support the homepage.
         </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto">
+            Free Government Tablet Guide
+          </a>
+          <a href="/eligibility" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+            Check Eligibility
+          </a>
+        </div>
 
       </div>
     </section>
@@ -67,6 +151,40 @@ const allStates = [
     </section>
 
     <!-- ==========================================
+         SECTION 2.25: INTERNAL START HERE LINKS
+    =========================================== -->
+    <section class="relative w-full py-12 bg-white">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-border bg-muted/20 p-6 sm:p-8 shadow-sm">
+          <div class="max-w-3xl">
+            <h2 class="text-2xl font-bold text-foreground mb-2">Start Here Before You Check Your State</h2>
+            <p class="text-foreground/75 leading-relaxed">
+              For the safest path, start with the <a href="/" class="font-bold text-primary-light hover:underline">free government tablet guide</a>, confirm your rules on the <a href="/eligibility" class="font-bold text-primary-light hover:underline">eligibility page</a>, then use <a href="/how-to-apply" class="font-bold text-primary-light hover:underline">how to apply</a> and the provider pages to compare your next move.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <a href="/" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <h3 class="font-bold text-foreground mb-1">Homepage Guide</h3>
+              <p class="text-sm text-foreground/70 leading-relaxed">Main free tablet overview, program summary, and core internal paths.</p>
+            </a>
+            <a href="/eligibility" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <h3 class="font-bold text-foreground mb-1">Eligibility Rules</h3>
+              <p class="text-sm text-foreground/70 leading-relaxed">Income limits, approved programs, household rules, and survivor protections.</p>
+            </a>
+            <a href="/how-to-apply" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <h3 class="font-bold text-foreground mb-1">Application Steps</h3>
+              <p class="text-sm text-foreground/70 leading-relaxed">Use this before you upload documents or choose a provider.</p>
+            </a>
+            <a href="/assurance-wireless" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <h3 class="font-bold text-foreground mb-1">Provider Example</h3>
+              <p class="text-sm text-foreground/70 leading-relaxed">Start comparing live provider pages while more state pages roll out.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==========================================
          SECTION 2.5: OFFICIAL RESOURCES (EXTERNAL LINKS ONLY)
     =========================================== -->
     <section class="relative w-full py-12 bg-white">
@@ -75,7 +193,7 @@ const allStates = [
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <h2 class="text-2xl font-bold text-foreground">Official Resources</h2>
-              <p class="text-foreground/75 mt-1">Use these official pages for eligibility checks and provider lookup.</p>
+              <p class="text-foreground/75 mt-1">Use these official pages for eligibility checks and provider lookup. If you live in Texas or Oregon, application steps may route through state-specific processes.</p>
             </div>
           </div>
 
@@ -141,9 +259,10 @@ const allStates = [
             <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
               California has immense provider coverage and high demand for low-income connectivity. Device inventory moves fast, so provider comparison matters.
             </p>
-            <div class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-foreground/60 relative z-10">
-              State page coming soon
-            </div>
+            <a href="/" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
+              See Free Tablet Guide
+              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+            </a>
           </div>
 
           <!-- Texas -->
@@ -156,9 +275,10 @@ const allStates = [
             <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
               Texas offers broad coverage, though ZIP-level differences strongly affect provider options. Many applicants qualify through EBT or Medicaid.
             </p>
-            <div class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-foreground/60 relative z-10">
-              State page coming soon
-            </div>
+            <a href="https://freetablet.click/texas/" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
+              Visit Texas Guide
+              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+            </a>
           </div>
 
           <!-- Florida -->
@@ -171,9 +291,10 @@ const allStates = [
             <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
               Florida sees strong mobile network demand and rotating provider inventory. Compare shipping and co-pay terms carefully.
             </p>
-            <div class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-foreground/60 relative z-10">
-              State page coming soon
-            </div>
+            <a href="/how-to-apply" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
+              See Application Steps
+              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+            </a>
           </div>
 
           <!-- New York -->
@@ -186,9 +307,10 @@ const allStates = [
             <p class="text-sm text-foreground/75 leading-relaxed mb-6 flex-grow relative z-10 font-medium">
               New York residents may find city-funded and nonprofit support options alongside standard provider offers, especially for seniors.
             </p>
-            <div class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-foreground/60 relative z-10">
-              State page coming soon
-            </div>
+            <a href="/assurance-wireless" class="inline-flex items-center text-primary-light font-bold text-sm group-hover:text-primary transition-colors relative z-10">
+              View Provider Example
+              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+            </a>
           </div>
 
         </div>
@@ -206,20 +328,51 @@ const allStates = [
             Comprehensive State Directory (A-Z)
           </h2>
           <p class="text-lg text-foreground/75 leading-relaxed">
-            State pages are being prepared. For now, use the official resources above to check eligibility and provider availability.
+            State-specific content is still growing. For now, use this directory as a clean navigation hub, then move into the homepage, eligibility, application, and provider pages for live guidance.
           </p>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
           {allStates.map((state) => (
-            <div
-              class="flex items-center justify-between px-4 py-3 bg-muted/30 border border-border rounded-lg text-sm font-semibold text-foreground"
-            >
-              <span>{state}</span>
-              <span class="text-xs font-bold uppercase tracking-wide text-foreground/40">Soon</span>
-            </div>
+            state === "Texas" ? (
+              <a
+                href="https://freetablet.click/texas/"
+                class="flex items-center justify-between px-4 py-3 bg-blue-50 border border-blue-200 rounded-lg text-sm font-semibold text-foreground hover:bg-blue-100 transition-colors"
+              >
+                <span>{state}</span>
+                <span class="text-xs font-bold uppercase tracking-wide text-primary-light">Live</span>
+              </a>
+            ) : (
+              <div
+                class="flex items-center justify-between px-4 py-3 bg-muted/30 border border-border rounded-lg text-sm font-semibold text-foreground"
+              >
+                <span>{state}</span>
+                <span class="text-xs font-bold uppercase tracking-wide text-foreground/40">Guide</span>
+              </div>
+            )
           ))}
         </div>
+        <div class="mt-10 rounded-2xl border border-border bg-muted/20 p-6 sm:p-8 shadow-sm">
+          <h3 class="text-2xl font-bold text-foreground mb-3">Use These Core Guides While State Pages Expand</h3>
+          <p class="text-foreground/75 leading-relaxed mb-6">
+            These pages are the safest internal next steps and they also strengthen the main site architecture around free government tablet searches.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="/" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <h4 class="font-bold text-foreground mb-1">Free Government Tablet Guide</h4>
+              <p class="text-sm text-foreground/70 leading-relaxed">Main topical hub for free tablet, providers, programs, and safety guidance.</p>
+            </a>
+            <a href="/eligibility" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <h4 class="font-bold text-foreground mb-1">Eligibility Guide</h4>
+              <p class="text-sm text-foreground/70 leading-relaxed">Best page for income rules, program qualifiers, and household requirements.</p>
+            </a>
+            <a href="/how-to-apply" class="block rounded-xl border border-border bg-white p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <h4 class="font-bold text-foreground mb-1">How to Apply</h4>
+              <p class="text-sm text-foreground/70 leading-relaxed">Use before sending documents or choosing your provider.</p>
+            </a>
+          </div>
+        </div>
+
 
       </div>
     </section>
@@ -321,20 +474,28 @@ const allStates = [
           Not sure where to start?
         </h2>
         <p class="text-lg text-blue-100 leading-relaxed mb-10 font-medium">
-          If you are unsure which state-level programs apply to you, start by checking your eligibility through the official Lifeline application portal.
+          If you are unsure which state-level programs apply to you, start with the homepage and eligibility guide, then use the official Lifeline tools to verify your provider options.
         </p>
 
-        <a
-          href="https://www.checklifeline.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-10 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group"
-        >
-          Check Eligibility on National Verifier
-          <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-10 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group"
+          >
+            Free Government Tablet Guide
+            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+          <a
+            href="https://www.checklifeline.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-10 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto"
+          >
+            Check National Verifier
+          </a>
+        </div>
       </div>
     </section>
 
