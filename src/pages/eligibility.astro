@@ -3,58 +3,20 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const pageUrl = "https://freetablet.click/eligibility/";
-const siteUrl = "https://freetablet.click/";
-const pageTitle = "Who Qualifies for a Free Government Tablet? | 2026 Eligibility Guide";
-const pageDescription =
-  "See who may qualify for a free government tablet or Lifeline-supported service in 2026, including income limits, approved federal programs, Tribal benefit rules, survivor pathways, and household requirements.";
-
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebPage",
-      "@id": `${pageUrl}#webpage`,
-      "url": pageUrl,
-      "name": pageTitle,
-      "description": pageDescription,
-      "isPartOf": { "@id": `${siteUrl}#website` },
-      "inLanguage": "en-US",
-      "about": [
-        { "@type": "Thing", "name": "Lifeline eligibility" },
-        { "@type": "Thing", "name": "Free government tablet" },
-        { "@type": "Thing", "name": "Federal Poverty Guidelines" },
-        { "@type": "Thing", "name": "Household Worksheet" }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": siteUrl
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Eligibility",
-          "item": pageUrl
-        }
-      ]
-    },
-    {
       "@type": "ItemList",
-      "name": "Common Lifeline Eligibility Pathways",
-      "description": "Major qualification pathways people use before applying for Lifeline-supported tablet or internet service.",
+      "name": "Demographics Qualifying for Free Government Tablets",
+      "description": "A list of demographic groups that frequently qualify for federal connectivity assistance.",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Income at or below 135% of the Federal Poverty Guidelines" },
-        { "@type": "ListItem", "position": 2, "name": "SNAP" },
-        { "@type": "ListItem", "position": 3, "name": "Medicaid" },
-        { "@type": "ListItem", "position": 4, "name": "SSI" },
-        { "@type": "ListItem", "position": 5, "name": "Federal Public Housing Assistance" },
-        { "@type": "ListItem", "position": 6, "name": "Veterans Pension or Survivors Benefit" }
+        { "@type": "ListItem", "position": 1, "name": "Low-Income Households (≤ 135% FPG)" },
+        { "@type": "ListItem", "position": 2, "name": "Senior Citizens (65+)" },
+        { "@type": "ListItem", "position": 3, "name": "Students & College Families" },
+        { "@type": "ListItem", "position": 4, "name": "Veterans & Military Families" },
+        { "@type": "ListItem", "position": 5, "name": "Families with Children" },
+        { "@type": "ListItem", "position": 6, "name": "Housing Assistance Recipients" }
       ]
     },
     {
@@ -65,7 +27,7 @@ const schema = {
           "name": "Can more than one person in my house get a free tablet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Usually no. Lifeline allows one benefit per household, not per person. If adults at the same address do not share income and expenses, they may need to complete the Household Worksheet."
+            "text": "No. The federal Lifeline program strictly enforces a 'one per household' rule. A household is defined as any individual or group of individuals who live together at the same address and share income and expenses."
           }
         },
         {
@@ -73,31 +35,16 @@ const schema = {
           "name": "What if I am experiencing homelessness?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You may still qualify. Applicants can use a temporary address, shelter address, or location description, and the online application can help map an address when standard proof is limited."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do students qualify automatically for Lifeline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Being a student alone does not create standard Lifeline eligibility. A student household usually qualifies through income or a listed federal program, although some survivor situations have extra pathways."
+            "text": "Individuals experiencing homelessness can still qualify. You can use a temporary address, the address of a shelter, or a descriptive location of where you reside. You will not be denied based on lack of a permanent address."
           }
         }
       ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}#website`,
-      "url": siteUrl,
-      "name": "FreeTablet.click",
-      "inLanguage": "en-US"
     }
   ]
 };
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title="Who Qualifies for Free Government Tablets? | 2026 Eligibility Guide">
   
   <!-- Injecting SEO Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -122,7 +69,7 @@ const schema = {
         </h1>
         
         <p class="text-lg text-blue-100 sm:text-xl leading-relaxed font-medium max-w-3xl mx-auto mb-10">
-          Check the safest 2026 qualification paths for a free government tablet or Lifeline-supported service, including income limits, approved federal programs, Tribal benefit rules, and special survivor protections.
+          Detailed eligibility criteria for different demographics including income guidelines, qualifying programs, and specific requirements for seniors, students, veterans, and families.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -130,14 +77,10 @@ const schema = {
             Apply Now
             <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
           </a>
-          <a href="/" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-            Free Government Tablet Guide
+          <a href="/eligibility" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+            General Eligibility
           </a>
         </div>
-
-        <p class="mt-6 text-sm text-blue-200/80 leading-relaxed max-w-3xl mx-auto">
-          Start with the <a href="/" class="font-bold text-white underline underline-offset-4 decoration-white/40 hover:decoration-white">free government tablet guide</a>, then review <a href="/how-to-apply" class="font-bold text-white underline underline-offset-4 decoration-white/40 hover:decoration-white">how to apply</a> and the <a href="/states" class="font-bold text-white underline underline-offset-4 decoration-white/40 hover:decoration-white">state directory</a> before you submit documents.
-        </p>
 
       </div>
     </section>
@@ -176,7 +119,7 @@ const schema = {
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
             </div>
             <h3 class="text-sm font-bold text-foreground mb-1">Programs</h3>
-            <p class="text-xs text-foreground/70 font-medium">SNAP, Medicaid, SSI, FPHA, Veterans Pension</p>
+            <p class="text-xs text-foreground/70 font-medium">SNAP, Medicaid, SSI, Housing, Veterans</p>
           </div>
 
           <div class="bg-white p-5 rounded-xl border border-border shadow-sm flex flex-col items-center text-center">
@@ -248,7 +191,7 @@ const schema = {
               <h3 class="text-2xl font-bold text-foreground">Senior Citizens (65+)</h3>
             </div>
             <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Many seniors qualify through the same standard Lifeline rules as everyone else. Social Security or Medicare alone does <em>not</em> automatically qualify a household, but <strong>SSI</strong>, <strong>Medicaid</strong>, <strong>Veterans Pension or Survivors Benefit</strong>, or income at or below the limit can qualify.
+              Many seniors qualify effortlessly. While standard Social Security or Medicare alone does <em>not</em> automatically grant eligibility, participating in <strong>Supplemental Security Income (SSI)</strong> or <strong>Medicaid</strong> provides immediate, automatic approval for a connected device.
             </p>
           </div>
 
@@ -262,7 +205,7 @@ const schema = {
               <h3 class="text-2xl font-bold text-foreground">Students & College Families</h3>
             </div>
             <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Being a student does <em>not</em> automatically qualify a household for standard Lifeline. Student households usually qualify through <strong>income</strong> or through a listed Lifeline program such as <strong>SNAP</strong>, <strong>Medicaid</strong>, <strong>SSI</strong>, <strong>FPHA</strong>, or <strong>Veterans Pension or Survivors Benefit</strong>. Some colleges, libraries, and nonprofits may also offer separate local device help.
+              Students require robust connectivity. If a child in your household participates in the <strong>Free and Reduced-Price School Lunch Program</strong> (or School Breakfast Program), or if a college student receives a <strong>Federal Pell Grant</strong> in the current award year, the entire household qualifies.
             </p>
           </div>
 
@@ -276,7 +219,7 @@ const schema = {
               <h3 class="text-2xl font-bold text-foreground">Veterans & Military</h3>
             </div>
             <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Veterans can qualify for standard Lifeline if they receive the <strong>Veterans Pension or Survivors Benefit</strong>. Separately, some veterans may also get telehealth support through a <strong>VA Digital Divide Consult</strong>, which is a different pathway from standard Lifeline eligibility.
+              We honor those who served. Veterans actively receiving the <strong>Veterans Pension or Survivors Benefit</strong> automatically qualify for Lifeline assistance. Furthermore, the VA offers specific Digital Divide Consults to help veterans secure connected telehealth devices.
             </p>
           </div>
 
@@ -290,7 +233,7 @@ const schema = {
               <h3 class="text-2xl font-bold text-foreground">Families with Children</h3>
             </div>
             <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Families often qualify because a child or dependent is part of the household that receives a qualifying benefit. If someone in your household receives <strong>SNAP</strong>, <strong>Medicaid</strong>, <strong>SSI</strong>, <strong>FPHA</strong>, or <strong>Veterans Pension or Survivors Benefit</strong>, the household may qualify for one Lifeline benefit.
+              Families often qualify through multiple avenues. If anyone in your household—including children or dependents—receives <strong>SNAP (Food Stamps), WIC, Medicaid, or TANF</strong>, your entire household becomes eligible for a single device and data plan.
             </p>
           </div>
 
@@ -330,7 +273,7 @@ const schema = {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           
           <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
-            <h3 class="text-lg font-bold text-primary mb-4 pb-3 border-b border-border">Standard Lifeline Programs</h3>
+            <h3 class="text-lg font-bold text-primary mb-4 pb-3 border-b border-border">Nutrition Assistance</h3>
             <ul class="space-y-3">
               <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
                 <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -338,71 +281,55 @@ const schema = {
               </li>
               <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
                 <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                WIC (Women, Infants, and Children)
+              </li>
+              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
+                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                Free and Reduced-Price School Lunch
+              </li>
+              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
+                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                School Breakfast Program
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
+            <h3 class="text-lg font-bold text-success mb-4 pb-3 border-b border-border">Healthcare Programs</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
+                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
                 Medicaid
               </li>
               <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                Veterans Affairs (VA) Health Care
+              </li>
+              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
+                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                State Children's Health Insurance Program (CHIP) - *State dependent
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
+            <h3 class="text-lg font-bold text-accent mb-4 pb-3 border-b border-border">Income & General Support</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
+                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
                 SSI (Supplemental Security Income)
               </li>
               <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Federal Public Housing Assistance (FPHA)
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
                 Veterans Pension and Survivors Benefit
               </li>
-            </ul>
-          </div>
-
-          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
-            <h3 class="text-lg font-bold text-success mb-4 pb-3 border-b border-border">Tribal Lands Programs</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Any standard Lifeline program listed here
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Bureau of Indian Affairs General Assistance
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Tribal TANF
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Food Distribution Program on Indian Reservations
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Head Start, only for households meeting the income standard
-              </li>
-            </ul>
-          </div>
-
-          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
-            <h3 class="text-lg font-bold text-accent mb-4 pb-3 border-b border-border">Survivor Benefit Pathway</h3>
-            <ul class="space-y-3">
               <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
                 <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Safe Connections Act line separation request plus financial hardship
+                Federal Public Housing Assistance (Section 8)
               </li>
               <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
                 <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Income at or below 200% of the Federal Poverty Guidelines
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                WIC participation
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Free or reduced-price school lunch or breakfast, including CEP schools
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Federal Pell Grant in the current award year
+                Tribal TANF / Head Start (Tribal Lands)
               </li>
             </ul>
           </div>
@@ -429,23 +356,23 @@ const schema = {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           
           <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm text-center">
-            <h3 class="text-xl font-bold text-foreground mb-3">Homeless Applicants</h3>
+            <h3 class="text-xl font-bold text-foreground mb-3">Homeless Individuals</h3>
             <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              You do not need a traditional permanent address to apply. A temporary address, shelter address, or mapped location can be used when standard proof is limited.
+              You are not required to have a permanent residence. You can use a temporary address, a shelter's address, or provide a descriptive physical location of where you reside during the application process.
             </p>
           </div>
 
           <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm text-center">
-            <h3 class="text-xl font-bold text-foreground mb-3">Survivors Seeking Separate Service</h3>
+            <h3 class="text-xl font-bold text-foreground mb-3">Domestic Violence Survivors</h3>
             <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              Survivors of domestic violence, human trafficking, and related crimes may qualify for emergency Lifeline support through the Safe Connections Act when a line separation request and financial hardship are documented.
+              Survivors can request an independent economic household status to ensure they are not restricted by an abuser's existing Lifeline benefit. Confidentiality protocols are in place to protect your address.
             </p>
           </div>
 
           <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm text-center">
-            <h3 class="text-xl font-bold text-foreground mb-3">Shared Addresses and Roommates</h3>
+            <h3 class="text-xl font-bold text-foreground mb-3">Disaster Victims</h3>
             <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              If another adult at your address already receives Lifeline, you may still qualify only if you do not share income and expenses. That is when the Household Worksheet matters.
+              During federally declared natural disasters, the FCC frequently waives strict documentation rules temporarily to ensure displaced victims can quickly secure a connected device to reach family and FEMA.
             </p>
           </div>
 
@@ -470,10 +397,10 @@ const schema = {
                 <strong>The "One Per Household" Rule:</strong> Federal law strictly dictates that only one Lifeline benefit is permitted per household. A "household" is defined as any individual or group living together at the same address who share income and expenses. If you live with roommates or in a nursing home where expenses are not shared, you must fill out an independent Household Worksheet to qualify.
               </p>
               <p>
-                <strong>Annual Recertification:</strong> USAC or your state checks eligibility each year. If you are asked to recertify, respond within the deadline shown in the notice so you do not lose the benefit.
+                <strong>Annual Recertification:</strong> Eligibility is not permanent. Every year, you will be required to recertify that you still meet the income or program participation requirements. Failure to recertify will result in your device's service being disconnected.
               </p>
               <p>
-                <strong>Use the service regularly:</strong> Lifeline service must be used at least once every 30 days. If you do not use it, your provider can send a warning and your service may be turned off.
+                <strong>Usage Requirements:</strong> To keep your free data and talk service active, you must use your device (make a call, send a text, or use mobile data) at least once every 30 days.
               </p>
             </div>
           </div>
@@ -493,7 +420,7 @@ const schema = {
           Ready to Apply?
         </h2>
         <p class="text-lg text-blue-100 leading-relaxed mb-10 font-medium">
-          Now that you understand the safest qualification paths, start with the main free government tablet guide or move straight into the application steps.
+          Now that you understand the qualifications, take the next step. View the required documents list or jump straight into the application guide.
         </p>
         
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -501,8 +428,8 @@ const schema = {
             Go to Application Guide
             <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
           </a>
-          <a href="/" class="inline-flex items-center justify-center rounded-lg border-2 border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-            Free Government Tablet Guide
+          <a href="/eligibility/proof-needed" class="inline-flex items-center justify-center rounded-lg border-2 border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+            View Proof Required
           </a>
         </div>
       </div>
