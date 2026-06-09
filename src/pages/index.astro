@@ -13,44 +13,44 @@ const pageDescription =
 
 const providerRows = [
   {
+    name: "Assurance Wireless",
+    url: "/assurance-wireless/",
+    availability: "May offer Lifeline phone service and device options when available.",
+    bestFor: "Applicants comparing a recognizable Lifeline provider.",
+    note: "Device offers are not guaranteed and vary by ZIP code, stock, eligibility, and provider terms.",
+    cta: "Assurance Wireless tablet options"
+  },
+  {
     name: "AirTalk Wireless",
     url: "/airtalk-wireless/",
     availability: "May offer tablets or phones when current stock and local rules allow.",
     bestFor: "People comparing Lifeline-connected device offers and online enrollment.",
-    note: "Check current stock, ZIP-code availability, co-pay, shipping, and plan terms before applying.",
+    note: "Check current stock, possible co-pay, shipping, activation, and plan terms before applying.",
     cta: "AirTalk Wireless tablet options"
-  },
-  {
-    name: "Assurance Wireless",
-    url: "/assurance-wireless/",
-    availability: "May offer Lifeline phone service; tablet availability can vary by market.",
-    bestFor: "Applicants who want a recognizable Lifeline provider with simple plan information.",
-    note: "Device offers are not guaranteed and can change by state, provider policy, and inventory.",
-    cta: "Assurance Wireless tablet options"
-  },
-  {
-    name: "SafeLink Wireless",
-    url: "/safelink-wireless/",
-    availability: "May provide Lifeline phone service and device options depending on eligibility and area.",
-    bestFor: "Users comparing SafeLink Wireless phone and tablet options with current provider terms.",
-    note: "Confirm current service area, device availability, and activation requirements before enrollment.",
-    cta: "SafeLink Wireless phone and tablet options"
   },
   {
     name: "StandUp Wireless",
     url: "/standup-wireless/",
     availability: "May offer Lifeline service and device promotions when available.",
-    bestFor: "Applicants who want to compare another provider before choosing where to apply.",
-    note: "Availability varies by ZIP code, eligibility path, and provider inventory.",
+    bestFor: "Applicants who want another provider to compare before choosing.",
+    note: "Availability changes by ZIP code, eligibility path, provider policy, and inventory.",
     cta: "StandUp Wireless tablet options"
+  },
+  {
+    name: "SafeLink Wireless",
+    url: "/safelink-wireless/",
+    availability: "May provide Lifeline phone service and device options depending on area.",
+    bestFor: "Users comparing SafeLink Wireless phone and tablet options.",
+    note: "Confirm service area, device availability, shipping, and activation requirements before enrollment.",
+    cta: "SafeLink Wireless phone and tablet options"
   }
 ];
 
-const faqs = [
+const faqItems = [
   {
     question: "Can I still get a free tablet in 2026?",
     answer:
-      "Yes, some eligible people may still find free or low-cost tablet options in 2026 through Lifeline-connected providers, local digital inclusion programs, schools, nonprofits, libraries, or VA telehealth support. Availability depends on your state, ZIP code, eligibility proof, provider stock, and possible co-pay."
+      "Some eligible people may still find free or low-cost tablet options in 2026 through Lifeline-connected providers, local digital inclusion programs, schools, nonprofits, libraries, or VA telehealth support. Availability depends on state, ZIP code, provider stock, eligibility proof, documents, and possible co-pay."
   },
   {
     question: "Is there a real government free tablet program?",
@@ -58,39 +58,54 @@ const faqs = [
       "There is no single nationwide free government tablet program for everyone. Real help usually comes through Lifeline service discounts, provider offers, state or local digital inclusion programs, school programs, nonprofits, libraries, or VA telehealth support for eligible veterans."
   },
   {
-    question: "Can I get a free tablet with EBT?",
+    question: "Did ACP end?",
     answer:
-      "EBT or SNAP participation may help you qualify for Lifeline or other low-income technology support routes, but it does not automatically guarantee a free tablet. You still need to check provider availability, documents, and ZIP-code rules."
+      "Yes. ACP ended and the older EBB benefit is also no longer an active benefit route. In 2026, users should check current Lifeline, provider, state, nonprofit, school, library, VA, and local digital inclusion options instead."
+  },
+  {
+    question: "Can I get a free tablet with EBT or SNAP?",
+    answer:
+      "EBT or SNAP participation may help prove eligibility for Lifeline or other low-income technology support routes, but it does not automatically guarantee a free tablet. You still need to check provider availability, documents, ZIP-code rules, and possible co-pay."
   },
   {
     question: "Can I get a free tablet with Medicaid?",
     answer:
-      "Medicaid participation may be a qualifying path for Lifeline eligibility and some related provider offers. Tablet availability still depends on provider stock, state rules, documents, and whether a co-pay or shipping fee applies."
+      "Medicaid participation may be a qualifying path for Lifeline eligibility and some related provider or local technology offers. Tablet availability still depends on provider stock, state rules, required documents, and whether shipping, activation, or co-pay applies."
   },
   {
-    question: "Can I get a free tablet with internet?",
+    question: "What income level qualifies for Lifeline?",
     answer:
-      "Possibly. Some providers may offer a tablet with service, data, or internet support when available, while local programs may focus on device loans or discounted broadband. A free tablet with internet is not guaranteed, so review the plan terms first."
+      "Lifeline eligibility may be available if your household income is at or below 135% of the Federal Poverty Guidelines, or if you participate in qualifying assistance programs such as SNAP, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension, or Survivors Benefit."
   },
   {
-    question: "Can I get a free Android tablet?",
+    question: "Can more than one person in my home get Lifeline?",
     answer:
-      "Many low-cost tablet offers are Android-based because Android tablets are common in entry-level provider and nonprofit programs. The exact model, condition, brand, and availability depend on provider stock, ZIP code, and program rules."
+      "Lifeline generally allows one benefit per household, not one benefit per person. If another adult at your address already receives Lifeline, you may need to show that your household is separate under program rules."
   },
   {
-    question: "Can seniors, students, or veterans qualify?",
+    question: "Are seniors, students, or veterans eligible?",
     answer:
-      "Yes, seniors, students, and veterans may qualify through SNAP/EBT, Medicaid, SSI, income-based Lifeline eligibility, school programs, library or nonprofit support, VA telehealth resources, or local digital inclusion programs. Each route has its own rules."
+      "Seniors, students, and veterans may qualify through SNAP/EBT, Medicaid, SSI, income-based Lifeline eligibility, school programs, nonprofit or library support, VA telehealth resources, or local digital inclusion programs. Each route has its own rules."
   },
   {
-    question: "Is ACP still giving free tablets?",
+    question: "Will I get a free Android tablet or iPad?",
     answer:
-      "No. ACP and the older EBB benefit are no longer active benefit routes for new free tablet help. In 2026, users should check current Lifeline options, provider offers, state programs, nonprofits, schools, libraries, VA telehealth resources, and local digital inclusion programs instead."
+      "Most low-cost tablet offers are Android-based because Android tablets are common in entry-level provider and nonprofit programs. A free iPad is not guaranteed and should be treated carefully if a website promises one without clear terms."
   },
   {
-    question: "Which providers may offer tablet options?",
+    question: "Are tablets new or refurbished?",
     answer:
-      "Providers such as AirTalk Wireless, Assurance Wireless, SafeLink Wireless, and StandUp Wireless may have device or service options depending on your area. Current stock, eligibility rules, plan terms, and co-pay details can change, so compare provider pages before applying."
+      "Both are possible. Some programs or providers may use refurbished devices, while others may offer newer entry-level tablets when available. The exact model, condition, brand, and warranty depend on provider stock and program rules."
+  },
+  {
+    question: "Can I get a free tablet with internet or data?",
+    answer:
+      "Possibly. Some providers may offer a tablet with service, data, or internet support when available, while local programs may focus on device loans or discounted broadband. A tablet with internet or data is not guaranteed, so review plan terms first."
+  },
+  {
+    question: "What documents are needed?",
+    answer:
+      "Common documents include government ID, proof of address, proof of SNAP/EBT, Medicaid, SSI, housing assistance, veteran benefit, or proof of income. Some applicants may also need household information or extra identity details where required."
   },
   {
     question: "Do I need to pay a co-pay?",
@@ -98,14 +113,14 @@ const faqs = [
       "You might. Some tablet offers are free, while others may require a small co-pay, shipping charge, activation cost, or service-related fee. A trustworthy provider should explain any cost before you submit or complete an application."
   },
   {
-    question: "What documents are needed?",
-    answer:
-      "Common documents include a government ID, proof of address, proof of SNAP/EBT, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension, Survivors Benefit, or proof of income. Some applicants may also need a household worksheet or extra identity details where required."
-  },
-  {
     question: "How do I avoid free tablet scams?",
     answer:
-      "Avoid sites that promise guaranteed approval, guaranteed iPads, unusual upfront fees, pressure tactics, or fake government branding. Verify provider terms, Lifeline or National Verifier steps where relevant, and never submit personal information unless the application path looks official and trustworthy."
+      "Avoid websites that promise guaranteed approval, guaranteed iPads, unusual upfront fees, fake government branding, pressure tactics, unclear shipping costs, or suspicious document uploads. Verify provider terms and official Lifeline or National Verifier steps where relevant."
+  },
+  {
+    question: "Do you guarantee approval?",
+    answer:
+      "No. FreeTablet.click is an independent informational guide. We do not approve applications, issue benefits, guarantee devices, or represent the FCC, USAC, Lifeline, the government, or any provider."
   }
 ];
 
@@ -117,9 +132,8 @@ const schemaGraph = {
       "@id": `${siteUrl}/#organization`,
       "name": "FreeTablet.click",
       "url": `${siteUrl}/`,
-      "description": "Independent informational guide for free and low-cost tablet, Lifeline, provider, eligibility, and state assistance options.",
       "email": "support@freetablet.click",
-      "sameAs": []
+      "description": "Independent informational guide for free and low-cost tablet, Lifeline, provider, eligibility, and state assistance options."
     },
     {
       "@type": "WebSite",
@@ -127,9 +141,7 @@ const schemaGraph = {
       "url": `${siteUrl}/`,
       "name": "FreeTablet.click",
       "description": pageDescription,
-      "publisher": {
-        "@id": `${siteUrl}/#organization`
-      },
+      "publisher": { "@id": `${siteUrl}/#organization` },
       "inLanguage": "en-US",
       "potentialAction": {
         "@type": "SearchAction",
@@ -146,12 +158,8 @@ const schemaGraph = {
       "description": pageDescription,
       "datePublished": isoDate,
       "dateModified": isoDate,
-      "reviewedBy": {
-        "@id": `${siteUrl}/#organization`
-      },
-      "isPartOf": {
-        "@id": `${siteUrl}/#website`
-      },
+      "reviewedBy": { "@id": `${siteUrl}/#organization` },
+      "isPartOf": { "@id": `${siteUrl}/#website` },
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": `${siteUrl}/Programs.webp`,
@@ -166,8 +174,12 @@ const schemaGraph = {
         { "@type": "Thing", "name": "SNAP" },
         { "@type": "Thing", "name": "Medicaid" },
         { "@type": "Thing", "name": "SSI" },
+        { "@type": "Thing", "name": "Federal Public Housing Assistance" },
         { "@type": "Thing", "name": "Veterans Pension" },
         { "@type": "Thing", "name": "Survivors Benefit" },
+        { "@type": "Thing", "name": "HUD ConnectHomeUSA" },
+        { "@type": "Thing", "name": "VA telehealth" },
+        { "@type": "Thing", "name": "Digital Divide Consult" },
         { "@type": "Thing", "name": "digital inclusion programs" },
         { "@type": "Thing", "name": "low-income households" },
         { "@type": "Thing", "name": "tablets" },
@@ -187,23 +199,18 @@ const schemaGraph = {
       "@type": "BreadcrumbList",
       "@id": `${pageUrl}#breadcrumb`,
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": pageUrl
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl }
       ]
     },
     {
       "@type": "FAQPage",
       "@id": `${pageUrl}#faq`,
-      "mainEntity": faqs.map((faq) => ({
+      "mainEntity": faqItems.map((item) => ({
         "@type": "Question",
-        "name": faq.question,
+        "name": item.question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": faq.answer
+          "text": item.answer
         }
       }))
     }
@@ -211,67 +218,59 @@ const schemaGraph = {
 };
 ---
 
-<Layout title={pageTitle} description={pageDescription} modDatetime={new Date("2026-06-09T00:00:00Z")}>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  modDatetime={new Date("2026-06-09T00:00:00Z")}
+  structuredData={schemaGraph}
+>
   <Header />
-  <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
 
   <main class="bg-white text-foreground">
-    <section class="relative overflow-hidden bg-[#0f172a] text-white">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.18),transparent_40%)]"></div>
-      <div class="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-28">
-        <div class="lg:col-span-7 xl:col-span-8">
-          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 shadow-sm">
-            <span aria-hidden="true">✓</span>
-            <span>Independent guide • Last updated {displayDate}</span>
+    <section class="relative w-full overflow-hidden bg-[#0f172a] text-white pt-20 pb-24 lg:pt-28 lg:pb-32" style="background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 40%), radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.16), transparent 40%);">
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+          <div class="flex flex-col items-start lg:col-span-7 xl:col-span-8">
+            <div class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 shadow-sm">
+              <span aria-hidden="true">✓</span>
+              <span>Independent 2026 Assistance Guide • Last updated {displayDate}</span>
+            </div>
+
+            <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Free Government Tablet 2026: <span class="bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent">EBT, Lifeline & Provider Options</span>
+            </h1>
+
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-blue-100 sm:text-xl">
+              Some people may qualify for <strong>free or low-cost tablet options</strong> in 2026 through EBT/SNAP, Medicaid, SSI, income-based Lifeline eligibility, school or local programs, nonprofit support, VA telehealth resources, or participating provider offers.
+            </p>
+
+            <p class="mt-4 max-w-3xl text-base leading-relaxed text-blue-200/90">
+              Tablet availability depends on ZIP code, provider stock, eligibility path, documents, shipping rules, and possible co-pay. FreeTablet.click is an independent informational guide, not the government, FCC, USAC, Lifeline, or any wireless provider.
+            </p>
+
+            <ul class="mt-8 grid w-full max-w-3xl gap-3 sm:grid-cols-2">
+              {["No hidden fees guidance", "Fast online application steps", "Free or discounted mobile internet options", "Provider availability and stock notes", "ACP and EBB are no longer active benefit routes", "State-by-state ZIP code guidance"].map((point) => (
+                <li class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">{point}</li>
+              ))}
+            </ul>
+
+            <div class="mt-10 flex w-full flex-col gap-4 sm:flex-row">
+              <a href="/how-to-apply/" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">Apply Now</a>
+              <a href="/eligibility/" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:bg-white/10">Check My Eligibility</a>
+            </div>
+
+            <p class="mt-6 max-w-2xl text-xs leading-relaxed text-blue-200/70">
+              Check eligibility, compare provider options, and review possible document requirements before applying. Clicking a button does not guarantee approval or a tablet.
+            </p>
           </div>
 
-          <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Free Government Tablet 2026: <span class="bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent">EBT, Lifeline & Provider Options</span>
-          </h1>
-
-          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-blue-100 sm:text-xl">
-            Some people may qualify for <strong>free or low-cost tablet options</strong> in 2026 through EBT/SNAP, Medicaid, SSI, income-based Lifeline eligibility, school or local programs, nonprofit support, VA telehealth resources, or participating provider offers.
-          </p>
-
-          <p class="mt-4 max-w-3xl text-base leading-relaxed text-blue-200/90">
-            Tablet availability depends on your ZIP code, provider stock, eligibility path, documents, shipping rules, and possible co-pay. FreeTablet.click is an independent informational guide, not the government, FCC, USAC, Lifeline, or any wireless provider.
-          </p>
-
-          <div class="mt-8 grid max-w-3xl gap-3 sm:grid-cols-2">
-            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">EBT/SNAP, Medicaid, SSI, income, and housing benefit paths</div>
-            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">Provider stock and tablet offers vary by ZIP code</div>
-            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">ACP and EBB are no longer active benefit routes</div>
-            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">Safe apply steps, documents, providers, and state help</div>
-          </div>
-
-          <div class="mt-10 flex w-full flex-col gap-4 sm:flex-row">
-            <a href="/how-to-apply/" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
-              Apply Now
-            </a>
-            <a href="/eligibility/" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:bg-white/10">
-              Check Eligibility
-            </a>
-          </div>
-
-          <p class="mt-5 max-w-2xl text-sm leading-relaxed text-blue-200/75">
-            Check eligibility, compare provider options, and review possible document requirements before applying. Clicking a button does not guarantee approval or a tablet.
-          </p>
-        </div>
-
-        <div class="lg:col-span-5 xl:col-span-4">
-          <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl">
-            <img
-              src="/Programs.webp"
-              alt="Person checking free government tablet eligibility on a tablet in 2026"
-              width="800"
-              height="450"
-              loading="eager"
-              decoding="async"
-              class="h-auto w-full rounded-2xl object-cover"
-            />
-            <div class="mt-4 rounded-2xl bg-white/10 p-5">
-              <p class="text-sm font-bold uppercase tracking-wide text-blue-200">2026 tablet help checklist</p>
-              <p class="mt-2 text-base leading-relaxed text-white">Eligibility, providers, documents, state availability, co-pay details, and scam warnings in one place.</p>
+          <div class="lg:col-span-5 xl:col-span-4">
+            <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl">
+              <img src="/Programs.webp" alt="Person checking free government tablet eligibility on a tablet in 2026" loading="eager" decoding="async" width="800" height="450" class="h-auto w-full rounded-2xl object-cover" />
+              <div class="mt-4 rounded-2xl bg-white/10 p-5">
+                <p class="text-sm font-bold uppercase tracking-wide text-blue-200">Independent 2026 Assistance Guide</p>
+                <p class="mt-2 text-base leading-relaxed text-white">Eligibility, provider comparison, documents, state availability, internet options, co-pay details, and scam warnings in one place.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -284,250 +283,228 @@ const schemaGraph = {
           <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Quick Answer</p>
           <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Quick Answer: Can You Get a Free Tablet in 2026?</h2>
           <div class="mt-6 space-y-4 text-lg leading-relaxed text-foreground/80">
-            <p>
-              Yes, some eligible people may still find <strong>free or low-cost tablet options in 2026</strong> through Lifeline-connected providers, local digital inclusion programs, EBT/SNAP or Medicaid eligibility paths, schools, nonprofits, libraries, or VA telehealth support.
-            </p>
-            <p>
-              There is no single nationwide free government tablet program for everyone. Availability depends on your state, ZIP code, provider stock, eligibility proof, and possible co-pay.
-            </p>
-            <p>
-              Start with our <a href="/eligibility/" class="font-bold text-primary-light hover:text-primary">free tablet eligibility</a> guide, then learn how to <a href="/how-to-apply/" class="font-bold text-primary-light hover:text-primary">apply for a free tablet online</a>, compare <a href="/states/" class="font-bold text-primary-light hover:text-primary">free tablet programs by state</a>, and review provider pages such as <a href="/airtalk-wireless/" class="font-bold text-primary-light hover:text-primary">AirTalk Wireless tablet options</a>, <a href="/assurance-wireless/" class="font-bold text-primary-light hover:text-primary">Assurance Wireless tablet options</a>, and <a href="/safelink-wireless/" class="font-bold text-primary-light hover:text-primary">SafeLink Wireless phone and tablet options</a>.
-            </p>
+            <p>Yes, some eligible people may still find free or low-cost tablet options in 2026 through Lifeline-connected providers, local digital inclusion programs, EBT/SNAP or Medicaid eligibility paths, schools, nonprofits, libraries, or VA telehealth support.</p>
+            <p>There is no single nationwide free government tablet program for everyone. Availability depends on your state, ZIP code, provider stock, eligibility proof, and possible co-pay.</p>
+            <p>Start with <a href="/eligibility/" class="font-bold text-primary-light hover:text-primary">free tablet eligibility</a>, learn how to <a href="/how-to-apply/" class="font-bold text-primary-light hover:text-primary">apply for a free tablet online</a>, compare <a href="/states/" class="font-bold text-primary-light hover:text-primary">free tablet programs by state</a>, review <a href="/airtalk-wireless/" class="font-bold text-primary-light hover:text-primary">AirTalk Wireless tablet options</a>, <a href="/assurance-wireless/" class="font-bold text-primary-light hover:text-primary">Assurance Wireless tablet options</a>, <a href="/safelink-wireless/" class="font-bold text-primary-light hover:text-primary">SafeLink Wireless phone and tablet options</a>, and check <a href="/texas/" class="font-bold text-primary-light hover:text-primary">free tablet in Texas</a> guidance where relevant.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="intent-paths" class="py-16">
+    <section id="trust" class="relative w-full bg-muted py-20 lg:py-28">
       <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="mx-auto mb-10 max-w-3xl text-center">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Find the right path</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">What Type of Free Tablet Help Are You Looking For?</h2>
-          <p class="mt-4 text-lg leading-relaxed text-foreground/75">Use this homepage as a starting point for free tablet help, government tablet guidance, application steps, eligibility checks, provider comparison, and local availability by ZIP code.</p>
+        <div class="mb-16 grid grid-cols-1 gap-6 rounded-2xl border border-border bg-white p-8 shadow-sm md:grid-cols-3 lg:p-10">
+          <div class="text-center"><h3 class="mb-2 text-3xl font-extrabold text-primary">Thousands</h3><p class="font-semibold text-foreground/80">of users guided with plain-English eligibility information</p></div>
+          <div class="border-t border-border pt-6 text-center md:border-l md:border-t-0 md:pt-0"><h3 class="mb-2 text-3xl font-extrabold text-primary">50 States</h3><p class="font-semibold text-foreground/80">covered through state directory and ZIP-code guidance</p></div>
+          <div class="border-t border-border pt-6 text-center md:border-l md:border-t-0 md:pt-0"><h3 class="mb-2 text-3xl font-extrabold text-primary">Provider & State Guides</h3><p class="font-semibold text-foreground/80">to compare eligibility, service, and device availability</p></div>
         </div>
 
-        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-lg font-bold text-foreground">Core tablet help</h3>
-            <p class="mt-3 text-sm leading-relaxed text-foreground/75">If you are comparing free tablets, a government tablet, or a gov tablet option, start by checking which real programs are active in 2026.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-lg font-bold text-foreground">Application help</h3>
-            <p class="mt-3 text-sm leading-relaxed text-foreground/75">Learn <a href="/how-to-apply/" class="font-bold text-primary-light hover:text-primary">how to get a free tablet</a>, how to apply for a free tablet, what a free tablet application may ask for, and what to review before enrollment.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-lg font-bold text-foreground">Eligibility paths</h3>
-            <p class="mt-3 text-sm leading-relaxed text-foreground/75">Compare free tablet with SNAP, EBT, Medicaid, seniors, students, veterans, and low-income tablet program routes before choosing a provider or local program.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-lg font-bold text-foreground">Device and service needs</h3>
-            <p class="mt-3 text-sm leading-relaxed text-foreground/75">Some users need a free Android tablet, a tablet with internet, a tablet with service or data, or a phone and tablet option. These details vary by provider and area.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-lg font-bold text-foreground">Provider choices</h3>
-            <p class="mt-3 text-sm leading-relaxed text-foreground/75">Review AirTalk Wireless, Assurance Wireless, SafeLink Wireless, and StandUp Wireless pages to compare current tablet, phone, service, and data options where available.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-lg font-bold text-foreground">Local availability</h3>
-            <p class="mt-3 text-sm leading-relaxed text-foreground/75">For local searches like free tablet near me, free tablet by state, or free tablet in Texas, check availability by ZIP code and state before applying.</p>
-          </div>
+        <div class="mx-auto mb-14 max-w-3xl text-center">
+          <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Why Families Trust Us for Free Tablet and Internet Help</h2>
+          <p class="text-lg leading-relaxed text-foreground/75">Finding a real free tablet option can be confusing because many pages mix old ACP language with current Lifeline, provider, school, library, nonprofit, VA, and local digital inclusion options. We explain the rules in plain English and keep the wording safe.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            ["No Hidden Fees Guidance", "We explain when a tablet may be free and when a provider may require a co-pay, shipping, activation, or service-related cost."],
+            ["Scam-Safe Guidance", "We reject guaranteed approval promises, fake free iPad claims, fake government branding, pressure tactics, and suspicious document upload requests."],
+            ["Simple Eligibility Process", "We break down EBT/SNAP, Medicaid, SSI, housing assistance, veteran benefits, income-based Lifeline eligibility, and local program rules."],
+            ["Updated 2026 Information", "We clearly explain that ACP and EBB are ended or outdated benefit routes and point users toward current options."],
+            ["State-Specific Help", "Provider coverage, device stock, co-pay details, and local programs vary by state and ZIP code."],
+            ["Independent Editorial Standards", "We are not the government, FCC, USAC, Lifeline, or a provider. We organize public program information to help users compare safer options."],
+          ].map((card) => (
+            <div class="rounded-2xl border border-border bg-white p-8 shadow-sm transition-shadow hover:shadow-md">
+              <h3 class="mb-3 text-xl font-bold text-foreground">{card[0]}</h3>
+              <p class="leading-relaxed text-foreground/70">{card[1]}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section id="best-ways" class="py-20 lg:py-28">
+    <section id="checker" class="py-20 lg:py-28">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8">
+        <div class="lg:col-span-5">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Eligibility checker</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Check If You May Qualify Before Applying</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Use this section as a checklist before you apply. Final approval depends on the official/provider application path, proof documents, household rules, state rules, and provider availability.</p>
+          <p class="mt-4 text-base leading-relaxed text-foreground/70">Common qualifying routes include SNAP/EBT, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension, Survivors Benefit, Tribal programs where applicable, or income-based Lifeline eligibility.</p>
+        </div>
+        <div class="rounded-3xl border border-border bg-white p-6 shadow-xl lg:col-span-7 sm:p-8">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <label class="block"><span class="mb-2 block text-sm font-semibold text-foreground">Benefit program</span><select class="w-full rounded-lg border border-border bg-white px-4 py-3"><option>SNAP / EBT</option><option>Medicaid</option><option>SSI</option><option>Federal Public Housing Assistance</option><option>Veterans Pension / Survivors Benefit</option><option>Income-based eligibility</option></select></label>
+            <label class="block"><span class="mb-2 block text-sm font-semibold text-foreground">State or ZIP code</span><input class="w-full rounded-lg border border-border bg-white px-4 py-3" placeholder="Enter state or ZIP" /></label>
+          </div>
+          <a href="/eligibility/" class="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary-light px-8 py-4 text-lg font-bold text-white shadow-md transition-colors hover:bg-blue-700">Check My Eligibility</a>
+          <p class="mt-5 text-center text-xs leading-relaxed text-foreground/60">This checklist is informational only. It does not approve benefits or guarantee a tablet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="best-ways" class="border-y border-border bg-muted py-20 lg:py-28">
       <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto mb-14 max-w-3xl text-center">
           <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">2026 options</p>
           <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Best Ways to Get a Free or Low-Cost Tablet in 2026</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/75">The strongest path depends on your eligibility proof, location, and whether providers or local programs currently have devices available.</p>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">The best route depends on eligibility proof, location, provider stock, and whether local programs currently have devices or internet support available.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {[
+            ["Lifeline provider offers", "Lifeline is mainly a monthly phone or internet service discount. Some participating providers may attach device offers when inventory and local rules allow."],
+            ["EBT/SNAP eligibility routes", "SNAP or EBT participation may help prove eligibility for Lifeline or local low-income technology programs, but it does not guarantee a tablet."],
+            ["Medicaid eligibility routes", "Medicaid can be a qualifying program for Lifeline eligibility and may help users access provider or local digital access options."],
+            ["Local digital inclusion programs", "Cities, counties, housing agencies, and community partners may offer device loans, refurbished tablets, discounted internet, or digital skills support."],
+            ["School/student programs", "Students may find help through school districts, colleges, libraries, or local education partners when device funding is available."],
+            ["Nonprofit/library programs", "Libraries and nonprofits may provide device lending, refurbished devices, public computer access, digital skills help, or low-cost connectivity referrals."],
+            ["VA telehealth support", "Eligible veterans who need telehealth access may ask a VA care team about connectivity resources or device support when clinically appropriate."],
+          ].map((card) => (
+            <div class="rounded-2xl border border-border bg-white p-6 shadow-sm"><h3 class="text-xl font-bold text-foreground">{card[0]}</h3><p class="mt-3 leading-relaxed text-foreground/75">{card[1]}</p></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <div>
+            <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Program overview</p>
+            <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">2026 Programs That May Help You Get a Tablet or Affordable Internet</h2>
+            <p class="text-lg leading-relaxed text-foreground/75">There is no single checkout-style national government tablet giveaway. In 2026, tablet and internet help usually comes through Lifeline service discounts, provider promotions, HUD-connected local programs, VA telehealth support, school programs, libraries, nonprofits, and local digital inclusion programs.</p>
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-border bg-white shadow-xl"><img src="/Programs.webp" alt="Person checking free government tablet eligibility on a tablet in 2026" loading="lazy" decoding="async" width="800" height="450" class="h-full w-full object-cover" /></div>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-xl font-bold text-foreground">Lifeline provider offers</h3>
-            <p class="mt-3 leading-relaxed text-foreground/75">Lifeline is mainly a monthly phone or internet service discount. Some participating providers may attach device offers when inventory and local rules allow.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-xl font-bold text-foreground">EBT/SNAP eligibility routes</h3>
-            <p class="mt-3 leading-relaxed text-foreground/75">SNAP or EBT participation may help prove eligibility for Lifeline or local low-income technology programs, but it does not guarantee a tablet.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-xl font-bold text-foreground">Medicaid eligibility routes</h3>
-            <p class="mt-3 leading-relaxed text-foreground/75">Medicaid can be a qualifying program for Lifeline eligibility and may help users access provider or local digital access options.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-xl font-bold text-foreground">Local digital inclusion programs</h3>
-            <p class="mt-3 leading-relaxed text-foreground/75">Cities, counties, housing agencies, and community partners may offer device loans, refurbished tablets, discounted internet, or digital skills support.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-xl font-bold text-foreground">School, nonprofit, and library programs</h3>
-            <p class="mt-3 leading-relaxed text-foreground/75">Students, seniors, job seekers, and low-income households may find local help through schools, libraries, nonprofits, and community technology centers.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-            <h3 class="text-xl font-bold text-foreground">VA telehealth support</h3>
-            <p class="mt-3 leading-relaxed text-foreground/75">Eligible veterans who need telehealth access may ask a VA care team about connectivity resources or device support when clinically appropriate.</p>
-          </div>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {[
+            ["Lifeline Program", "Lifeline is a federal program that helps lower the monthly cost of phone or internet service for eligible households. Some providers may bundle device offers, including tablets, based on inventory and local promotions.", ["Monthly discount program, not a guaranteed free device program", "Eligibility can be based on income or qualifying programs like SNAP and Medicaid", "One benefit per household rule applies"]],
+            ["HUD ConnectHomeUSA", "HUD ConnectHomeUSA is a digital inclusion initiative that helps HUD-assisted communities build local solutions for affordable internet, devices, and digital skills training.", ["Best for residents in participating HUD-assisted communities", "Local organizations may offer device or connectivity resources", "Availability depends on local partners and funding"]],
+            ["VA Telehealth Device Support", "Eligible veterans who need telehealth access may be able to receive help through VA connectivity resources and the Digital Divide Consult process when appropriate.", ["Designed for telehealth access and care connectivity", "Device support is based on eligibility and clinical need", "Start by asking a VA care team about options"]],
+            ["State and Local Programs", "Many cities, counties, libraries, schools, and nonprofits offer temporary or ongoing tablet, device loan, discounted broadband, or digital skills help.", ["Highly location-specific", "May prioritize students, seniors, veterans, or public housing residents", "Funding and waitlists can change quickly"]],
+          ].map((program) => (
+            <div class="flex h-full flex-col rounded-2xl border border-border bg-white p-8 shadow-sm">
+              <h3 class="mb-4 text-2xl font-bold text-foreground">{program[0]}</h3>
+              <p class="mb-6 flex-grow leading-relaxed text-foreground/75">{program[1]}</p>
+              <div class="rounded-xl border border-border bg-muted/50 p-5">
+                <h4 class="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Key Notes</h4>
+                <ul class="space-y-2">{program[2].map((note) => <li class="text-sm text-foreground/80">• {note}</li>)}</ul>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-10 rounded-2xl border border-orange-200 bg-orange-50 p-6 sm:p-8">
+          <h3 class="text-xl font-bold text-foreground">Important ACP Ended Update</h3>
+          <p class="mt-3 leading-relaxed text-foreground/80">ACP and EBB are no longer active benefit routes for new tablet help. If a page still says ACP is giving free tablets today, verify the date and check current Lifeline, provider, state, nonprofit, school, library, VA, or local digital inclusion options instead.</p>
         </div>
       </div>
     </section>
 
     <section id="who-qualifies" class="border-y border-border bg-muted py-20 lg:py-28">
       <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-        <div class="lg:col-span-5">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Eligibility</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Who May Qualify?</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Eligibility usually depends on household income, participation in qualifying benefit programs, provider checks, and state or local program rules.</p>
-          <a href="/eligibility/" class="mt-8 inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-primary-light">Check Eligibility</a>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-          {["SNAP/EBT", "Medicaid", "SSI", "Federal Public Housing Assistance", "Veterans Pension", "Survivors Benefit", "Income-based Lifeline eligibility", "State or local program rules"].map((item) => (
-            <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
-              <p class="font-bold text-foreground">{item}</p>
-            </div>
-          ))}
-        </div>
+        <div class="lg:col-span-5"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Eligibility</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Who May Qualify?</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Eligibility usually depends on household income, participation in qualifying benefit programs, provider checks, and state or local program rules.</p><a href="/eligibility/" class="mt-8 inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-primary-light">Check Eligibility</a></div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">{["SNAP/EBT", "Medicaid", "SSI", "Federal Public Housing Assistance", "Veterans Pension", "Survivors Benefit", "Income-based Lifeline eligibility", "State/local program rules"].map((item) => <div class="rounded-xl border border-border bg-white p-5 shadow-sm"><p class="font-bold text-foreground">{item}</p></div>)}</div>
       </div>
     </section>
 
-    <section id="providers" class="py-20 lg:py-28">
+    <section id="plans" class="py-20 lg:py-28">
       <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="mx-auto mb-12 max-w-3xl text-center">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Compare before applying</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Provider Comparison</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Provider names, plan terms, device inventory, shipping, and co-pay rules can change. Use these links to compare current options before submitting personal information.</p>
-        </div>
-
-        <div class="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[900px] text-left">
-              <thead class="bg-[#0f172a] text-white">
-                <tr>
-                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Provider</th>
-                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Tablet/Device Availability</th>
-                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Best For</th>
-                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Important Note</th>
-                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">CTA</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-border">
-                {providerRows.map((provider) => (
-                  <tr class="align-top hover:bg-muted/40">
-                    <td class="px-5 py-5 font-bold text-foreground">{provider.name}</td>
-                    <td class="px-5 py-5 text-sm leading-relaxed text-foreground/75">{provider.availability}</td>
-                    <td class="px-5 py-5 text-sm leading-relaxed text-foreground/75">{provider.bestFor}</td>
-                    <td class="px-5 py-5 text-sm leading-relaxed text-foreground/75">{provider.note}</td>
-                    <td class="px-5 py-5">
-                      <a href={provider.url} class="font-bold text-primary-light hover:text-primary">{provider.cta}</a>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="states" class="border-y border-border bg-blue-50/50 py-20 lg:py-28">
-      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8">
-        <div class="lg:col-span-7">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Local GEO guidance</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Free Tablet by State</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Free and low-cost tablet availability changes by state and ZIP code because provider coverage, local funding, document rules, and inventory are not the same everywhere.</p>
-          <p class="mt-4 text-lg leading-relaxed text-foreground/75">Use our <a href="/states/" class="font-bold text-primary-light hover:text-primary">free tablet programs by state</a> guide first, then check pages for specific locations such as <a href="/texas/" class="font-bold text-primary-light hover:text-primary">free tablet in Texas</a> when available.</p>
-        </div>
-        <div class="rounded-3xl border border-border bg-white p-6 shadow-sm lg:col-span-5">
-          <h3 class="text-2xl font-bold text-foreground">State checks help you confirm:</h3>
-          <ul class="mt-5 space-y-3 text-foreground/80">
-            <li>• Whether your ZIP code is in a provider service area</li>
-            <li>• Which proof documents are usually requested</li>
-            <li>• Whether local schools, libraries, or nonprofits have device programs</li>
-            <li>• Whether a provider offer includes a co-pay, shipping, or activation step</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="apply" class="py-20 lg:py-28">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="mx-auto mb-12 max-w-3xl text-center">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Application process</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">How to Apply</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Use this simple process before choosing a provider or submitting a free tablet application.</p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-5">
+        <div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Device and service options</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Tablet and Internet Option Tiers</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">People search for a free Android tablet, free tablet with internet, tablet with service, tablet with data, or free phone and tablet bundle. These options vary by provider and program.</p></div>
+        <div class="grid gap-8 md:grid-cols-3">
           {[
-            ["1", "Check eligibility", "Review SNAP/EBT, Medicaid, SSI, income, housing, veteran, and local program paths."],
-            ["2", "Compare providers/programs", "Look at provider pages, state options, co-pay notes, stock, and service area."],
-            ["3", "Prepare documents", "Collect ID, address proof, benefit proof, income proof, and household details if needed."],
-            ["4", "Apply through the right path", "Use the official provider application path, Lifeline/National Verifier steps where relevant, or local program instructions."],
-            ["5", "Review final details", "Confirm approval status, co-pay, shipping, activation, plan rules, and renewal requirements."],
-          ].map((step) => (
-            <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
-              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-lg font-extrabold text-white">{step[0]}</div>
-              <h3 class="text-lg font-bold text-foreground">{step[1]}</h3>
-              <p class="mt-3 text-sm leading-relaxed text-foreground/75">{step[2]}</p>
-            </div>
-          ))}
-        </div>
-
-        <div class="mt-12 rounded-3xl bg-[#0f172a] p-8 text-center text-white shadow-xl">
-          <h3 class="text-2xl font-extrabold">Ready to review the application steps?</h3>
-          <p class="mx-auto mt-3 max-w-2xl text-blue-100">Check eligibility, compare provider options, and review possible document requirements before applying.</p>
-          <a href="/how-to-apply/" class="mt-6 inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white transition-colors hover:bg-blue-500">Apply Now</a>
+            ["Device-only local help", "Libraries, nonprofits, schools, or community programs may provide device loans, refurbished tablets, or technology access without a wireless plan."],
+            ["Tablet with service or data", "Some providers may offer a tablet with service or data when available, but eligibility, stock, co-pay, shipping, and activation terms vary."],
+            ["Phone and tablet comparison", "Some applicants compare phone service, data plans, and tablet options together. Read the plan details before submitting information."],
+          ].map((tier) => <div class="rounded-2xl border border-border bg-white p-8 shadow-sm"><h3 class="text-xl font-bold text-foreground">{tier[0]}</h3><p class="mt-3 leading-relaxed text-foreground/75">{tier[1]}</p></div>)}
         </div>
       </div>
     </section>
 
-    <section id="documents" class="border-y border-border bg-muted py-20 lg:py-28">
+    <section id="providers" class="border-y border-border bg-muted py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Compare before applying</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Compare Free Tablet Providers</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Provider names, plan terms, device inventory, shipping, activation, and co-pay rules can change. Use these links to compare current options before submitting personal information.</p></div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {providerRows.map((provider) => (
+            <div class="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-lg">
+              <h3 class="mb-3 text-xl font-extrabold text-primary">{provider.name}</h3>
+              <p class="mb-4 text-sm leading-relaxed text-foreground/70">{provider.availability}</p>
+              <p class="mb-4 text-sm leading-relaxed text-foreground/80"><strong>Best for:</strong> {provider.bestFor}</p>
+              <p class="mb-6 flex-grow text-sm leading-relaxed text-foreground/70"><strong>Important:</strong> {provider.note}</p>
+              <a href={provider.url} class="inline-flex items-center justify-center rounded-lg bg-muted px-4 py-3 font-bold text-primary transition-colors hover:bg-primary hover:text-white">{provider.cta}</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="states" class="py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Local GEO guidance</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Find Free Government Tablet Options in Your State</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Availability changes by state and ZIP code because provider coverage, local funding, document rules, school/library/nonprofit programs, and inventory are different everywhere.</p></div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-border bg-muted/30 p-8 shadow-sm"><h3 class="mb-3 text-2xl font-bold text-foreground">Texas</h3><p class="mb-6 leading-relaxed text-foreground/75">Texas users often compare EBT, Medicaid, income-based Lifeline, and provider availability by ZIP code.</p><a href="/texas/" class="font-bold text-primary-light hover:text-primary">free tablet in Texas</a></div>
+          <div class="rounded-2xl border border-border bg-muted/30 p-8 shadow-sm"><h3 class="mb-3 text-2xl font-bold text-foreground">All States</h3><p class="mb-6 leading-relaxed text-foreground/75">Use the state directory when a direct state page is not available yet. Start local, then compare providers by ZIP code and eligibility type.</p><a href="/states/" class="font-bold text-primary-light hover:text-primary">free tablet programs by state</a></div>
+        </div>
+        <div class="mt-10 rounded-xl border border-blue-100 bg-blue-50 p-6 sm:p-8"><p class="font-medium leading-relaxed text-foreground/80">Looking for “free tablet near me,” “free tablet with EBT in Texas,” or “free government tablet by state”? Start with the state directory, then compare providers by ZIP code and eligibility type.</p></div>
+      </div>
+    </section>
+
+    <section id="apply" class="border-y border-border bg-muted py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Application process</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">How to Get a Free Tablet in 2026</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Use this process before choosing a provider or submitting a free tablet application.</p></div>
+        <div class="grid gap-6 md:grid-cols-5">{[["1", "Check eligibility", "Review SNAP/EBT, Medicaid, SSI, income, housing, veteran, and local program paths."], ["2", "Compare providers/programs", "Look at provider pages, state options, co-pay notes, stock, service, and coverage."], ["3", "Prepare documents", "Collect ID, address proof, benefit proof, income proof, and household details if needed."], ["4", "Apply through the right path", "Use the official provider application path, Lifeline/National Verifier steps where relevant, or local program instructions."], ["5", "Review final details", "Confirm approval status, co-pay, shipping, activation, plan rules, and renewal requirements."]].map((step) => <div class="rounded-2xl border border-border bg-white p-6 shadow-sm"><div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-lg font-extrabold text-white">{step[0]}</div><h3 class="text-lg font-bold text-foreground">{step[1]}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{step[2]}</p></div>)}</div>
+        <div class="mt-12 rounded-3xl bg-[#0f172a] p-8 text-center text-white shadow-xl"><h3 class="text-2xl font-extrabold">Ready to review the application steps?</h3><p class="mx-auto mt-3 max-w-2xl text-blue-100">Check eligibility, compare free tablet providers, and review possible document requirements before applying.</p><a href="/how-to-apply/" class="mt-6 inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white transition-colors hover:bg-blue-500">Apply Now</a></div>
+      </div>
+    </section>
+
+    <section id="documents" class="py-20 lg:py-28">
       <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-        <div class="lg:col-span-5">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Application prep</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Documents Needed</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Having the right documents ready can reduce delays and help you avoid submitting the wrong proof.</p>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-          {["Government ID", "Proof of address", "Proof of benefit program", "Proof of income if applying by income", "Household worksheet if required", "Extra identity details where required"].map((doc) => (
-            <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
-              <p class="font-bold text-foreground">{doc}</p>
-            </div>
-          ))}
-        </div>
+        <div class="lg:col-span-5"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Application prep</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Documents Needed</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Having the right documents ready can reduce delays and help you avoid submitting the wrong proof.</p></div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">{["Government ID", "Proof of address", "Proof of SNAP/EBT, Medicaid, SSI, housing, veteran benefit, or income", "Household worksheet if required", "Extra identity details where required"].map((doc) => <div class="rounded-xl border border-border bg-white p-5 shadow-sm"><p class="font-bold text-foreground">{doc}</p></div>)}</div>
       </div>
     </section>
 
-    <section id="scams" class="py-20 lg:py-28">
+    <section id="scams" class="border-y border-border bg-orange-50 py-20 lg:py-28">
       <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl border border-orange-200 bg-orange-50 p-8 shadow-sm lg:p-10">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-orange-700">Trust & safety</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Avoid Free Tablet Scams</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/80">Be careful with websites that ask for unusual fees, promise instant or guaranteed approval, claim everyone gets a free iPad, use fake government branding, or pressure you to submit personal information fast.</p>
-          <p class="mt-4 text-lg leading-relaxed text-foreground/80">ACP and EBB are no longer active benefit routes for new tablet help. Before applying, verify current Lifeline, provider, state, nonprofit, school, library, VA, or local digital inclusion options, then read co-pay, shipping, service, data, and activation details.</p>
+        <div class="rounded-3xl border border-orange-200 bg-white p-8 shadow-sm lg:p-10">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-orange-700">Trust & safety</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Avoid Free Tablet Scams</h2>
+          <div class="mt-6 grid gap-5 md:grid-cols-2">
+            {[
+              "Fake guaranteed approval promises",
+              "Fake free iPad promises",
+              "Unusual upfront fees or unclear shipping charges",
+              "Fake government branding or pressure tactics",
+              "Outdated ACP pages that make ACP sound active",
+              "Suspicious document upload requests or copied provider forms",
+            ].map((risk) => <div class="rounded-xl border border-orange-100 bg-orange-50 p-4 font-semibold text-foreground/80">{risk}</div>)}
+          </div>
+          <p class="mt-6 text-lg leading-relaxed text-foreground/80">Before applying, verify current Lifeline, provider, state, nonprofit, school, library, VA, or local digital inclusion options, then read co-pay, shipping, service, data, and activation details carefully.</p>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="border-t border-border bg-muted py-20 lg:py-28">
-      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div class="mb-12 text-center">
-          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">AEO answers</p>
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Free Tablet FAQs</h2>
-          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Short, direct answers for people comparing real free or low-cost tablet options in 2026.</p>
-        </div>
+    <section id="examples" class="py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Real-use examples</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Common Reasons People Need Tablet Help</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">These examples are not testimonials or approval claims. They show common situations where people compare free or low-cost tablet options.</p></div>
+        <div class="grid gap-6 md:grid-cols-3">{[["Senior household", "A senior on Medicaid or SSI may compare Lifeline, library support, and local digital inclusion programs for telehealth or family communication."], ["Student access", "A student may need a tablet for homework, online classes, email, and school portals, so school, library, nonprofit, and provider options may matter."], ["Veteran telehealth", "A veteran may ask a VA care team about telehealth connectivity support or Digital Divide Consult options when appropriate."]].map((item) => <div class="rounded-2xl border border-border bg-white p-8 shadow-sm"><h3 class="text-xl font-bold text-foreground">{item[0]}</h3><p class="mt-3 leading-relaxed text-foreground/75">{item[1]}</p></div>)}</div>
+      </div>
+    </section>
 
-        <div class="space-y-4">
-          {faqs.map((faq) => (
-            <details class="group overflow-hidden rounded-xl border border-border bg-white shadow-sm [&_summary::-webkit-details-marker]:hidden">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 font-bold text-foreground transition-colors hover:bg-white/70">
-                <span class="text-lg">{faq.question}</span>
-                <span class="shrink-0 text-primary transition-transform group-open:rotate-180">⌄</span>
-              </summary>
-              <div class="border-t border-border p-6 pt-4 leading-relaxed text-foreground/75">{faq.answer}</div>
-            </details>
-          ))}
-        </div>
+    <section id="faq" class="border-y border-border bg-muted py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 text-center"><p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">AEO answers</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Free Tablet FAQs</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Short, direct answers for people comparing real free or low-cost tablet options in 2026.</p></div>
+        <div class="space-y-4">{faqItems.map((item) => <details class="group overflow-hidden rounded-xl border border-border bg-white shadow-sm [&_summary::-webkit-details-marker]:hidden"><summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 font-bold text-foreground transition-colors hover:bg-white/70"><span class="text-lg">{item.question}</span><span class="shrink-0 text-primary transition-transform group-open:rotate-180">⌄</span></summary><div class="border-t border-border p-6 pt-4 leading-relaxed text-foreground/75">{item.answer}</div></details>)}</div>
+      </div>
+    </section>
+
+    <section id="final-cta" class="bg-[#0f172a] py-20 text-white lg:py-28">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8"><h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Compare Eligibility, Providers, and State Options Before You Apply</h2><p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-blue-100">Use the safer 2026 checklist to understand how to get a free tablet in 2026, what documents may be needed, and which provider or local program may fit your ZIP code.</p><a href="/how-to-apply/" class="mt-8 inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white transition-colors hover:bg-blue-500">Apply Now</a></div>
+    </section>
+
+    <section id="editorial" class="py-20 lg:py-28">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
+        <div class="rounded-2xl border border-border bg-white p-8 shadow-sm"><h2 class="text-2xl font-extrabold text-foreground">How We Keep This Page Updated</h2><p class="mt-4 leading-relaxed text-foreground/75">We review program wording, provider availability language, ACP/EBB status, Lifeline eligibility context, state/local help, and common user questions. Last updated: {displayDate}.</p></div>
+        <div class="rounded-2xl border border-border bg-white p-8 shadow-sm"><h2 class="text-2xl font-extrabold text-foreground">Editorial Standards</h2><p class="mt-4 leading-relaxed text-foreground/75">We use cautious language such as may qualify, may be available, provider stock varies, possible co-pay, and depends on ZIP code, state, provider, documents, and eligibility path.</p></div>
+        <div class="rounded-2xl border border-border bg-white p-8 shadow-sm"><h2 class="text-2xl font-extrabold text-foreground">Official Resources & Disclaimer</h2><p class="mt-4 leading-relaxed text-foreground/75">FreeTablet.click is independent. It is not the FCC, USAC, Lifeline, National Verifier, the government, HUD, VA, or any provider. Always verify final terms through official/provider application paths.</p></div>
       </div>
     </section>
   </main>
