@@ -3,439 +3,387 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const schema = {
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+type TextCard = {
+  title: string;
+  body: string;
+};
+
+type IncomeRow = {
+  household: string;
+  contiguous: string;
+  alaska: string;
+  hawaii: string;
+};
+
+type ProviderRow = {
+  provider: string;
+  angle: string;
+  note: string;
+  step: string;
+  url: string;
+  anchor: string;
+};
+
+const pageUrl = "https://freetablet.click/eligibility/";
+const siteUrl = "https://freetablet.click";
+const isoDate = "2026-06-09";
+const displayDate = "June 9, 2026";
+const pageTitle = "Free Tablet Eligibility 2026: EBT, Medicaid & Income";
+const pageDescription =
+  "Check free tablet eligibility by EBT, Medicaid, SNAP, SSI, income, Lifeline rules, household limits and documents needed.";
+
+const officialLinks = {
+  howToQualify: "https://www.lifelinesupport.org/how-to-qualify/",
+  nationalVerifier: "https://www.checklifeline.org/",
+  companiesNearMe: "https://www.lifelinesupport.org/companies-near-me/",
+  fccLifeline: "https://www.fcc.gov/lifeline-consumers",
+};
+
+const glanceCards: TextCard[] = [
+  { title: "Income at/below 135% FPG", body: "Households may qualify by gross income when income is at or below the 2026 Lifeline threshold for household size and state." },
+  { title: "SNAP / EBT", body: "SNAP or EBT participation may help prove Lifeline eligibility, but it does not guarantee a tablet or device model." },
+  { title: "Medicaid", body: "Medicaid can be a regular Lifeline qualifying program when accepted by the official eligibility process." },
+  { title: "SSI", body: "Supplemental Security Income may help qualify for Lifeline-supported service." },
+  { title: "Federal Public Housing Assistance", body: "FPHA may include Section 8/HCV, public housing, PBRA/202/811, or eligible affordable housing programs." },
+  { title: "Veterans Pension / Survivors Benefit", body: "These benefit routes can qualify, but VA Health Care alone should not be treated as a regular Lifeline qualifier." },
+  { title: "Tribal programs where applicable", body: "BIA General Assistance, Tribal TANF, Head Start income-standard households, and FDPIR may apply on qualifying Tribal lands." },
+  { title: "One benefit per household", body: "Lifeline generally allows one benefit per household, not one per person or one device for every family member." },
+  { title: "Documents required", body: "Applicants may need ID, address proof, benefit proof, income documents, household worksheet, or provider/state verification." },
+  { title: "Tablet not guaranteed", body: "Eligibility may help you apply for service or provider offers, but tablet stock, shipping, activation, and possible co-pay vary." },
+];
+
+const incomeRows: IncomeRow[] = [
+  { household: "1 person", contiguous: "$21,546", alaska: "$26,933", hawaii: "$24,786" },
+  { household: "2 people", contiguous: "$29,214", alaska: "$36,518", hawaii: "$33,602" },
+  { household: "3 people", contiguous: "$36,882", alaska: "$46,103", hawaii: "$42,417" },
+  { household: "4 people", contiguous: "$44,550", alaska: "$55,688", hawaii: "$51,233" },
+  { household: "5 people", contiguous: "$52,218", alaska: "$65,273", hawaii: "$60,048" },
+  { household: "6 people", contiguous: "$59,886", alaska: "$74,858", hawaii: "$68,864" },
+  { household: "7 people", contiguous: "$67,554", alaska: "$84,443", hawaii: "$77,679" },
+  { household: "8 people", contiguous: "$75,222", alaska: "$94,028", hawaii: "$86,495" },
+  { household: "Each additional person", contiguous: "Add $7,668", alaska: "Add $9,585", hawaii: "Add $8,816" },
+];
+
+const qualifyingPrograms: TextCard[] = [
+  { title: "SNAP / EBT", body: "Supplemental Nutrition Assistance Program participation can be used as a regular Lifeline qualifying program." },
+  { title: "Medicaid", body: "Medicaid participation can help prove eligibility for Lifeline-supported phone or internet service." },
+  { title: "Supplemental Security Income (SSI)", body: "SSI is a regular Lifeline qualifying program when accepted by the official verification process." },
+  { title: "Federal Public Housing Assistance", body: "FPHA may include Housing Choice Voucher/Section 8, public housing, PBRA/202/811, and eligible affordable housing programs." },
+  { title: "Veterans Pension / Survivors Benefit", body: "This benefit route qualifies for Lifeline, but VA Health Care alone should not be presented as a regular Lifeline qualifier." },
+  { title: "Bureau of Indian Affairs General Assistance", body: "This Tribal assistance program may qualify residents on qualifying Tribal lands." },
+  { title: "Tribal TANF", body: "Tribally administered TANF may qualify on qualifying Tribal lands where applicable." },
+  { title: "Head Start income standard", body: "Head Start only applies where the household has already met the income-qualifying standard." },
+  { title: "FDPIR", body: "Food Distribution Program on Indian Reservations can be a Tribal Lifeline qualifying route where applicable." },
+];
+
+const notAlwaysQualify: TextCard[] = [
+  { title: "Medicare alone", body: "Medicare by itself is not listed as a regular Lifeline qualifying program. Seniors may qualify through Medicaid, SSI, SNAP, income, or other accepted routes." },
+  { title: "Standard Social Security retirement", body: "Social Security retirement alone should not be treated as a regular Lifeline qualifier unless the household also meets income or another qualifying route." },
+  { title: "WIC", body: "WIC is not a general regular Lifeline qualifier. It may appear in special survivor criteria or local programs, so verify official current rules." },
+  { title: "School lunch or breakfast", body: "School meal programs are not regular general Lifeline qualifiers. They may matter for survivor criteria or school/local device programs." },
+  { title: "Pell Grant", body: "Pell Grant is not a regular general Lifeline qualifier. It may appear in survivor criteria or education/local support programs." },
+  { title: "VA Health Care", body: "VA Health Care alone should not be shown as a regular Lifeline qualifier. Veterans Pension or Survivors Benefit is the regular listed benefit route." },
+  { title: "CHIP / TANF depending on context", body: "CHIP and standard TANF may depend on state, Tribal, survivor, or local program rules. Do not assume they qualify by themselves." },
+];
+
+const groupCards: TextCard[] = [
+  { title: "Low-income households", body: "Low-income families may qualify if household income is at or below 135% of the Federal Poverty Guidelines or if someone participates in a qualifying program." },
+  { title: "Seniors", body: "Seniors do not qualify just because of age or Medicare alone. Medicaid, SSI, SNAP/EBT, Veterans Pension, Survivors Benefit, or income may help." },
+  { title: "Students", body: "Students may qualify through household income or qualifying programs. School, Pell, or device programs may help locally, but regular Lifeline eligibility should be verified." },
+  { title: "Veterans", body: "Veterans Pension or Survivors Benefit can qualify. VA Health Care alone should not be presented as a regular Lifeline qualifying route." },
+  { title: "Disabled users", body: "Disability alone may not qualify. SSI, Medicaid, SNAP, income-based eligibility, FPHA, or another accepted route may help." },
+  { title: "Families with children", body: "Families may qualify through SNAP/EBT, Medicaid, SSI, FPHA, income, or a child/dependent in a qualifying program, but one-household rules still apply." },
+  { title: "Housing assistance recipients", body: "FPHA recipients, including Section 8/HCV, public housing, PBRA/202/811, or eligible affordable housing programs, may qualify." },
+  { title: "Tribal lands residents", body: "Residents on qualifying Tribal lands may have additional Lifeline support routes and enhanced monthly support where applicable." },
+  { title: "People experiencing homelessness", body: "A permanent address may not always be required. Applicants may use a temporary address, shelter address, or descriptive location where allowed." },
+  { title: "Domestic violence or trafficking survivors", body: "Survivors may have special temporary Lifeline support rules and privacy protections. Keep survivor criteria separate from general Lifeline eligibility." },
+];
+
+const documentItems = [
+  "Government ID",
+  "Proof of address or acceptable location information",
+  "Proof of SNAP/EBT, Medicaid, SSI, FPHA, Veterans Pension/Survivors Benefit, Tribal benefit, or income",
+  "Household worksheet if required",
+  "Last four SSN or other identity details if required",
+  "Benefit award letter, statement of benefits, official program document, tax return, pay stubs, or similar proof",
+  "Extra state/provider documentation if requested",
+];
+
+const checkSteps = [
+  "Review Lifeline eligibility routes: income, qualifying program, Tribal programs, or survivor rules where applicable.",
+  "Check the 2026 income table if you are using household income instead of a program route.",
+  "Confirm whether your household already has a Lifeline benefit or needs a Household Worksheet.",
+  "Use the state directory to check tablet availability by state and ZIP code.",
+  "Compare provider pages and current official provider terms before submitting documents.",
+  "Prepare ID, address, benefit, income, household, or Tribal documentation if needed.",
+  "Apply through the official Lifeline/provider process and review shipping, activation, possible co-pay, plan, and recertification rules.",
+];
+
+const providerRows: ProviderRow[] = [
+  { provider: "AirTalk Wireless", angle: "May accept Lifeline eligibility routes when available in your ZIP code.", note: "Phone or tablet options may be available when offered, but devices are not guaranteed.", step: "Verify current provider terms and device inventory.", url: "/airtalk-wireless/", anchor: "AirTalk Wireless eligibility" },
+  { provider: "Assurance Wireless", angle: "Lifeline eligibility may be based on income or accepted benefit programs.", note: "Tablet options may be limited or unavailable depending on state, ZIP code, and stock.", step: "Check coverage, BYOP, documents, and terms.", url: "/assurance-wireless/", anchor: "Assurance Wireless eligibility" },
+  { provider: "SafeLink Wireless", angle: "SafeLink eligibility should be confirmed through official Lifeline/provider tools.", note: "BYOP/SIM, phone, and tablet options vary by current terms and service area.", step: "Confirm SafeLink availability by ZIP code.", url: "/safelink-wireless/", anchor: "SafeLink Wireless eligibility" },
+  { provider: "StandUp Wireless", angle: "Eligibility may follow Lifeline income or program rules where provider service is available.", note: "Device offers, tablet stock, data terms, and possible co-pay vary.", step: "Compare before applying.", url: "/standup-wireless/", anchor: "StandUp Wireless eligibility" },
+];
+
+const searchCards: TextCard[] = [
+  { title: "Free tablet with EBT", body: "SNAP/EBT may help prove Lifeline eligibility, but it does not guarantee a tablet. Check provider availability and current terms." },
+  { title: "Free tablet with Medicaid", body: "Medicaid can be a Lifeline qualifying program. Device availability still depends on ZIP code, stock, documents, and provider rules." },
+  { title: "Free tablet with SNAP", body: "SNAP is a regular Lifeline eligibility route. Tablet offers remain provider-specific and are not guaranteed." },
+  { title: "Free tablet with SSI", body: "SSI may qualify for Lifeline-supported service. A tablet depends on provider terms, inventory, and local availability." },
+  { title: "Free tablet income limit", body: "Income eligibility uses 135% of the Federal Poverty Guidelines and varies by household size, Alaska, Hawaii, and other states/territories." },
+  { title: "Free tablet for seniors", body: "Seniors may qualify through Medicaid, SSI, SNAP, Veterans Pension, Survivors Benefit, or income. Medicare alone is not enough as a general rule." },
+  { title: "Free tablet for students", body: "Students should check household income, qualifying programs, school/library programs, and local digital inclusion options." },
+  { title: "Free tablet for veterans", body: "Veterans Pension or Survivors Benefit can qualify for Lifeline; VA Health Care alone should not be treated as the regular qualifying route." },
+  { title: "Free tablet for disabled users", body: "Disabled users may qualify through SSI, Medicaid, SNAP, FPHA, income, or another accepted route; disability alone may not be enough." },
+  { title: "Free phone and tablet eligibility", body: "A phone, tablet, or bundle is not guaranteed. Check current provider terms, device stock, plan, shipping, and possible co-pay." },
+  { title: "Household worksheet / one per household", body: "Lifeline generally allows one benefit per household. Shared addresses or separate economic households may need a Household Worksheet." },
+  { title: "Homeless or survivor eligibility", body: "Applicants without a permanent address or survivors may have special official processes. Use careful official guidance and privacy-safe steps." },
+];
+
+const faqItems: FaqItem[] = [
+  { question: "Who qualifies for a free or low-cost tablet in 2026?", answer: "Most people qualify through Lifeline eligibility routes, not a single nationwide free tablet for everyone program. You may qualify if your household participates in SNAP/EBT, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension, Survivors Benefit, certain Tribal programs, or if your income is at or below 135% of the Federal Poverty Guidelines. Tablet offers are not guaranteed and depend on provider availability, ZIP code, documents, inventory, shipping, activation, and possible co-pay." },
+  { question: "Can I get a free tablet with EBT or SNAP?", answer: "SNAP or EBT participation may help prove Lifeline eligibility, but it does not automatically guarantee a tablet. Provider stock, ZIP code, state rules, plan terms, shipping, activation, and possible co-pay still matter." },
+  { question: "Can I get a free tablet with Medicaid?", answer: "Medicaid is a regular Lifeline qualifying program. A tablet is still not guaranteed because device availability depends on provider offers, inventory, state or ZIP-code availability, documents, and current terms." },
+  { question: "Does SSI qualify for Lifeline?", answer: "Yes. Supplemental Security Income is listed as a Lifeline qualifying program. Applicants may still need proof of SSI and must follow official verification, household, and provider rules." },
+  { question: "What income level qualifies for Lifeline in 2026?", answer: "In 2026, Lifeline income eligibility is based on gross household income at or below 135% of the Federal Poverty Guidelines. The dollar amount depends on household size and whether the household is in the 48 contiguous states/DC/territories, Alaska, or Hawaii." },
+  { question: "Does Medicare qualify for a free tablet?", answer: "Medicare alone is not listed as a regular Lifeline qualifying program. A senior with Medicare may still qualify through Medicaid, SSI, SNAP/EBT, Veterans Pension, Survivors Benefit, FPHA, income-based Lifeline, or another accepted route." },
+  { question: "Do seniors qualify for free tablets?", answer: "Seniors may qualify if they meet Lifeline income rules or participate in a qualifying program such as Medicaid, SSI, SNAP/EBT, Veterans Pension, Survivors Benefit, or FPHA. Age alone or Medicare alone does not guarantee a tablet." },
+  { question: "Do students qualify for free tablets?", answer: "Students may qualify through household income or accepted Lifeline qualifying programs. School, Pell, or library programs may help in local or special survivor contexts, but they should not be treated as regular general Lifeline qualifiers without official confirmation." },
+  { question: "Do veterans qualify for free tablets?", answer: "Veterans Pension and Survivors Benefit can qualify for Lifeline. VA Health Care alone should not be presented as a regular Lifeline qualifier. Tablet availability still depends on provider terms and local availability." },
+  { question: "Do disabled people qualify for free tablets?", answer: "Disabled users may qualify through SSI, Medicaid, SNAP/EBT, FPHA, income, or another accepted route. Disability alone may not be enough, and a tablet is not guaranteed." },
+  { question: "Can more than one person in my household get a tablet?", answer: "Do not assume every family member can receive a Lifeline-supported device. Lifeline generally allows one benefit per household, and any phone or tablet offer is subject to provider terms, stock, and eligibility review." },
+  { question: "What is the Lifeline one-per-household rule?", answer: "A household generally means people living together and sharing income and expenses. Lifeline generally allows one benefit per household, not one per person. Roommates, shelters, nursing homes, or separate economic households may need a Household Worksheet." },
+  { question: "What documents do I need to prove eligibility?", answer: "Common documents include government ID, proof of address or acceptable location information, proof of SNAP/EBT, Medicaid, SSI, FPHA, Veterans Pension, Survivors Benefit, Tribal benefit, income proof, household worksheet, or other identity details if requested." },
+  { question: "Can people experiencing homelessness apply?", answer: "People experiencing homelessness may still be able to apply using a temporary address, shelter address, or descriptive location where allowed. They should follow official Lifeline, state, or provider instructions for address verification." },
+  { question: "Do domestic violence or trafficking survivors have special Lifeline rules?", answer: "Survivors of domestic violence, human trafficking, or related crimes may have special temporary Lifeline support rules and extended criteria when they meet official requirements. These survivor rules should be kept separate from general Lifeline eligibility." },
+  { question: "Are Tribal lands benefits different?", answer: "Qualifying Tribal lands may have additional Lifeline support and Tribal program eligibility routes, including Bureau of Indian Affairs General Assistance, Tribal TANF, Head Start with income standard, and Food Distribution Program on Indian Reservations. This does not guarantee a tablet." },
+  { question: "Did ACP end?", answer: "Yes. ACP and EBB are no longer current benefit routes for new free tablet eligibility. Users should check current Lifeline, provider, school, library, VA, nonprofit, state, or local digital inclusion options instead." },
+  { question: "Does eligibility guarantee a free tablet?", answer: "No. Lifeline eligibility does not guarantee a tablet. Tablet availability depends on provider stock, ZIP code, state rules, plan terms, documents, shipping, activation, and possible co-pay." },
+  { question: "Which providers should I compare after checking eligibility?", answer: "Compare AirTalk Wireless, Assurance Wireless, SafeLink Wireless, StandUp Wireless, and any local providers by ZIP code. Verify device options, tablet stock, BYOP rules, data, shipping, activation, possible co-pay, and current official terms." },
+  { question: "Is FreeTablet.click the government or a provider?", answer: "No. FreeTablet.click is independent. We are not the FCC, USAC, Lifeline, National Verifier, a government agency, or a wireless provider. We do not approve applications, issue benefits, manage accounts, or ship devices." },
+];
+
+const eligibilityTerms = [
+  "Lifeline",
+  "SNAP / EBT",
+  "Medicaid",
+  "Supplemental Security Income",
+  "Federal Public Housing Assistance",
+  "Veterans Pension",
+  "Survivors Benefit",
+  "Federal Poverty Guidelines",
+  "Tribal TANF",
+  "Bureau of Indian Affairs General Assistance",
+  "Food Distribution Program on Indian Reservations",
+  "Household Worksheet",
+  "one benefit per household",
+  "recertification",
+];
+
+const schemaGraph = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ItemList",
-      "name": "Demographics Qualifying for Free Government Tablets",
-      "description": "A list of demographic groups that frequently qualify for federal connectivity assistance.",
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "FreeTablet.click",
+      "url": `${siteUrl}/`,
+      "email": "support@freetablet.click",
+      "description": "Independent informational guide for free and low-cost tablet, Lifeline, provider, eligibility, and state assistance information.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": `${siteUrl}/`,
+      "name": "FreeTablet.click",
+      "description": "Independent free and low-cost tablet, Lifeline, provider, eligibility, and state assistance guide.",
+      "publisher": { "@id": `${siteUrl}/#organization` },
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${siteUrl}/search/?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      "url": pageUrl,
+      "name": pageTitle,
+      "headline": "Free Tablet Eligibility 2026: EBT, Medicaid, SNAP & Income",
+      "description": pageDescription,
+      "datePublished": isoDate,
+      "dateModified": isoDate,
+      "isPartOf": { "@id": `${siteUrl}/#website` },
+      "publisher": { "@id": `${siteUrl}/#organization` },
+      "about": [
+        { "@type": "Thing", "name": "Lifeline" },
+        { "@type": "Organization", "name": "Federal Communications Commission", "alternateName": "FCC" },
+        { "@type": "Organization", "name": "Universal Service Administrative Company", "alternateName": "USAC" },
+        { "@type": "Thing", "name": "National Verifier" },
+        { "@type": "Thing", "name": "EBT" },
+        { "@type": "Thing", "name": "SNAP" },
+        { "@type": "Thing", "name": "Medicaid" },
+        { "@type": "Thing", "name": "SSI" },
+        { "@type": "Thing", "name": "FPHA" },
+        { "@type": "Thing", "name": "Federal Public Housing Assistance" },
+        { "@type": "Thing", "name": "Section 8" },
+        { "@type": "Thing", "name": "Veterans Pension" },
+        { "@type": "Thing", "name": "Survivors Benefit" },
+        { "@type": "Thing", "name": "Federal Poverty Guidelines" },
+        { "@type": "Thing", "name": "Tribal lands" },
+        { "@type": "Thing", "name": "Tribal TANF" },
+        { "@type": "Thing", "name": "Bureau of Indian Affairs General Assistance" },
+        { "@type": "Thing", "name": "Food Distribution Program on Indian Reservations" },
+        { "@type": "Thing", "name": "Head Start income standard" },
+        { "@type": "Thing", "name": "Household Worksheet" },
+        { "@type": "Thing", "name": "one benefit per household" },
+        { "@type": "Thing", "name": "recertification" },
+        { "@type": "Thing", "name": "Affordable Connectivity Program", "alternateName": "ACP" },
+        { "@type": "Thing", "name": "Emergency Broadband Benefit", "alternateName": "EBB" },
+        { "@type": "Organization", "name": "AirTalk Wireless" },
+        { "@type": "Organization", "name": "Assurance Wireless" },
+        { "@type": "Organization", "name": "SafeLink Wireless" },
+        { "@type": "Organization", "name": "StandUp Wireless" },
+      ],
+      "inLanguage": "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Low-Income Households (≤ 135% FPG)" },
-        { "@type": "ListItem", "position": 2, "name": "Senior Citizens (65+)" },
-        { "@type": "ListItem", "position": 3, "name": "Students & College Families" },
-        { "@type": "ListItem", "position": 4, "name": "Veterans & Military Families" },
-        { "@type": "ListItem", "position": 5, "name": "Families with Children" },
-        { "@type": "ListItem", "position": 6, "name": "Housing Assistance Recipients" }
-      ]
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+        { "@type": "ListItem", "position": 2, "name": "Eligibility", "item": pageUrl },
+      ],
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": `${pageUrl}#eligibility-routes`,
+      "name": "Free tablet and Lifeline eligibility routes",
+      "hasDefinedTerm": eligibilityTerms.map((term) => ({
+        "@type": "DefinedTerm",
+        "name": term,
+      })),
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can more than one person in my house get a free tablet?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. The federal Lifeline program strictly enforces a 'one per household' rule. A household is defined as any individual or group of individuals who live together at the same address and share income and expenses."
-          }
+      "@id": `${pageUrl}#faq`,
+      "mainEntity": faqItems.map((item) => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer,
         },
-        {
-          "@type": "Question",
-          "name": "What if I am experiencing homelessness?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Individuals experiencing homelessness can still qualify. You can use a temporary address, the address of a shelter, or a descriptive location of where you reside. You will not be denied based on lack of a permanent address."
-          }
-        }
-      ]
-    }
-  ]
+      })),
+    },
+  ],
 };
 ---
 
-<Layout title="Who Qualifies for Free Government Tablets? | 2026 Eligibility Guide">
-  
-  <!-- Injecting SEO Schema -->
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-
+<Layout title={pageTitle} description={pageDescription} modDatetime={new Date("2026-06-09T00:00:00Z")} structuredData={schemaGraph}>
   <Header />
-  
-  <main id="main-content" class="w-full flex-1 flex flex-col items-center">
-    
-    <!-- ==========================================
-         SECTION 1: PREMIUM HERO
-    =========================================== -->
-    <section class="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#0f172a] text-white pt-20 pb-24 lg:pt-28 lg:pb-32" style="background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 45%), radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent 45%);">
-      <div class="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-        
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-blue-100 mb-6 shadow-sm">
-          <svg class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>Complete 2026 Guidelines</span>
-        </div>
 
-        <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-white mb-6">
-          Who Qualifies for Free <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Government Tablets?</span>
+  <main id="main-content" class="flex w-full flex-1 flex-col items-center">
+    <section class="relative flex w-full flex-col items-center justify-center overflow-hidden bg-[#0f172a] pt-20 pb-24 text-white lg:pt-28 lg:pb-32" style="background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 45%), radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent 45%);">
+      <div class="relative z-10 mx-auto w-full max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-blue-100 shadow-sm">
+          <span>YMYL-safe eligibility guide • Last updated {displayDate}</span>
+        </div>
+        <h1 class="mx-auto max-w-5xl text-4xl leading-tight font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          Free Tablet Eligibility 2026: <span class="bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent">EBT, Medicaid, SNAP & Income</span>
         </h1>
-        
-        <p class="text-lg text-blue-100 sm:text-xl leading-relaxed font-medium max-w-3xl mx-auto mb-10">
-          Detailed eligibility criteria for different demographics including income guidelines, qualifying programs, and specific requirements for seniors, students, veterans, and families.
+        <p class="mx-auto mt-6 max-w-4xl text-lg leading-relaxed font-medium text-blue-100 sm:text-xl">
+          You may qualify for Lifeline-supported service or related free/low-cost tablet options if your household meets income rules or participates in qualifying programs such as SNAP/EBT, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension, or Survivors Benefit. A tablet is not guaranteed. Device availability depends on provider stock, ZIP code, state rules, documents, shipping, activation, plan terms, and possible co-pay.
         </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-          <a href="/how-to-apply" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group">
-            Apply Now
-            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          </a>
-          <a href="/eligibility" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-            General Eligibility
-          </a>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#quick-answer" class="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 sm:w-auto">Check Eligibility</a>
+          <a href="/how-to-apply/" class="inline-flex w-full items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:w-auto">Apply Now</a>
+          <a href="#compare-providers" class="inline-flex w-full items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:w-auto">Compare Providers</a>
         </div>
-
+        <p class="mx-auto mt-6 max-w-3xl text-xs leading-relaxed text-blue-200/70">FreeTablet.click is an independent informational guide. We are not the FCC, USAC, Lifeline, National Verifier, a government agency, or a wireless provider. We do not approve applications, issue benefits, or ship devices.</p>
       </div>
     </section>
 
-    <!-- STICKY PAGE NAVIGATION -->
-    <nav class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-border shadow-sm hidden md:block">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ul class="flex items-center justify-center space-x-8 py-4 text-sm font-bold text-foreground/75">
-          <li><a href="#quick-summary" class="hover:text-primary-light transition-colors">Quick Summary</a></li>
-          <li><a href="#demographics" class="hover:text-primary-light transition-colors">Demographics</a></li>
-          <li><a href="#programs" class="hover:text-primary-light transition-colors">Qualifying Programs</a></li>
-          <li><a href="#special-circumstances" class="hover:text-primary-light transition-colors">Special Circumstances</a></li>
-          <li><a href="#important-notes" class="hover:text-primary-light transition-colors">Household Rules</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- ==========================================
-         SECTION 2: QUICK SUMMARY (5 CARDS)
-    =========================================== -->
-    <section id="quick-summary" class="relative w-full py-16 bg-muted/30 scroll-mt-20">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          
-          <div class="bg-white p-5 rounded-xl border border-border shadow-sm flex flex-col items-center text-center">
-            <div class="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-3">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            </div>
-            <h3 class="text-sm font-bold text-foreground mb-1">Income Limit</h3>
-            <p class="text-xs text-foreground/70 font-medium">≤ 135% of Federal Poverty Guidelines</p>
-          </div>
-
-          <div class="bg-white p-5 rounded-xl border border-border shadow-sm flex flex-col items-center text-center">
-            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-            </div>
-            <h3 class="text-sm font-bold text-foreground mb-1">Programs</h3>
-            <p class="text-xs text-foreground/70 font-medium">SNAP, Medicaid, SSI, Housing, Veterans</p>
-          </div>
-
-          <div class="bg-white p-5 rounded-xl border border-border shadow-sm flex flex-col items-center text-center">
-            <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mb-3">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-            </div>
-            <h3 class="text-sm font-bold text-foreground mb-1">Household Rule</h3>
-            <p class="text-xs text-foreground/70 font-medium">Strictly one benefit per household</p>
-          </div>
-
-          <div class="bg-white p-5 rounded-xl border border-border shadow-sm flex flex-col items-center text-center">
-            <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center mb-3">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-            </div>
-            <h3 class="text-sm font-bold text-foreground mb-1">Recertification</h3>
-            <p class="text-xs text-foreground/70 font-medium">Required to be renewed annually</p>
-          </div>
-
-          <div class="bg-white p-5 rounded-xl border border-border shadow-sm flex flex-col items-center text-center sm:col-span-2 lg:col-span-1">
-            <div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mb-3">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-            </div>
-            <h3 class="text-sm font-bold text-foreground mb-1">Special Cases</h3>
-            <p class="text-xs text-foreground/70 font-medium">Homeless, DV Survivors supported</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 3: ELIGIBILITY BY DEMOGRAPHICS
-    =========================================== -->
-    <section id="demographics" class="relative w-full py-16 lg:py-24 bg-white border-t border-border scroll-mt-20">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            Eligibility by Demographics
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            The federal government understands that connectivity is essential for all walks of life. Here is how specific groups commonly qualify for free or heavily discounted devices.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <!-- Card 1: Low-Income -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-green-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <div class="flex items-center gap-4 mb-5 relative z-10">
-              <div class="w-14 h-14 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center shrink-0">
-                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Low-Income Households</h3>
-            </div>
-            <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              You do not need to be on a government program to qualify. If your total household income is at or below <strong>135% of the Federal Poverty Guidelines (FPG)</strong>, you are eligible. This requires proof, such as three consecutive pay stubs or your most recent state/federal tax return.
-            </p>
-          </div>
-
-          <!-- Card 2: Seniors -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-purple-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <div class="flex items-center gap-4 mb-5 relative z-10">
-              <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
-                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Senior Citizens (65+)</h3>
-            </div>
-            <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Many seniors qualify effortlessly. While standard Social Security or Medicare alone does <em>not</em> automatically grant eligibility, participating in <strong>Supplemental Security Income (SSI)</strong> or <strong>Medicaid</strong> provides immediate, automatic approval for a connected device.
-            </p>
-          </div>
-
-          <!-- Card 3: Students -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-blue-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <div class="flex items-center gap-4 mb-5 relative z-10">
-              <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 14v7" /></svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Students & College Families</h3>
-            </div>
-            <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Students require robust connectivity. If a child in your household participates in the <strong>Free and Reduced-Price School Lunch Program</strong> (or School Breakfast Program), or if a college student receives a <strong>Federal Pell Grant</strong> in the current award year, the entire household qualifies.
-            </p>
-          </div>
-
-          <!-- Card 4: Veterans -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-red-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <div class="flex items-center gap-4 mb-5 relative z-10">
-              <div class="w-14 h-14 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center shrink-0">
-                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Veterans & Military</h3>
-            </div>
-            <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              We honor those who served. Veterans actively receiving the <strong>Veterans Pension or Survivors Benefit</strong> automatically qualify for Lifeline assistance. Furthermore, the VA offers specific Digital Divide Consults to help veterans secure connected telehealth devices.
-            </p>
-          </div>
-
-          <!-- Card 5: Families -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-orange-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <div class="flex items-center gap-4 mb-5 relative z-10">
-              <div class="w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Families with Children</h3>
-            </div>
-            <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Families often qualify through multiple avenues. If anyone in your household—including children or dependents—receives <strong>SNAP (Food Stamps), WIC, Medicaid, or TANF</strong>, your entire household becomes eligible for a single device and data plan.
-            </p>
-          </div>
-
-          <!-- Card 6: Housing -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-teal-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-teal-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <div class="flex items-center gap-4 mb-5 relative z-10">
-              <div class="w-14 h-14 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center shrink-0">
-                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Housing Assistance Recipients</h3>
-            </div>
-            <p class="text-foreground/80 leading-relaxed font-medium relative z-10">
-              Federal housing support grants instant eligibility. If you receive <strong>Federal Public Housing Assistance (FPHA)</strong>, including Section 8 housing choice vouchers, you qualify. Programs like HUD ConnectHomeUSA also offer localized tech support.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 4: QUALIFYING PROGRAMS
-    =========================================== -->
-    <section id="programs" class="relative w-full py-16 lg:py-24 bg-muted/30 border-t border-border scroll-mt-20">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            Qualifying Government Programs
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            Participation in any of the following federal or state-managed assistance programs provides automatic qualification for the Lifeline benefit.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          
-          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
-            <h3 class="text-lg font-bold text-primary mb-4 pb-3 border-b border-border">Nutrition Assistance</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                SNAP (Supplemental Nutrition Assistance Program)
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                WIC (Women, Infants, and Children)
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Free and Reduced-Price School Lunch
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                School Breakfast Program
-              </li>
-            </ul>
-          </div>
-
-          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
-            <h3 class="text-lg font-bold text-success mb-4 pb-3 border-b border-border">Healthcare Programs</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Medicaid
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Veterans Affairs (VA) Health Care
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                State Children's Health Insurance Program (CHIP) - *State dependent
-              </li>
-            </ul>
-          </div>
-
-          <div class="bg-white rounded-2xl p-6 border border-border shadow-sm">
-            <h3 class="text-lg font-bold text-accent mb-4 pb-3 border-b border-border">Income & General Support</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                SSI (Supplemental Security Income)
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Veterans Pension and Survivors Benefit
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Federal Public Housing Assistance (Section 8)
-              </li>
-              <li class="flex items-start gap-2 text-foreground/80 font-medium text-sm">
-                <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Tribal TANF / Head Start (Tribal Lands)
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 5: SPECIAL CIRCUMSTANCES
-    =========================================== -->
-    <section id="special-circumstances" class="relative w-full py-16 lg:py-24 bg-white border-t border-border scroll-mt-20">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            Special Circumstances
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            The system is designed to help those in crisis. If you lack standard documentation due to extreme circumstances, alternative pathways exist.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          
-          <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm text-center">
-            <h3 class="text-xl font-bold text-foreground mb-3">Homeless Individuals</h3>
-            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              You are not required to have a permanent residence. You can use a temporary address, a shelter's address, or provide a descriptive physical location of where you reside during the application process.
-            </p>
-          </div>
-
-          <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm text-center">
-            <h3 class="text-xl font-bold text-foreground mb-3">Domestic Violence Survivors</h3>
-            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              Survivors can request an independent economic household status to ensure they are not restricted by an abuser's existing Lifeline benefit. Confidentiality protocols are in place to protect your address.
-            </p>
-          </div>
-
-          <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm text-center">
-            <h3 class="text-xl font-bold text-foreground mb-3">Disaster Victims</h3>
-            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              During federally declared natural disasters, the FCC frequently waives strict documentation rules temporarily to ensure displaced victims can quickly secure a connected device to reach family and FEMA.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 6: IMPORTANT NOTES (ALERT BOX)
-    =========================================== -->
-    <section id="important-notes" class="relative w-full pb-16 lg:pb-24 bg-white scroll-mt-20">
+    <section id="quick-answer" class="w-full border-b border-border bg-blue-50/60 py-14">
       <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-8 sm:p-10 shadow-sm flex flex-col md:flex-row gap-8 items-start">
-          <div class="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <svg class="w-8 h-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+        <div class="rounded-3xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+          <p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Quick Answer</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Quick Answer: Who Qualifies for a Free or Low-Cost Tablet in 2026?</h2>
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-foreground/80">
+            <p>Most people qualify through Lifeline eligibility routes, not a single nationwide “free tablet for everyone” program. You may qualify if your household participates in SNAP/EBT, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension, Survivors Benefit, certain Tribal programs, or if your income is at or below 135% of the Federal Poverty Guidelines.</p>
+            <p>Tablet offers are not guaranteed and depend on provider availability, state/ZIP-code rules, documents, inventory, shipping, activation, and possible co-pay. Learn how to <a href="/how-to-apply/" class="font-bold text-blue-600 hover:text-blue-700">apply for a free tablet online</a>, <a href="/states/" class="font-bold text-blue-600 hover:text-blue-700">check tablet availability by state</a>, compare the <a href="/" class="font-bold text-blue-600 hover:text-blue-700">free government tablet guide</a>, and review <a href="/airtalk-wireless/" class="font-bold text-blue-600 hover:text-blue-700">AirTalk Wireless eligibility</a>, <a href="/assurance-wireless/" class="font-bold text-blue-600 hover:text-blue-700">Assurance Wireless eligibility</a>, <a href="/safelink-wireless/" class="font-bold text-blue-600 hover:text-blue-700">SafeLink Wireless eligibility</a>, and <a href="/standup-wireless/" class="font-bold text-blue-600 hover:text-blue-700">StandUp Wireless eligibility</a>.</p>
           </div>
-          <div>
-            <h2 class="text-2xl font-extrabold text-yellow-900 mb-4">Critical Eligibility Rules to Remember</h2>
-            <div class="space-y-4 text-yellow-900/80 font-medium leading-relaxed">
-              <p>
-                <strong>The "One Per Household" Rule:</strong> Federal law strictly dictates that only one Lifeline benefit is permitted per household. A "household" is defined as any individual or group living together at the same address who share income and expenses. If you live with roommates or in a nursing home where expenses are not shared, you must fill out an independent Household Worksheet to qualify.
-              </p>
-              <p>
-                <strong>Annual Recertification:</strong> Eligibility is not permanent. Every year, you will be required to recertify that you still meet the income or program participation requirements. Failure to recertify will result in your device's service being disconnected.
-              </p>
-              <p>
-                <strong>Usage Requirements:</strong> To keep your free data and talk service active, you must use your device (make a call, send a text, or use mobile data) at least once every 30 days.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 7: BOTTOM CTA
-    =========================================== -->
-    <section class="relative w-full py-20 lg:py-24 bg-[#0f172a] text-white overflow-hidden">
-      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" style="background-image: radial-gradient(circle at center, rgba(37, 99, 235, 0.2), transparent 50%);"></div>
-
-      <div class="relative z-10 mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6 text-white">
-          Ready to Apply?
-        </h2>
-        <p class="text-lg text-blue-100 leading-relaxed mb-10 font-medium">
-          Now that you understand the qualifications, take the next step. View the required documents list or jump straight into the application guide.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-          <a href="/how-to-apply" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group">
-            Go to Application Guide
-            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          </a>
-          <a href="/eligibility/proof-needed" class="inline-flex items-center justify-center rounded-lg border-2 border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-            View Proof Required
-          </a>
         </div>
       </div>
     </section>
 
+    <section id="official-resources" class="w-full bg-white py-12">
+      <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-border bg-muted/20 p-6 shadow-sm sm:p-8">
+          <h2 class="text-2xl font-bold text-foreground">Official Lifeline Resources</h2>
+          <p class="mt-2 text-foreground/75">Use official pages to confirm current eligibility, provider lookup, and consumer rules.</p>
+          <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-4">
+            <a href={officialLinks.howToQualify} target="_blank" rel="noopener noreferrer" class="rounded-xl border border-border bg-white p-5 transition-colors hover:border-blue-300 hover:bg-blue-50"><h3 class="font-bold text-foreground">USAC How to Qualify</h3><p class="mt-1 text-sm leading-relaxed text-foreground/70">Official Lifeline qualifying programs and income guidance.</p></a>
+            <a href={officialLinks.nationalVerifier} target="_blank" rel="noopener noreferrer" class="rounded-xl border border-border bg-white p-5 transition-colors hover:border-blue-300 hover:bg-blue-50"><h3 class="font-bold text-foreground">National Verifier</h3><p class="mt-1 text-sm leading-relaxed text-foreground/70">Check Lifeline eligibility where applicable.</p></a>
+            <a href={officialLinks.companiesNearMe} target="_blank" rel="noopener noreferrer" class="rounded-xl border border-border bg-white p-5 transition-colors hover:border-blue-300 hover:bg-blue-50"><h3 class="font-bold text-foreground">USAC Companies Near Me</h3><p class="mt-1 text-sm leading-relaxed text-foreground/70">Find Lifeline providers by state and ZIP code.</p></a>
+            <a href={officialLinks.fccLifeline} target="_blank" rel="noopener noreferrer" class="rounded-xl border border-border bg-white p-5 transition-colors hover:border-blue-300 hover:bg-blue-50"><h3 class="font-bold text-foreground">FCC Lifeline Info</h3><p class="mt-1 text-sm leading-relaxed text-foreground/70">Consumer-facing Lifeline program information.</p></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="eligibility-glance" class="w-full border-y border-border bg-muted/30 py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Eligibility at a glance</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Free Tablet Eligibility at a Glance</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">These cards summarize the main Lifeline routes and the limits users should understand before applying.</p></div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-5">{glanceCards.map((card) => <div class="rounded-2xl border border-border bg-white p-6 shadow-sm"><h3 class="text-lg font-bold text-foreground">{card.title}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{card.body}</p></div>)}</div>
+      </div>
+    </section>
+
+    <section id="lifeline-vs-tablet" class="w-full bg-white py-16 lg:py-24">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Important distinction</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Lifeline vs Tablet Availability</h2></div>
+        <div class="space-y-5 lg:col-span-7"><p class="text-lg leading-relaxed text-foreground/75">Lifeline is primarily a phone or internet discount/service support program. A tablet may be offered by some providers or local programs when available, but Lifeline eligibility alone does not guarantee a tablet.</p><p class="text-lg leading-relaxed text-foreground/75">Users should verify provider stock, device model, service plan, activation, shipping, possible co-pay, and state/ZIP-code availability before submitting personal information or documents.</p></div>
+      </div>
+    </section>
+
+    <section id="income" class="w-full border-y border-border bg-slate-50 py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-10 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">2026 income guidance</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">2026 Income Eligibility: 135% Federal Poverty Guidelines</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Income limits are based on household size and state. Applicants may need proof such as a tax return, pay stubs, benefit letter, or official income document.</p></div>
+        <div class="overflow-hidden rounded-2xl border border-border bg-white shadow-sm"><table class="w-full text-left text-sm"><thead class="bg-slate-900 text-white"><tr><th class="px-4 py-4 font-bold">Household size</th><th class="px-4 py-4 font-bold">48 states/DC/territories</th><th class="px-4 py-4 font-bold">Alaska</th><th class="px-4 py-4 font-bold">Hawaii</th></tr></thead><tbody class="divide-y divide-border">{incomeRows.map((row) => <tr><td class="px-4 py-4 font-bold text-foreground">{row.household}</td><td class="px-4 py-4 text-foreground/75">{row.contiguous}</td><td class="px-4 py-4 text-foreground/75">{row.alaska}</td><td class="px-4 py-4 text-foreground/75">{row.hawaii}</td></tr>)}</tbody></table></div>
+      </div>
+    </section>
+
+    <section id="programs" class="w-full bg-white py-16 lg:py-24"><div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Qualifying programs</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Regular Lifeline Qualifying Programs</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Use these as the main regular Lifeline qualifying programs. A tablet is still not guaranteed.</p></div><div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{qualifyingPrograms.map((card) => <div class="rounded-2xl border border-border bg-muted/30 p-6 shadow-sm"><h3 class="text-xl font-bold text-foreground">{card.title}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{card.body}</p></div>)}</div></div></section>
+
+    <section id="not-automatic" class="w-full border-y border-border bg-blue-50/60 py-16 lg:py-24"><div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Accuracy correction</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Programs That Do Not Always Qualify by Themselves</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">These programs may help in other local, school, provider, or special survivor contexts, but they should not be shown as regular general Lifeline qualifiers without official confirmation.</p></div><div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{notAlwaysQualify.map((card) => <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><h3 class="text-xl font-bold text-foreground">{card.title}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{card.body}</p></div>)}</div><div class="mt-8 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><h3 class="text-xl font-bold text-foreground">Special Survivor Benefit Note</h3><p class="mt-3 leading-relaxed text-foreground/75">Survivors of domestic violence, human trafficking, or related crimes may have special temporary Lifeline support rules and extended criteria. Do not mix survivor-only criteria with general Lifeline eligibility. Use official Lifeline survivor guidance and privacy-safe steps.</p></div></div></section>
+
+    <section id="groups" class="w-full bg-white py-16 lg:py-24"><div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">User groups</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Who May Qualify by Group?</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">No group automatically qualifies. Each user should verify income, benefit participation, special criteria, documents, provider terms, and ZIP-code availability.</p></div><div class="grid gap-6 md:grid-cols-2 lg:grid-cols-5">{groupCards.map((card) => <div class="rounded-2xl border border-border bg-muted/30 p-6 shadow-sm"><h3 class="text-lg font-bold text-foreground">{card.title}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{card.body}</p></div>)}</div></div></section>
+
+    <section id="documents" class="w-full border-y border-border bg-muted/30 py-16 lg:py-24"><div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-5"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Application proof</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Free Tablet Documents Needed</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Documents can vary by National Verifier, state system, provider process, Tribal rules, and household situation.</p></div><div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">{documentItems.map((item) => <div class="rounded-xl border border-border bg-white p-5 shadow-sm"><p class="font-bold text-foreground">{item}</p></div>)}</div></div></section>
+
+    <section id="household-rule" class="w-full bg-white py-16 lg:py-24"><div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-6"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Household limits</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">One Benefit Per Household and Household Worksheet</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Lifeline generally allows one benefit per household, not one per person. A household means people living together and sharing income and expenses. Roommates, shelters, nursing homes, or separate economic households may need a Household Worksheet. Do not assume every family member can receive a tablet.</p></div><div class="lg:col-span-6"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Keep benefit active</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Use It or Lose It / Recertification</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Users may need to use Lifeline service at least once every 30 days if service is free to them, and they may need annual recertification. If they move or no longer qualify, they should update the provider or official process.</p></div></div></section>
+
+    <section id="state-zip" class="w-full border-y border-border bg-slate-50 py-16 lg:py-24"><div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-5"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Local availability</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">State and ZIP Code Availability</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Eligibility is federal, but provider availability and tablet offers are local. Users should check provider availability by ZIP code, state-specific Lifeline handling, Texas/Oregon special handling where relevant, local digital inclusion programs, libraries, schools, nonprofits, VA/telehealth resources, provider inventory, and device terms.</p></div><div class="lg:col-span-7"><a href="/states/" class="block rounded-3xl border border-border bg-white p-8 shadow-sm transition-shadow hover:shadow-md"><h3 class="text-2xl font-bold text-foreground">tablet availability by state</h3><p class="mt-3 leading-relaxed text-foreground/75">Use the state directory to compare ZIP-code and local program notes before choosing a provider.</p></a></div></div></section>
+
+    <section id="compare-providers" class="w-full bg-white py-16 lg:py-24"><div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto mb-10 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Provider comparison</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Compare Eligibility by Provider</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">After checking eligibility, compare provider availability, device terms, and official application flow.</p></div><div class="overflow-hidden rounded-2xl border border-border bg-white shadow-sm"><table class="w-full text-left text-sm"><thead class="bg-slate-900 text-white"><tr><th class="px-4 py-4 font-bold">Provider</th><th class="px-4 py-4 font-bold">Eligibility angle</th><th class="px-4 py-4 font-bold">Device/tablet note</th><th class="px-4 py-4 font-bold">Best next step</th><th class="px-4 py-4 font-bold">Link</th></tr></thead><tbody class="divide-y divide-border">{providerRows.map((row) => <tr><td class="px-4 py-4 font-bold text-foreground">{row.provider}</td><td class="px-4 py-4 leading-relaxed text-foreground/75">{row.angle}</td><td class="px-4 py-4 leading-relaxed text-foreground/75">{row.note}</td><td class="px-4 py-4 leading-relaxed text-foreground/75">{row.step}</td><td class="px-4 py-4"><a href={row.url} class="font-bold text-blue-600 hover:text-blue-700">{row.anchor}</a></td></tr>)}</tbody></table></div><p class="mt-6 text-center text-sm text-foreground/70">Also review the <a href="/" class="font-bold text-blue-600 hover:text-blue-700">free government tablet guide</a>, <a href="/how-to-apply/" class="font-bold text-blue-600 hover:text-blue-700">apply for a free tablet online</a>, and <a href="/states/" class="font-bold text-blue-600 hover:text-blue-700">tablet availability by state</a>.</p></div></section>
+
+    <section id="check-steps" class="w-full border-y border-border bg-muted/30 py-16 lg:py-24"><div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto mb-12 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Step by step</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">How to Check Eligibility Safely</h2></div><ol class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{checkSteps.map((step, index) => <li class="rounded-2xl border border-border bg-white p-6 shadow-sm"><div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-lg font-extrabold text-white">{index + 1}</div><p class="font-semibold leading-relaxed text-foreground/80">{step}</p></li>)}</ol></div></section>
+
+    <section id="popular-searches" class="w-full bg-blue-50/60 py-16 lg:py-24"><div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto mb-10 max-w-3xl text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">AEO and GSC coverage</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Popular Eligibility Searches Covered</h2><p class="mt-5 text-lg leading-relaxed text-foreground/75">Short, safe answers for “do I qualify” and benefit-specific searches.</p></div><div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">{searchCards.map((card) => <div class="rounded-2xl border border-border bg-white p-6 shadow-sm"><h3 class="text-lg font-bold text-foreground">{card.title}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{card.body}</p></div>)}</div></div></section>
+
+    <section id="acp-ended" class="w-full border-y border-border bg-white py-16 lg:py-24"><div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8"><div class="rounded-3xl border border-blue-100 bg-blue-50 p-8 shadow-sm sm:p-10"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">ACP ended warning</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">ACP Ended: Do Not Use It as a Current Eligibility Path</h2><p class="mt-5 text-lg leading-relaxed text-foreground/80">ACP and EBB are no longer current benefit routes for new free tablet eligibility. Do not rely on outdated pages that make ACP tablet benefits sound active. Check current Lifeline rules, provider terms, schools, libraries, nonprofits, VA/telehealth resources, state programs, and local digital inclusion options instead.</p></div></div></section>
+
+    <section id="faq" class="w-full bg-muted/30 py-16 lg:py-24"><div class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8"><div class="mb-12 text-center"><p class="mb-3 text-sm font-bold tracking-wide text-blue-600 uppercase">Eligibility FAQ</p><h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Free Tablet Eligibility FAQ</h2><p class="mt-4 text-lg leading-relaxed text-foreground/75">Visible answers below match the FAQPage schema exactly.</p></div><div class="space-y-4">{faqItems.map((item) => <details class="group overflow-hidden rounded-xl border border-border bg-white shadow-sm [&_summary::-webkit-details-marker]:hidden"><summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 text-lg font-bold text-foreground transition-colors hover:bg-blue-50"><span>{item.question}</span><span class="shrink-0 text-blue-600 transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-border p-6 pt-4 leading-relaxed font-medium text-foreground/75">{item.answer}</div></details>)}</div></div></section>
+
+    <section class="relative w-full overflow-hidden bg-[#0f172a] py-20 text-white lg:py-24"><div class="relative z-10 mx-auto w-full max-w-4xl px-4 text-center sm:px-6 lg:px-8"><h2 class="mb-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Check Eligibility Before You Apply</h2><p class="mx-auto max-w-2xl text-lg leading-relaxed text-blue-100">Start with income or program eligibility, then compare state availability and provider terms before submitting documents.</p><div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row"><a href="/how-to-apply/" class="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-colors hover:bg-blue-500 sm:w-auto">Apply Now</a><a href="/states/" class="inline-flex w-full items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white transition-colors hover:bg-white/10 sm:w-auto">Check State Availability</a></div><p class="mx-auto mt-8 max-w-3xl border-t border-white/20 pt-6 text-xs leading-relaxed text-blue-200/70">FreeTablet.click is independent and does not approve Lifeline applications, issue benefits, ship devices, manage provider accounts, or guarantee any tablet, phone, plan, shipping timeline, approval, or co-pay.</p></div></section>
   </main>
-  
+
   <Footer />
 </Layout>
