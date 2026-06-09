@@ -3,1746 +3,475 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const pageUrl = "https://freetablet.click/"; // apna exact page URL lagao
-const siteUrl = "https://freetablet.click/";
-const pageTitle = "Get Your Free Government Tablet and Internet Today | 2026 Guide";
+const pageUrl = "https://freetablet.click/";
+const siteUrl = "https://freetablet.click";
+const isoDate = "2026-06-09";
+const displayDate = "June 9, 2026";
+const pageTitle = "Free Government Tablet 2026: EBT, Lifeline & Providers";
 const pageDescription =
-  "Find out how eligible households may get a free government tablet, low-cost internet, or a free tablet with EBT through Lifeline, local digital inclusion programs, and VA-connected telehealth support options.";
+  "Find real free or low-cost tablet options in 2026. Check EBT, Medicaid, Lifeline eligibility, providers, state help and safe apply steps.";
+
+const providerRows = [
+  {
+    name: "AirTalk Wireless",
+    url: "/airtalk-wireless/",
+    availability: "May offer tablets or phones when current stock and local rules allow.",
+    bestFor: "People comparing Lifeline-connected device offers and online enrollment.",
+    note: "Check current stock, ZIP-code availability, co-pay, shipping, and plan terms before applying.",
+    cta: "AirTalk Wireless tablet options"
+  },
+  {
+    name: "Assurance Wireless",
+    url: "/assurance-wireless/",
+    availability: "May offer Lifeline phone service; tablet availability can vary by market.",
+    bestFor: "Applicants who want a recognizable Lifeline provider with simple plan information.",
+    note: "Device offers are not guaranteed and can change by state, provider policy, and inventory.",
+    cta: "Assurance Wireless tablet options"
+  },
+  {
+    name: "SafeLink Wireless",
+    url: "/safelink-wireless/",
+    availability: "May provide Lifeline phone service and device options depending on eligibility and area.",
+    bestFor: "Users comparing SafeLink Wireless phone and tablet options with current provider terms.",
+    note: "Confirm current service area, device availability, and activation requirements before enrollment.",
+    cta: "SafeLink Wireless phone and tablet options"
+  },
+  {
+    name: "StandUp Wireless",
+    url: "/standup-wireless/",
+    availability: "May offer Lifeline service and device promotions when available.",
+    bestFor: "Applicants who want to compare another provider before choosing where to apply.",
+    note: "Availability varies by ZIP code, eligibility path, and provider inventory.",
+    cta: "StandUp Wireless tablet options"
+  }
+];
+
+const faqs = [
+  {
+    question: "Can I still get a free tablet in 2026?",
+    answer:
+      "Yes, some eligible people may still find free or low-cost tablet options in 2026 through Lifeline-connected providers, local digital inclusion programs, schools, nonprofits, libraries, or VA telehealth support. Availability depends on your state, ZIP code, eligibility proof, provider stock, and possible co-pay."
+  },
+  {
+    question: "Is there a real government free tablet program?",
+    answer:
+      "There is no single nationwide free government tablet program for everyone. Real help usually comes through Lifeline service discounts, provider offers, state or local digital inclusion programs, school programs, nonprofits, libraries, or VA telehealth support for eligible veterans."
+  },
+  {
+    question: "Can I get a free tablet with EBT?",
+    answer:
+      "EBT or SNAP participation may help you qualify for Lifeline or other low-income technology support routes, but it does not automatically guarantee a free tablet. You still need to check provider availability, documents, and ZIP-code rules."
+  },
+  {
+    question: "Can I get a free tablet with Medicaid?",
+    answer:
+      "Medicaid participation may be a qualifying path for Lifeline eligibility and some related provider offers. Tablet availability still depends on provider stock, state rules, documents, and whether a co-pay or shipping fee applies."
+  },
+  {
+    question: "Which providers may offer tablet options?",
+    answer:
+      "Providers such as AirTalk Wireless, Assurance Wireless, SafeLink Wireless, and StandUp Wireless may have device or service options depending on your area. Current stock, eligibility rules, plan terms, and co-pay details can change, so compare provider pages before applying."
+  },
+  {
+    question: "Do I need to pay a co-pay?",
+    answer:
+      "You might. Some tablet offers are free, while others may require a small co-pay, shipping charge, activation cost, or service-related fee. A trustworthy provider should explain any cost before you submit or complete an application."
+  },
+  {
+    question: "What documents are needed?",
+    answer:
+      "Common documents include a government ID, proof of address, proof of SNAP/EBT, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension, Survivors Benefit, or proof of income. Some applicants may also need a household worksheet, last 4 digits of SSN, or Tribal ID information."
+  },
+  {
+    question: "How do I avoid free tablet scams?",
+    answer:
+      "Avoid sites that promise guaranteed approval, guaranteed iPads, unusual upfront fees, pressure tactics, or fake government branding. Verify provider terms, Lifeline or National Verifier steps where relevant, and never submit personal information unless the application path looks official and trustworthy."
+  }
+];
 
 const schemaGraph = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "FreeTablet.click",
+      "url": `${siteUrl}/`,
+      "description": "Independent informational guide for free and low-cost tablet, Lifeline, provider, eligibility, and state assistance options.",
+      "email": "support@freetablet.click",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": `${siteUrl}/`,
+      "name": "FreeTablet.click",
+      "description": pageDescription,
+      "publisher": {
+        "@id": `${siteUrl}/#organization`
+      },
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${siteUrl}/search/?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": `${pageUrl}#webpage`,
       "url": pageUrl,
       "name": pageTitle,
+      "headline": "Free Government Tablet 2026: EBT, Lifeline & Provider Options",
       "description": pageDescription,
-      "isPartOf": {
-        "@id": `${siteUrl}#website`
+      "datePublished": isoDate,
+      "dateModified": isoDate,
+      "reviewedBy": {
+        "@id": `${siteUrl}/#organization`
       },
-      "about": [
-        { "@type": "Thing", "name": "Lifeline Program" },
-        { "@type": "Thing", "name": "Free Government Tablet" },
-        { "@type": "Thing", "name": "Low-Cost Internet" },
-        { "@type": "Thing", "name": "EBT Tablet Eligibility" }
-      ],
+      "isPartOf": {
+        "@id": `${siteUrl}/#website`
+      },
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "url": `${siteUrl}Programs.webp`
+        "url": `${siteUrl}/Programs.webp`,
+        "caption": "Person checking free government tablet eligibility on a tablet in 2026"
       },
+      "about": [
+        { "@type": "Thing", "name": "Lifeline" },
+        { "@type": "Organization", "name": "Federal Communications Commission", "alternateName": "FCC" },
+        { "@type": "Organization", "name": "Universal Service Administrative Company", "alternateName": "USAC" },
+        { "@type": "Thing", "name": "National Verifier" },
+        { "@type": "Thing", "name": "EBT" },
+        { "@type": "Thing", "name": "SNAP" },
+        { "@type": "Thing", "name": "Medicaid" },
+        { "@type": "Thing", "name": "SSI" },
+        { "@type": "Thing", "name": "Veterans Pension" },
+        { "@type": "Thing", "name": "Survivors Benefit" },
+        { "@type": "Thing", "name": "digital inclusion programs" },
+        { "@type": "Thing", "name": "low-income households" },
+        { "@type": "Thing", "name": "tablets" },
+        { "@type": "Thing", "name": "wireless providers" },
+        { "@type": "Thing", "name": "state assistance programs" }
+      ],
+      "mentions": providerRows.map((provider) => ({
+        "@type": "Organization",
+        "name": provider.name,
+        "url": `${siteUrl}${provider.url}`
+      })),
       "inLanguage": "en-US"
     },
-
-    // 👇 NEW: Site Navigation Schema Add Kar Diya Hai 👇
     {
-      "@type": "SiteNavigationElement",
-      "@id": `${pageUrl}#navigation`,
-      "name": [
-        "Check Eligibility", 
-        "Government Programs", 
-        "Device & Plans", 
-        "Top Providers", 
-        "State Availability", 
-        "Scam Safety", 
-        "FAQ"
-      ],
-      "url": [
-        `${pageUrl}#checker`,
-        `${pageUrl}#programs`,
-        `${pageUrl}#plans`,
-        `${pageUrl}#providers-directory`,
-        `${pageUrl}#state-availability`,
-        `${pageUrl}#scam-safety`,
-        `${pageUrl}#faq`
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": pageUrl
+        }
       ]
     },
-
     {
       "@type": "FAQPage",
       "@id": `${pageUrl}#faq`,
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is there really a free government tablet program in 2026?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "There is not one single nationwide tablet giveaway program for everyone. In 2026, most people get help through a mix of Lifeline service discounts, provider promotions, local digital inclusion programs, and special pathways such as VA telehealth support for eligible veterans."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Did ACP end?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. The Affordable Connectivity Program ended, which is why many older pages are outdated."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I qualify with EBT or SNAP?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, many users who receive SNAP or EBT may qualify for Lifeline or other support pathways depending on their state and provider options."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What income level qualifies for Lifeline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Lifeline eligibility may be available if your household income is at or below 135% of the Federal Poverty Guidelines, or if you participate in qualifying assistance programs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can more than one person in my home get Lifeline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Lifeline generally allows one benefit per household, not per person."
-          }
+      "mainEntity": faqs.map((faq) => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
         }
-      ]
-    },
-
-    {
-      "@type": "ItemList",
-      "@id": `${pageUrl}#providers`,
-      "name": "Top Lifeline Providers Offering Tablet and Internet Options",
-      "itemListOrder": "https://schema.org/ItemListOrderAscending",
-      "numberOfItems": 4,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Assurance Wireless",
-          "url": `${siteUrl}/assurance-wireless`
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "AirTalk Wireless",
-          "url": `${siteUrl}airtalk-wireless`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "StandUp Wireless",
-          "url": `${siteUrl}standup-wireless`
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "SafeLink Wireless",
-          "url": `${siteUrl}safelink-wireless`
-        }
-      ]
-    },
-
-    {
-      "@type": "ItemList",
-      "@id": `${pageUrl}#states`,
-      "name": "State-by-State Free Government Tablet Availability",
-      "itemListOrder": "https://schema.org/ItemListOrderAscending",
-      "numberOfItems": 4,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "California",
-          "url": `${siteUrl}states/`
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Texas",
-          "url": `${siteUrl}states/`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "New York",
-          "url": `${siteUrl}states/`
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Florida",
-          "url": `${siteUrl}states/`
-        }
-      ]
-    },
-
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}#organization`,
-      "name": "FreeTablet.click",
-      "url": siteUrl,
-      "email": "support@freetablet.click"
-    },
-
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}#website`,
-      "url": siteUrl,
-      "name": "FreeTablet.click",
-      "publisher": {
-        "@id": `${siteUrl}#organization`
-      },
-      "inLanguage": "en-US"
+      }))
     }
   ]
 };
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  
+<Layout title={pageTitle} description={pageDescription} modDatetime={new Date("2026-06-09T00:00:00Z")}>
   <Header />
-
   <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
-  <main>
-    <section class="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#0f172a] text-white pt-20 pb-32 lg:pt-28 lg:pb-40" style="background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent 40%);">
-    
-    <!-- ==========================================
-         SECTION 1: PREMIUM HERO (PERFORMANCE OPTIMIZED)
-    =========================================== -->
-    <section class="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#0f172a] text-white pt-20 pb-32 lg:pt-28 lg:pb-40" style="background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent 40%);">
-      
-      <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
-          
-          <!-- Content Column -->
-          <div class="flex flex-col items-start lg:col-span-7 xl:col-span-8">
-            
-            <!-- Trust Badge -->
-            <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 mb-8 shadow-sm">
-              <span aria-hidden="true">🇺🇸</span>
-              <span>100% Legitimate Federal and State Program Information | Updated for 2026</span>
-            </div>
 
-            <!-- H1 Headline -->
-            <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-white">
-              Get Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Free Government Tablet</span> and Internet Today
-            </h1>
-
-            <!-- Subheadline -->
-            <p class="mt-6 text-lg leading-relaxed text-blue-100 sm:text-xl max-w-3xl">
-              Find out how eligible households may get a <strong>free government tablet</strong>, <strong>low-cost internet</strong>, or a <strong>free tablet with EBT</strong> through Lifeline, local digital inclusion programs, and VA-connected telehealth support options. Built for seniors, students, veterans, and families who need affordable access.
-            </p>
-
-            <!-- Support Text -->
-            <p class="mt-4 text-base leading-relaxed text-blue-200/90 max-w-3xl">
-              We help you understand the real options in 2026, including what is truly free, what may require a small provider co-pay, and which programs are available in your area. No hype. No fake offers. Just clear guidance based on current program rules and provider availability.
-            </p>
-
-            <!-- Bullet Points -->
-            <ul class="mt-8 space-y-4 w-full max-w-2xl">
-              {
-                [
-                  "No hidden fees guidance",
-                  "Fast online application steps",
-                  "Free or discounted mobile internet options",
-                  "Popular tablet brands may be available through participating providers",
-                  "State-by-state help for local eligibility differences"
-                ].map((point) => (
-                  <li class="flex items-start gap-3">
-                    <div class="flex-shrink-0 mt-1 flex items-center justify-center w-5 h-5 rounded-full bg-green-500/20 text-green-400">
-                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                      </svg>
-                    </div>
-                    <span class="text-base font-medium text-white">{point}</span>
-                  </li>
-                ))
-              }
-            </ul>
-
-            <!-- CTAs -->
-            <div class="mt-10 flex w-full flex-col gap-4 sm:flex-row">
-              <a href="#checker" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 group">
-                Apply Now
-                <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </a>
-              <a href="#checker" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300">
-                Check My Eligibility
-              </a>
-            </div>
-
-            <!-- Micro Disclaimer -->
-            <p class="mt-6 text-xs text-blue-200/60 leading-relaxed max-w-2xl">
-              Device availability, shipping times, and co-pay amounts vary by provider, state, and eligibility type. Lifeline is a monthly service discount program, and tablet offers depend on participating providers.
-            </p>
+  <main class="bg-white text-foreground">
+    <section class="relative overflow-hidden bg-[#0f172a] text-white">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.18),transparent_40%)]"></div>
+      <div class="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-28">
+        <div class="lg:col-span-7 xl:col-span-8">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 shadow-sm">
+            <span aria-hidden="true">✓</span>
+            <span>Independent guide • Last updated {displayDate}</span>
           </div>
 
-          <!-- Abstract Right Column Graphic -->
-          <div class="hidden lg:flex lg:col-span-5 xl:col-span-4 justify-end relative">
-             <div class="w-full max-w-md aspect-[4/5] rounded-3xl bg-white/5 border border-white/10 flex flex-col items-center justify-center p-8 shadow-2xl relative overflow-hidden" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent"></div>
-                <svg class="w-32 h-32 text-blue-300/80 drop-shadow-lg mb-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                </svg>
-                <div class="relative z-10 text-center">
-                  <span class="block text-xl font-bold text-white tracking-wide">Secure Connection</span>
-                  <span class="block text-sm text-blue-200 mt-2">Official 2026 Assistance Portal</span>
-                </div>
-             </div>
+          <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Free Government Tablet 2026: <span class="bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent">EBT, Lifeline & Provider Options</span>
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-blue-100 sm:text-xl">
+            Some people may qualify for <strong>free or low-cost tablet options</strong> in 2026 through EBT/SNAP, Medicaid, SSI, income-based Lifeline eligibility, school or local programs, nonprofit support, VA telehealth resources, or participating provider offers.
+          </p>
+
+          <p class="mt-4 max-w-3xl text-base leading-relaxed text-blue-200/90">
+            Tablet availability depends on your ZIP code, provider stock, eligibility path, documents, shipping rules, and possible co-pay. FreeTablet.click is an independent informational guide, not the government, FCC, USAC, Lifeline, or any wireless provider.
+          </p>
+
+          <div class="mt-8 grid max-w-3xl gap-3 sm:grid-cols-2">
+            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">EBT/SNAP, Medicaid, SSI, income, and housing benefit paths</div>
+            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">Provider stock and tablet offers vary by ZIP code</div>
+            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">ACP has ended; current options must be checked carefully</div>
+            <div class="rounded-xl border border-white/15 bg-white/10 p-4 text-sm font-semibold text-blue-50">Safe apply steps, documents, providers, and state help</div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 2: WHY CHOOSE US & TRUST STATS
-    =========================================== -->
-    <section class="relative w-full bg-muted pb-20 lg:pb-28" style="content-visibility: auto;">
-      
-      <!-- Overlapping Stats Bar -->
-      <div class="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 -mt-16 sm:-mt-20 mb-16 sm:mb-24">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 bg-white rounded-2xl p-8 lg:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-border">
-          
-          <div class="flex flex-col items-center text-center px-4">
-            <h3 class="text-4xl font-extrabold text-primary mb-2">2.5M+</h3>
-            <p class="text-base font-semibold text-foreground/80">Families Guided</p>
-          </div>
-          
-          <div class="flex flex-col items-center text-center px-4 border-t md:border-t-0 md:border-l border-border pt-6 md:pt-0">
-            <h3 class="text-4xl font-extrabold text-primary mb-2">50</h3>
-            <p class="text-base font-semibold text-foreground/80">States and Territories Covered</p>
-          </div>
-          
-          <div class="flex flex-col items-center text-center px-4 border-t md:border-t-0 md:border-l border-border pt-6 md:pt-0">
-            <h3 class="text-4xl font-extrabold text-primary mb-2">150+</h3>
-            <p class="text-base font-semibold text-foreground/80">Provider Pages and State Guides</p>
+          <div class="mt-10 flex w-full flex-col gap-4 sm:flex-row">
+            <a href="/how-to-apply/" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+              Apply Now
+            </a>
+            <a href="/eligibility/" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:bg-white/10">
+              Check Eligibility
+            </a>
           </div>
 
-        </div>
-      </div>
-
-      <!-- Why Choose Us Content -->
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6">
-            Why Families Trust Us for Free Tablet and Internet Help
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            Finding a real <strong>free tablet from government program</strong> can feel confusing because many websites mix old ACP information with current programs. We keep this guide updated, explain the rules in plain English, and help you avoid scams while finding legitimate providers and public benefit pathways. The Affordable Connectivity Program (ACP) ended, so accurate 2026 guidance matters more than ever.
+          <p class="mt-5 max-w-2xl text-sm leading-relaxed text-blue-200/75">
+            Check eligibility, compare provider options, and review possible document requirements before applying. Clicking a button does not guarantee approval or a tablet.
           </p>
         </div>
 
-        <!-- 6-Card Icon Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <!-- Card 1 -->
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 rounded-lg bg-blue-50 text-primary-light flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+        <div class="lg:col-span-5 xl:col-span-4">
+          <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl">
+            <img
+              src="/Programs.webp"
+              alt="Person checking free government tablet eligibility on a tablet in 2026"
+              width="800"
+              height="450"
+              loading="eager"
+              decoding="async"
+              class="h-auto w-full rounded-2xl object-cover"
+            />
+            <div class="mt-4 rounded-2xl bg-white/10 p-5">
+              <p class="text-sm font-bold uppercase tracking-wide text-blue-200">2026 tablet help checklist</p>
+              <p class="mt-2 text-base leading-relaxed text-white">Eligibility, providers, documents, state availability, co-pay details, and scam warnings in one place.</p>
             </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">No Hidden Fees</h3>
-            <p class="text-foreground/70 leading-relaxed">
-              We explain the difference between a truly free benefit and a provider device co-pay so users know what to expect before applying.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 rounded-lg bg-green-50 text-success flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">Scam-Safe Guidance</h3>
-            <p class="text-foreground/70 leading-relaxed">
-              We do not promote fake “instant approval” offers. We focus on official program pathways, provider verification, and documentation checks.
-            </p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 rounded-lg bg-blue-50 text-primary-light flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">Simple Eligibility Process</h3>
-            <p class="text-foreground/70 leading-relaxed">
-              We break the process into clear steps for <strong>EBT, Medicaid, SSI, veterans</strong>, and income-based applicants.
-            </p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 rounded-lg bg-orange-50 text-accent flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">Updated 2026 Information</h3>
-            <p class="text-foreground/70 leading-relaxed">
-              We clearly note program changes, including the end of ACP and what options are active now.
-            </p>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 rounded-lg bg-blue-50 text-primary-light flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">State-Specific Help</h3>
-            <p class="text-foreground/70 leading-relaxed">
-              Rules, provider availability, and device inventory can vary by ZIP code and state, so we organize content by location.
-            </p>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">Accessibility-Friendly</h3>
-            <p class="text-foreground/70 leading-relaxed">
-              Clear writing for seniors, caregivers, and first-time applicants who need straightforward instructions.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 3: INTERACTIVE ELIGIBILITY CHECKER
-    =========================================== -->
-    <section id="checker" class="relative w-full py-20 lg:py-28 bg-white border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          <!-- Left Content: Intro -->
-          <div class="lg:col-span-5 flex flex-col pt-4">
-            <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-6">
-              Check If You May Qualify for a <span class="text-primary-light">Free Government Tablet</span>
-            </h2>
-            <p class="text-lg text-foreground/75 leading-relaxed mb-6">
-              Most people qualify in one of two ways: through a government assistance program or through household income. Use this quick checker to see which path applies to you before starting an application.
-            </p>
-            <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 text-primary mt-4">
-              <svg class="w-8 h-8 mb-3 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <p class="font-medium text-sm leading-relaxed">
-                Answer a few quick questions to see your likely eligibility for a free tablet, discounted internet, or a <strong>free android tablet</strong> offer through participating providers.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right Content: The Interactive Engine -->
-          <div class="lg:col-span-7 w-full bg-background rounded-2xl border border-border shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
-            
-            <div class="p-8 sm:p-10 border-b border-border bg-muted/30">
-              <h3 class="text-xl font-bold text-foreground mb-6">Question 1: Program-Based Eligibility</h3>
-              <p class="text-sm font-medium text-foreground/70 mb-4">Do you currently participate in any of these programs?</p>
-              
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="program-checkboxes">
-                {
-                  [
-                    "SNAP / EBT",
-                    "Medicaid",
-                    "SSI",
-                    "Federal Public Housing Assistance",
-                    "Veterans Pension or Survivors Pension",
-                    "Other qualifying programs"
-                  ].map((program) => (
-                    <label class="relative flex cursor-pointer items-start gap-3 rounded-lg border border-border p-4 transition-colors hover:bg-blue-50/50 has-[:checked]:border-primary-light has-[:checked]:bg-blue-50">
-                      <div class="flex h-5 items-center">
-                        <input type="checkbox" class="program-cb h-5 w-5 rounded border-gray-300 text-primary-light focus:ring-primary-light" value={program} />
-                      </div>
-                      <div class="flex flex-col">
-                        <span class="text-sm font-semibold text-foreground">{program}</span>
-                      </div>
-                    </label>
-                  ))
-                }
-              </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="relative flex items-center py-6 px-10">
-              <div class="flex-grow border-t border-border"></div>
-              <span class="mx-4 flex-shrink-0 text-sm font-bold text-foreground/50 uppercase tracking-wider">OR check by income</span>
-              <div class="flex-grow border-t border-border"></div>
-            </div>
-
-            <div class="p-8 sm:p-10 pt-0">
-              <h3 class="text-xl font-bold text-foreground mb-6">Question 2: Income-Based Eligibility</h3>
-              <p class="text-sm font-medium text-foreground/70 mb-4">Select your household size and estimated annual income.</p>
-              
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                <div>
-                  <label for="household-size" class="block text-sm font-semibold text-foreground mb-2">Household Size</label>
-                  <select id="household-size" class="block w-full rounded-lg border border-border bg-white px-4 py-3 text-foreground focus:border-primary-light focus:outline-none focus:ring-1 focus:ring-primary-light transition-colors">
-                    <option value="1">1 Person</option>
-                    <option value="2">2 People</option>
-                    <option value="3">3 People</option>
-                    <option value="4">4 People</option>
-                    <option value="5">5 People</option>
-                    <option value="6">6+ People</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="annual-income" class="block text-sm font-semibold text-foreground mb-2">Annual Income ($)</label>
-                  <input type="number" id="annual-income" placeholder="e.g. 25000" class="block w-full rounded-lg border border-border bg-white px-4 py-3 text-foreground placeholder-foreground/30 focus:border-primary-light focus:outline-none focus:ring-1 focus:ring-primary-light transition-colors" />
-                </div>
-              </div>
-
-              <button id="verify-btn" type="button" class="w-full inline-flex items-center justify-center rounded-lg bg-primary-light px-8 py-4 text-lg font-bold text-white shadow-md hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all duration-200">
-                Verify My Eligibility
-              </button>
-
-              <!-- Dynamic Result Box (Hidden by Default) -->
-              <div id="result-box" class="hidden mt-6 p-6 rounded-xl border">
-                 <div class="flex gap-4">
-                   <div id="result-icon" class="flex-shrink-0 mt-0.5"></div>
-                   <div>
-                     <h4 id="result-title" class="text-lg font-bold"></h4>
-                     <p id="result-message" class="text-sm mt-2 font-medium leading-relaxed"></p>
-                     <div id="result-action" class="mt-4 hidden">
-                       <a href="#providers" class="inline-block text-sm font-bold text-white bg-green-600 px-4 py-2 rounded-md hover:bg-green-700 transition-colors">View Providers in Your Area &rarr;</a>
-                     </div>
-                   </div>
-                 </div>
-              </div>
-
-              <p class="mt-8 text-xs text-foreground/60 leading-relaxed text-center">
-                Lifeline eligibility is commonly based on participation in qualifying programs or income at or below 135% of the Federal Poverty Guidelines. One Lifeline benefit is allowed per household.
-              </p>
-            </div>
-
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================
-         SECTION 4: THE ULTIMATE GOVERNMENT PROGRAMS
-    =========================================== -->
-    <section id="programs" class="relative w-full py-20 lg:py-28 bg-muted border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <!-- Intro & Image Split Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div class="flex flex-col">
-            <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6">
-              2026 Programs That May Help You Get a Tablet or Affordable Internet
-            </h2>
-            <p class="text-lg text-foreground/75 leading-relaxed">
-              If you are searching for a free government tablet, the most important thing to know is this: there is no single nationwide tablet giveaway program. In 2026, access usually comes through a combination of federal discounts, local digital inclusion programs, provider promotions, and special programs for veterans or housing communities.
+    <section id="quick-answer" class="border-b border-border bg-blue-50/60 py-14">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Quick Answer</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Quick Answer: Can You Get a Free Tablet in 2026?</h2>
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-foreground/80">
+            <p>
+              Yes, some eligible people may still find <strong>free or low-cost tablet options in 2026</strong> through Lifeline-connected providers, local digital inclusion programs, EBT/SNAP or Medicaid eligibility paths, schools, nonprofits, libraries, or VA telehealth support.
             </p>
-          </div>
-          <!-- Optimized Image with strict width/height ratio to prevent layout shifts -->
-          <div class="w-full flex justify-center lg:justify-end">
-            <div class="w-full max-w-lg aspect-video rounded-2xl overflow-hidden shadow-xl border border-border bg-white flex items-center justify-center">
-               <img 
-                 src="/Programs.webp" 
-                 alt="2026 Government Programs Overview" 
-                 loading="lazy" 
-                 decoding="async" 
-                 width="800" 
-                 height="450"
-                 class="w-full h-full object-cover"
-               />
-            </div>
+            <p>
+              There is no single nationwide free government tablet program for everyone. Availability depends on your state, ZIP code, provider stock, eligibility proof, and possible co-pay.
+            </p>
+            <p>
+              Start with our <a href="/eligibility/" class="font-bold text-primary-light hover:text-primary">free tablet eligibility</a> guide, then learn how to <a href="/how-to-apply/" class="font-bold text-primary-light hover:text-primary">apply for a free tablet online</a>, compare <a href="/states/" class="font-bold text-primary-light hover:text-primary">free tablet programs by state</a>, and review provider pages such as <a href="/airtalk-wireless/" class="font-bold text-primary-light hover:text-primary">AirTalk Wireless tablet options</a>, <a href="/assurance-wireless/" class="font-bold text-primary-light hover:text-primary">Assurance Wireless tablet options</a>, and <a href="/safelink-wireless/" class="font-bold text-primary-light hover:text-primary">SafeLink Wireless phone and tablet options</a>.
+            </p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- 2x2 Programs Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          
-          <!-- Program Card 1 -->
-          <div class="bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-lg bg-blue-50 text-primary-light flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-foreground">Lifeline Program (Federal)</h3>
+    <section id="best-ways" class="py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-14 max-w-3xl text-center">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">2026 options</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Best Ways to Get a Free or Low-Cost Tablet in 2026</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">The strongest path depends on your eligibility proof, location, and whether providers or local programs currently have devices available.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-foreground">Lifeline provider offers</h3>
+            <p class="mt-3 leading-relaxed text-foreground/75">Lifeline is mainly a monthly phone or internet service discount. Some participating providers may attach device offers when inventory and local rules allow.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-foreground">EBT/SNAP eligibility routes</h3>
+            <p class="mt-3 leading-relaxed text-foreground/75">SNAP or EBT participation may help prove eligibility for Lifeline or local low-income technology programs, but it does not guarantee a tablet.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-foreground">Medicaid eligibility routes</h3>
+            <p class="mt-3 leading-relaxed text-foreground/75">Medicaid can be a qualifying program for Lifeline eligibility and may help users access provider or local digital access options.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-foreground">Local digital inclusion programs</h3>
+            <p class="mt-3 leading-relaxed text-foreground/75">Cities, counties, housing agencies, and community partners may offer device loans, refurbished tablets, discounted internet, or digital skills support.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-foreground">School, nonprofit, and library programs</h3>
+            <p class="mt-3 leading-relaxed text-foreground/75">Students, seniors, job seekers, and low-income households may find local help through schools, libraries, nonprofits, and community technology centers.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-foreground">VA telehealth support</h3>
+            <p class="mt-3 leading-relaxed text-foreground/75">Eligible veterans who need telehealth access may ask a VA care team about connectivity resources or device support when clinically appropriate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="who-qualifies" class="border-y border-border bg-muted py-20 lg:py-28">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Eligibility</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Who May Qualify?</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Eligibility usually depends on household income, participation in qualifying benefit programs, provider checks, and state or local program rules.</p>
+          <a href="/eligibility/" class="mt-8 inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-primary-light">Check Eligibility</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {["SNAP/EBT", "Medicaid", "SSI", "Federal Public Housing Assistance", "Veterans Pension", "Survivors Benefit", "Income-based Lifeline eligibility", "State or local program rules"].map((item) => (
+            <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
+              <p class="font-bold text-foreground">{item}</p>
             </div>
-            <p class="text-foreground/75 leading-relaxed mb-6 flex-grow">
-              Lifeline is a federal program that helps lower the monthly cost of phone or internet service for eligible households. The benefit is up to $9.25 per month, and up to $34.25 per month for eligible consumers on Tribal lands. Some providers may bundle device offers, including tablets, based on inventory and local promotions. Lifeline can be used for mobile or home internet service through participating companies.
-            </p>
-            <div class="bg-muted/50 rounded-xl p-5 border border-border">
-              <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider">Key Notes</h4>
-              <ul class="space-y-2">
-                {["Monthly discount program, not a guaranteed free device program", "Eligibility can be based on income or qualifying programs like SNAP and Medicaid", "Annual recertification is required to keep benefits active", "One benefit per household rule applies"].map((note) => (
-                  <li class="flex items-start gap-2 text-sm text-foreground/80">
-                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                    <span>{note}</span>
-                  </li>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="providers" class="py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Compare before applying</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Provider Comparison</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Provider names, plan terms, device inventory, shipping, and co-pay rules can change. Use these links to compare current options before submitting personal information.</p>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[900px] text-left">
+              <thead class="bg-[#0f172a] text-white">
+                <tr>
+                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Provider</th>
+                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Tablet/Device Availability</th>
+                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Best For</th>
+                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">Important Note</th>
+                  <th class="px-5 py-4 text-sm font-bold uppercase tracking-wide">CTA</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border">
+                {providerRows.map((provider) => (
+                  <tr class="align-top hover:bg-muted/40">
+                    <td class="px-5 py-5 font-bold text-foreground">{provider.name}</td>
+                    <td class="px-5 py-5 text-sm leading-relaxed text-foreground/75">{provider.availability}</td>
+                    <td class="px-5 py-5 text-sm leading-relaxed text-foreground/75">{provider.bestFor}</td>
+                    <td class="px-5 py-5 text-sm leading-relaxed text-foreground/75">{provider.note}</td>
+                    <td class="px-5 py-5">
+                      <a href={provider.url} class="font-bold text-primary-light hover:text-primary">{provider.cta}</a>
+                    </td>
+                  </tr>
                 ))}
-              </ul>
-            </div>
-          </div>
-
-          <!-- Program Card 2 -->
-          <div class="bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-lg bg-green-50 text-success flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-foreground">ConnectHomeUSA (HUD)</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed mb-6 flex-grow">
-              ConnectHomeUSA is HUD’s digital inclusion initiative that helps HUD-assisted communities build local solutions for affordable internet, devices, and digital skills training. This is not a single national checkout-style application for every consumer. Instead, local housing authorities and partners may offer programs that connect residents with low-cost or free/affordable devices and internet resources.
-            </p>
-            <div class="bg-muted/50 rounded-xl p-5 border border-border">
-              <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider">Key Notes</h4>
-              <ul class="space-y-2">
-                {["Best for residents in HUD-assisted housing communities", "Focuses on internet access, devices, and digital skills", "Availability depends on local participating organizations and community programs"].map((note) => (
-                  <li class="flex items-start gap-2 text-sm text-foreground/80">
-                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                    <span>{note}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <!-- Program Card 3 -->
-          <div class="bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-foreground">VA Telehealth Device Support</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed mb-6 flex-grow">
-              Eligible veterans who need telehealth access may be able to receive help through the VA’s Digital Divide Consult process. VA resources can help qualifying veterans access internet support options and, in some cases, VA-loaned connected devices for telehealth use. Veterans typically start by speaking with their VA care team or provider.
-            </p>
-            <div class="bg-muted/50 rounded-xl p-5 border border-border">
-              <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider">Key Notes</h4>
-              <ul class="space-y-2">
-                {["Designed for telehealth access and care connectivity", "Device support is based on eligibility and clinical need", "Start by asking your VA provider about a Digital Divide Consult"].map((note) => (
-                  <li class="flex items-start gap-2 text-sm text-foreground/80">
-                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                    <span>{note}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <!-- Program Card 4 -->
-          <div class="bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-lg bg-orange-50 text-accent flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-foreground">State and Local Programs</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed mb-6 flex-grow">
-              Many cities, counties, libraries, schools, and nonprofits offer temporary or ongoing tablet and internet help. These programs may include free tablets, loaner devices, discounted broadband, student support programs, and community tech grants. Availability changes by location and funding cycle, which is why local pages matter for SEO and real user outcomes.
-            </p>
-            <div class="bg-muted/50 rounded-xl p-5 border border-border">
-              <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider">Key Notes</h4>
-              <ul class="space-y-2">
-                {["Highly location-specific", "May prioritize students, seniors, or public housing residents", "Often limited-time funding with waitlists"].map((note) => (
-                  <li class="flex items-start gap-2 text-sm text-foreground/80">
-                    <svg class="w-4 h-4 text-primary-light mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                    <span>{note}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Trust Box / Alert -->
-        <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-center shadow-sm">
-          <div class="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <svg class="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-orange-900 mb-2">Important 2026 Update</h3>
-            <p class="text-orange-800 leading-relaxed font-medium">
-              The <strong>ACP benefit ended</strong>, so any site still promising an "ACP free tablet" without clarification may be outdated. We provide updated alternatives through Lifeline, local programs, and veteran-focused telehealth access pathways.
-            </p>
+              </tbody>
+            </table>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ==========================================
-         SECTION 5: AVAILABLE DEVICE & INTERNET PLANS
-    =========================================== -->
-    <section id="plans" class="relative w-full py-20 lg:py-28 bg-white border-t border-border" style="content-visibility: auto;">
+    <section id="states" class="border-y border-border bg-blue-50/50 py-20 lg:py-28">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8">
+        <div class="lg:col-span-7">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Local GEO guidance</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Free Tablet by State</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Free and low-cost tablet availability changes by state and ZIP code because provider coverage, local funding, document rules, and inventory are not the same everywhere.</p>
+          <p class="mt-4 text-lg leading-relaxed text-foreground/75">Use our <a href="/states/" class="font-bold text-primary-light hover:text-primary">free tablet programs by state</a> guide first, then check pages for specific locations such as <a href="/texas/" class="font-bold text-primary-light hover:text-primary">free tablet in Texas</a> when available.</p>
+        </div>
+        <div class="rounded-3xl border border-border bg-white p-6 shadow-sm lg:col-span-5">
+          <h3 class="text-2xl font-bold text-foreground">State checks help you confirm:</h3>
+          <ul class="mt-5 space-y-3 text-foreground/80">
+            <li>• Whether your ZIP code is in a provider service area</li>
+            <li>• Which proof documents are usually requested</li>
+            <li>• Whether local schools, libraries, or nonprofits have device programs</li>
+            <li>• Whether a provider offer includes a co-pay, shipping, or activation step</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply" class="py-20 lg:py-28">
       <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6">
-            What You May Get: Tablet and Internet Options in 2026
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            If you are searching for a <strong>free tablet</strong>, <strong>free android tablet</strong>, or even a <strong>free iPad</strong>, it is important to understand that offers vary by provider. Some plans include refurbished Android tablets at no cost, while others offer newer devices with a small co-pay. iPad availability is limited and not guaranteed.
-          </p>
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Application process</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">How to Apply</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Use this simple process before choosing a provider or submitting a free tablet application.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto mb-12">
-          
-          <!-- Card 1: Basic Tier -->
-          <div class="flex flex-col bg-background rounded-3xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative">
-            <div class="p-8 sm:p-10 flex-grow">
-              <h3 class="text-2xl font-bold text-foreground mb-2">Basic Tier</h3>
-              <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-6">Common Entry Option</p>
-              <p class="text-foreground/75 leading-relaxed mb-8">
-                A good fit for first-time applicants who need basic connectivity for school portals, telehealth, email, and everyday browsing.
-              </p>
-              
-              <div class="space-y-6">
-                <div>
-                  <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider border-b border-border pb-2">Typical Inclusions</h4>
-                  <ul class="space-y-3">
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>Refurbished Android tablet (when available)</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>Limited monthly data allotment</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>Free talk and text on eligible mobile plans</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>Access to educational and healthcare apps</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div class="pt-4">
-                  <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider">Best For</h4>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-muted text-foreground/80 text-sm rounded-full border border-border">Seniors</span>
-                    <span class="px-3 py-1 bg-muted text-foreground/80 text-sm rounded-full border border-border">Students</span>
-                    <span class="px-3 py-1 bg-muted text-foreground/80 text-sm rounded-full border border-border">Simple Backup Device</span>
-                  </div>
-                </div>
-              </div>
+        <div class="grid gap-6 md:grid-cols-5">
+          {[
+            ["1", "Check eligibility", "Review SNAP/EBT, Medicaid, SSI, income, housing, veteran, and local program paths."],
+            ["2", "Compare providers/programs", "Look at provider pages, state options, co-pay notes, stock, and service area."],
+            ["3", "Prepare documents", "Collect ID, address proof, benefit proof, income proof, and household details if needed."],
+            ["4", "Apply through the right path", "Use the official provider application path, Lifeline/National Verifier steps where relevant, or local program instructions."],
+            ["5", "Review final details", "Confirm approval status, co-pay, shipping, activation, plan rules, and renewal requirements."],
+          ].map((step) => (
+            <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-lg font-extrabold text-white">{step[0]}</div>
+              <h3 class="text-lg font-bold text-foreground">{step[1]}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-foreground/75">{step[2]}</p>
             </div>
-          </div>
-
-          <!-- Card 2: Standard Tier -->
-          <div class="flex flex-col bg-background rounded-3xl border-2 border-primary-light shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative mt-4 md:mt-0">
-            <!-- Popular Badge -->
-            <div class="absolute top-0 right-0 bg-primary-light text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider z-10 shadow-sm">Most Popular Option</div>
-            
-            <div class="p-8 sm:p-10 flex-grow relative">
-              <div class="absolute -top-12 -right-12 w-40 h-40 bg-primary-light/5 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold text-foreground mb-2 relative z-10">Standard Tier</h3>
-              <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-6 relative z-10">Provider Upgrade Option</p>
-              <p class="text-foreground/75 leading-relaxed mb-8 relative z-10">
-                A stronger option for users who stream classes, attend video appointments, or need hotspot support. This tier may include a small one-time co-pay depending on provider and inventory.
-              </p>
-              
-              <div class="space-y-6 relative z-10">
-                <div>
-                  <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider border-b border-border pb-2">Typical Inclusions</h4>
-                  <ul class="space-y-3">
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-primary-light shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>Newer Android tablet, or limited premium device options in select markets</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-primary-light shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>Higher monthly data allowance</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-primary-light shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>5G service in covered areas</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-foreground/80">
-                      <svg class="w-5 h-5 text-primary-light shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      <span>Hotspot support (provider dependent)</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div class="pt-4">
-                  <h4 class="text-sm font-bold text-foreground mb-3 uppercase tracking-wider">Best For</h4>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-primary-light/10 text-primary font-medium text-sm rounded-full border border-primary-light/20">Remote Learning</span>
-                    <span class="px-3 py-1 bg-primary-light/10 text-primary font-medium text-sm rounded-full border border-primary-light/20">Telehealth Video Visits</span>
-                    <span class="px-3 py-1 bg-primary-light/10 text-primary font-medium text-sm rounded-full border border-primary-light/20">Multiple Connected Needs</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          ))}
         </div>
 
-        <!-- Trust Text under cards -->
-        <p class="text-center text-xs text-foreground/60 leading-relaxed max-w-3xl mx-auto px-4">
-          * Tablet model, data amount, 5G access, and co-pay requirements vary by provider and ZIP code. Lifeline supports service discounts, while device promotions are set by participating companies. (Universal Service Administrative Company)
-        </p>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 6: TOP APPROVED PROVIDERS DIRECTORY
-    =========================================== -->
-    <section id="providers-directory" class="relative w-full py-20 lg:py-28 bg-muted border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6">
-            Top Lifeline Providers Offering Tablet and Internet Options
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            Provider availability changes by state and ZIP code. Use our provider directory to compare plans, networks, and device inventory before you apply. For official provider lookup, consumers can also use the USAC Lifeline “Companies Near Me” tool.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 mb-12">
-          
-          <!-- Provider 1: Assurance Wireless -->
-          <div class="bg-white rounded-2xl border border-border p-6 sm:p-8 flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-300">
-            <div class="h-12 flex items-center mb-4">
-              <h3 class="text-xl font-extrabold text-primary">Assurance Wireless</h3>
-            </div>
-            <p class="text-sm text-foreground/70 mb-6 flex-grow">
-              A widely recognized Lifeline provider with broad availability in many states and simple mobile-first plans.
-            </p>
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Lifeline plan availability in many regions
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Device offers vary by market
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Good option for users who want a known national brand
-              </li>
-            </ul>
-            <a href="/assurance-wireless" class="inline-flex items-center justify-center w-full rounded-lg bg-muted text-primary font-bold py-3 hover:bg-primary hover:text-white transition-colors duration-200">
-              View Provider Details
-            </a>
-          </div>
-
-          <!-- Provider 2: AirTalk Wireless -->
-          <div class="bg-white rounded-2xl border border-border p-6 sm:p-8 flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-300">
-            <div class="h-12 flex items-center mb-4">
-              <h3 class="text-xl font-extrabold text-primary">AirTalk Wireless</h3>
-            </div>
-            <p class="text-sm text-foreground/70 mb-6 flex-grow">
-              Popular for device-focused promotions and rotating inventory, including Android phones and tablets in many markets.
-            </p>
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Device availability can change frequently
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Co-pay and shipping terms vary
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Check current stock before applying
-              </li>
-            </ul>
-            <a href="/airtalk-wireless" class="inline-flex items-center justify-center w-full rounded-lg bg-muted text-primary font-bold py-3 hover:bg-primary hover:text-white transition-colors duration-200">
-              View Provider Details
-            </a>
-          </div>
-
-          <!-- Provider 3: StandUp Wireless -->
-          <div class="bg-white rounded-2xl border border-border p-6 sm:p-8 flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-300">
-            <div class="h-12 flex items-center mb-4">
-              <h3 class="text-xl font-extrabold text-primary">StandUp Wireless</h3>
-            </div>
-            <p class="text-sm text-foreground/70 mb-6 flex-grow">
-              Offers Lifeline-supported plans in many states with options that may fit users seeking a simple enrollment process.
-            </p>
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Regional availability varies
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Device and data offers depend on eligibility and ZIP code
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Useful for comparison shopping
-              </li>
-            </ul>
-            <a href="/standup-wireless" class="inline-flex items-center justify-center w-full rounded-lg bg-muted text-primary font-bold py-3 hover:bg-primary hover:text-white transition-colors duration-200">
-              View Provider Details
-            </a>
-          </div>
-
-          <!-- Provider 4: SafeLink Wireless -->
-          <div class="bg-white rounded-2xl border border-border p-6 sm:p-8 flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-300">
-            <div class="h-12 flex items-center mb-4">
-              <h3 class="text-xl font-extrabold text-primary">SafeLink Wireless</h3>
-            </div>
-            <p class="text-sm text-foreground/70 mb-6 flex-grow">
-              A long-standing brand many users recognize when comparing Lifeline providers and plan options.
-            </p>
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Strong brand recognition
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Plan details vary by market and state
-              </li>
-              <li class="flex items-start gap-2 text-sm text-foreground/85 font-medium">
-                <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                Compare current eligibility and device options before enrollment
-              </li>
-            </ul>
-            <a href="/safelink-wireless" class="inline-flex items-center justify-center w-full rounded-lg bg-muted text-primary font-bold py-3 hover:bg-primary hover:text-white transition-colors duration-200">
-              View Provider Details
-            </a>
-          </div>
-
-        </div>
-
-        <div class="border-t border-border pt-8 text-center">
-          <div class="inline-flex items-center justify-center bg-blue-50 text-primary-light px-4 py-2 rounded-full mb-4">
-             <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-             <span class="text-sm font-bold">Important Notice</span>
-          </div>
-          <p class="text-sm text-foreground/60 leading-relaxed max-w-4xl mx-auto">
-            Provider names, device inventory, and network access can change. Always confirm current offerings and service area before submitting personal information. Use official or verified provider pages only.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 7: STATE-BY-STATE AVAILABILITY (LOCAL SEO)
-    =========================================== -->
-    <section id="state-availability" class="relative w-full py-20 lg:py-28 bg-white border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6">
-            Find Free Government Tablet Options in Your State
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            Local availability matters. A <strong>free tablet from government</strong> style offer in one state may look different in another due to provider coverage, state outreach programs, and local housing or nonprofit partnerships. Browse our state guides to see what is available near you.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
-          
-          <!-- State Card: California -->
-          <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm hover:shadow-md hover:border-primary-light/50 transition-all duration-300 flex flex-col group">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">California</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed mb-8 flex-grow">
-              California has large provider coverage and strong demand for low-income connectivity. Device inventory moves fast, so compare multiple providers and local digital inclusion options.
-            </p>
-            <a href="/states/" class="inline-flex items-center text-primary-light font-bold text-lg group-hover:text-primary transition-colors">
-              Free Government Tablet in California
-              <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-          <!-- State Card: Texas -->
-          <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm hover:shadow-md hover:border-primary-light/50 transition-all duration-300 flex flex-col group">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Texas</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed mb-8 flex-grow">
-              Texas has broad coverage but ZIP-level differences can affect provider options and enrollment flow. Many users qualify through EBT, Medicaid, or income-based eligibility.
-            </p>
-            <a href="/states/" class="inline-flex items-center text-primary-light font-bold text-lg group-hover:text-primary transition-colors">
-              Free Tablet with EBT in Texas
-              <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-          <!-- State Card: New York -->
-          <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm hover:shadow-md hover:border-primary-light/50 transition-all duration-300 flex flex-col group">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">New York</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed mb-8 flex-grow">
-              New York users may find additional city and nonprofit support options beyond standard provider offers, especially for students and seniors.
-            </p>
-            <a href="/states/" class="inline-flex items-center text-primary-light font-bold text-lg group-hover:text-primary transition-colors">
-              Free Tablet Programs in New York
-              <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-          <!-- State Card: Florida -->
-          <div class="bg-muted/30 p-8 rounded-2xl border border-border shadow-sm hover:shadow-md hover:border-primary-light/50 transition-all duration-300 flex flex-col group">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-foreground">Florida</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed mb-8 flex-grow">
-              Florida has strong mobile demand and rotating provider inventory. Compare shipping, co-pay, and data terms carefully before applying.
-            </p>
-            <a href="/states/" class="inline-flex items-center text-primary-light font-bold text-lg group-hover:text-primary transition-colors">
-              Free Government Tablet in Florida
-              <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Local SEO Support Text Box -->
-        <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 sm:p-8 flex items-start gap-4">
-          <svg class="w-6 h-6 text-primary-light shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
-          <p class="text-foreground/80 leading-relaxed font-medium">
-            Looking for terms like <strong>free tablet with EBT</strong>, <strong>free tablets</strong>, or <strong>free government tablet near me</strong>? Start with your state page, then compare provider pages by ZIP code and eligibility type.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 8: SCAM AWARENESS & SAFETY GUIDE (E-E-A-T)
-    =========================================== -->
-    <section id="scam-safety" class="relative w-full py-20 lg:py-28 bg-slate-50 border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          <!-- Left Column: Image & Promise Box -->
-          <div class="lg:col-span-5 flex flex-col gap-8 lg:sticky lg:top-8">
-            
-            <!-- Optimized Lazy Loaded Image to prevent CLS and maintain 100% Speed -->
-            <div class="relative w-full rounded-2xl overflow-hidden shadow-xl border border-border bg-white aspect-[4/3] flex items-center justify-center">
-              <img 
-                 src="/scams.webp" 
-                 alt="Protect yourself from free government tablet scams in 2026" 
-                 loading="lazy" 
-                 decoding="async" 
-                 width="600" 
-                 height="450"
-                 class="w-full h-full object-cover"
-              />
-            </div>
-            
-            <!-- Safety Promise Box -->
-            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="w-6 h-6 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                <h3 class="text-xl font-extrabold text-primary">Safety Promise Box</h3>
-              </div>
-              <p class="text-foreground/80 leading-relaxed font-medium">
-                We will never claim that every user gets a <strong>free iPad</strong> or premium device. Real offers depend on eligibility, provider inventory, and local availability. We explain both free and low-cost options so you can make a safe decision.
-              </p>
-            </div>
-            
-          </div>
-
-          <!-- Right Column: Content & Warning List -->
-          <div class="lg:col-span-7 flex flex-col pt-2 lg:pt-0">
-            
-            <!-- Alert Badge -->
-            <div class="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-2 text-sm font-bold text-red-700 mb-6 self-start shadow-sm">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-              Fraud Alert & Safety Guide
-            </div>
-            
-            <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-6">
-              How to Avoid Free Tablet Scams in 2026
-            </h2>
-            
-            <p class="text-lg text-foreground/75 leading-relaxed mb-8">
-              Scam pages often use old ACP language, fake “instant approval” claims, or pressure tactics to collect your personal information. Our goal is to help you stay safe while applying for real connectivity support.
-            </p>
-
-            <!-- Warning List Highlight Box -->
-            <div class="bg-white rounded-2xl border border-border p-6 sm:p-8 shadow-sm mb-8">
-              <h3 class="text-lg font-bold text-foreground mb-6 border-b border-border pb-4">Red Flags to Watch Out For</h3>
-              <ul class="space-y-4">
-                {[
-                  "Never pay a large upfront fee for a “guaranteed” free government tablet",
-                  "Be cautious of sites that still advertise ACP as active without updated information",
-                  "Only apply through verified providers or official program pathways",
-                  "Do not share bank or credit card information unless you understand exactly why it is required",
-                  "Watch for fake shipping fee traps and “reservation” charges",
-                  "Double-check URLs before uploading your documents"
-                ].map(warning => (
-                  <li class="flex items-start gap-3">
-                    <div class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full bg-red-50 text-red-500 flex items-center justify-center">
-                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                    </div>
-                    <span class="text-foreground/85 font-semibold leading-snug">{warning}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <!-- Compliance-Focused Note -->
-            <div class="bg-muted/50 p-5 rounded-xl border border-border">
-              <h4 class="text-sm font-bold text-foreground mb-2">Compliance-Focused Note</h4>
-              <p class="text-xs text-foreground/70 leading-relaxed font-medium">
-                Lifeline is a federally administered support program, and one benefit per household rules apply. Some applicants may need to provide identity, address, and eligibility documents, and a household worksheet may be required if another adult at the same address already receives Lifeline.
-              </p>
-            </div>
-
-          </div>
+        <div class="mt-12 rounded-3xl bg-[#0f172a] p-8 text-center text-white shadow-xl">
+          <h3 class="text-2xl font-extrabold">Ready to review the application steps?</h3>
+          <p class="mx-auto mt-3 max-w-2xl text-blue-100">Check eligibility, compare provider options, and review possible document requirements before applying.</p>
+          <a href="/how-to-apply/" class="mt-6 inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white transition-colors hover:bg-blue-500">Apply Now</a>
         </div>
       </div>
     </section>
 
-   <!-- ==========================================
-         SECTION 9: REAL SUCCESS STORIES
-    =========================================== -->
-    <section id="testimonials" class="relative w-full py-20 lg:py-28 bg-white border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6">
-            Real People. Real Connectivity Wins.
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            These are examples of the kinds of situations we help users navigate every day, from school access to telehealth appointments and veteran care support.
-          </p>
+    <section id="documents" class="border-y border-border bg-muted py-20 lg:py-28">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">Application prep</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Documents Needed</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Having the right documents ready can reduce delays and help you avoid submitting the wrong proof.</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          
-          <!-- Testimonial 1: Student -->
-          <div class="bg-background rounded-2xl border border-border p-8 shadow-sm hover:shadow-md transition-shadow relative flex flex-col">
-            <svg class="absolute top-6 right-6 w-10 h-10 text-primary-light/10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0 overflow-hidden">
-                <svg class="w-8 h-8 text-blue-500 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-foreground text-base">David M.</h3>
-                <p class="text-xs font-semibold text-primary-light uppercase tracking-wider">Student Success</p>
-              </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {["Government ID", "Proof of address", "Proof of benefit program", "Proof of income if applying by income", "Household worksheet if required", "Last 4 digits of SSN or Tribal ID where required"].map((doc) => (
+            <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
+              <p class="font-bold text-foreground">{doc}</p>
             </div>
-            <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “I was searching for a <strong>free tablet with EBT</strong> for online classes and kept finding outdated ACP pages. This site helped me understand the current programs and compare real provider options in my state. I finally got connected for school.”
-            </p>
-          </div>
-
-          <!-- Testimonial 2: Senior -->
-          <div class="bg-background rounded-2xl border border-border p-8 shadow-sm hover:shadow-md transition-shadow relative flex flex-col">
-            <svg class="absolute top-6 right-6 w-10 h-10 text-success/10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0 overflow-hidden">
-                <svg class="w-8 h-8 text-green-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-foreground text-base">Linda G.</h3>
-                <p class="text-xs font-semibold text-success uppercase tracking-wider">Senior Telehealth</p>
-              </div>
-            </div>
-            <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “I needed a <strong>free android tablet</strong> for telehealth appointments and had no idea where to start. The step-by-step eligibility section made everything easy to understand, and I found a provider that worked in my ZIP code.”
-            </p>
-          </div>
-
-          <!-- Testimonial 3: Veteran -->
-          <div class="bg-background rounded-2xl border border-border p-8 shadow-sm hover:shadow-md transition-shadow relative flex flex-col">
-            <svg class="absolute top-6 right-6 w-10 h-10 text-red-500/10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center shrink-0 overflow-hidden">
-                <svg class="w-8 h-8 text-red-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-foreground text-base">James R.</h3>
-                <p class="text-xs font-semibold text-red-600 uppercase tracking-wider">Veteran Support</p>
-              </div>
-            </div>
-            <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “I learned that VA telehealth support may be available through my care team. I asked about the Digital Divide Consult and got the clear, direct guidance I needed to stay connected to my doctors.”
-            </p>
-          </div>
-
-          <!-- Testimonial 4: Family -->
-          <div class="bg-background rounded-2xl border border-border p-8 shadow-sm hover:shadow-md transition-shadow relative flex flex-col">
-            <svg class="absolute top-6 right-6 w-10 h-10 text-orange-500/10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center shrink-0 overflow-hidden">
-                <svg class="w-8 h-8 text-orange-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-foreground text-base">Sarah T.</h3>
-                <p class="text-xs font-semibold text-accent uppercase tracking-wider">Family Access</p>
-              </div>
-            </div>
-            <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “We needed a free tablet for homework and basic internet access. The scam warning section saved us from giving our info to a fake site, and the provider comparisons helped us choose a safer, legitimate option.”
-            </p>
-          </div>
-
-          <!-- Testimonial 5: Job Seeker -->
-          <div class="bg-background rounded-2xl border border-border p-8 shadow-sm hover:shadow-md transition-shadow relative flex flex-col">
-            <svg class="absolute top-6 right-6 w-10 h-10 text-purple-500/10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center shrink-0 overflow-hidden">
-                <svg class="w-8 h-8 text-purple-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-foreground text-base">Michael C.</h3>
-                <p class="text-xs font-semibold text-purple-600 uppercase tracking-wider">Job Seeker</p>
-              </div>
-            </div>
-            <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “Trying to apply for jobs on a cracked phone was a nightmare. This guide pointed me straight to legitimate Lifeline providers. The fast approval process meant I had a reliable device for my online interviews within two weeks.”
-            </p>
-          </div>
-
-          <!-- Testimonial 6: Caregiver -->
-          <div class="bg-background rounded-2xl border border-border p-8 shadow-sm hover:shadow-md transition-shadow relative flex flex-col">
-            <svg class="absolute top-6 right-6 w-10 h-10 text-teal-500/10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center shrink-0 overflow-hidden">
-                <svg class="w-8 h-8 text-teal-600 mt-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-foreground text-base">Elena W.</h3>
-                <p class="text-xs font-semibold text-teal-600 uppercase tracking-wider">Caregiver Help</p>
-              </div>
-            </div>
-            <p class="text-foreground/80 leading-relaxed flex-grow font-medium italic">
-              “As a full-time caregiver, I desperately needed stable internet access to manage prescriptions and benefits. The breakdown of income-based rules here helped me qualify for a device without paying huge upfront fees.”
-            </p>
-          </div>
-
+          ))}
         </div>
       </div>
     </section>
 
-       <!-- ==========================================
-         SECTION 10: MASTER FAQ SECTION
-    =========================================== -->
-    <section id="faq" class="relative w-full py-20 lg:py-28 bg-muted/30 border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            Frequently Asked Questions About Free Government Tablets
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed mb-8">
-            Find quick answers to common questions regarding eligibility, devices, and current 2026 program rules.
-          </p>
-          
-          <!-- Interactive Search Bar -->
-          <div class="relative max-w-2xl mx-auto">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <svg class="h-5 w-5 text-foreground/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <input type="text" id="faq-search" class="block w-full pl-12 pr-4 py-4 rounded-xl border border-border bg-white text-foreground placeholder-foreground/50 focus:border-primary-light focus:ring-2 focus:ring-primary-light/20 transition-all shadow-sm font-medium" placeholder="Search the FAQ (eligibility, devices, shipping, scams, providers)..." />
-          </div>
-        </div>
-
-        <!-- FAQ Accordion List (Native HTML5 for 100% Performance) -->
-        <div class="space-y-4" id="faq-list">
-          
-          <!-- Category: General -->
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-blue-100 text-primary-light text-xs font-bold uppercase tracking-wider">General</span>
-                <span class="text-lg">Is there really a free government tablet program in 2026?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              There is not one single nationwide tablet giveaway program for everyone. In 2026, most people get help through a mix of Lifeline service discounts, provider promotions, local digital inclusion programs, and special pathways such as VA telehealth support for eligible veterans.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-blue-100 text-primary-light text-xs font-bold uppercase tracking-wider">General</span>
-                <span class="text-lg">Did ACP end?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Yes. The Affordable Connectivity Program ended, which is why many older pages are outdated. If a page still uses ACP language without clearly explaining the change, verify the information before applying.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-blue-100 text-primary-light text-xs font-bold uppercase tracking-wider">General</span>
-                <span class="text-lg">Can I get a free tablet from the government if I already have internet?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Possibly, but it depends on the program and provider. Some offers focus on service discounts, while others may include a device promotion or local community program support.
-            </div>
-          </details>
-
-          <!-- Category: Eligibility -->
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-green-100 text-success text-xs font-bold uppercase tracking-wider">Eligibility</span>
-                <span class="text-lg">Can I qualify with EBT or SNAP?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Yes, many users who receive SNAP/EBT qualify for Lifeline or other support pathways depending on their state and provider options. This is why searches like "free tablet with EBT" are common and often legitimate when tied to real program rules. Lifeline eligibility can also be income-based.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-green-100 text-success text-xs font-bold uppercase tracking-wider">Eligibility</span>
-                <span class="text-lg">What income level qualifies for Lifeline?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Lifeline eligibility may be available if your household income is at or below 135% of the Federal Poverty Guidelines, or if you participate in qualifying assistance programs.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-green-100 text-success text-xs font-bold uppercase tracking-wider">Eligibility</span>
-                <span class="text-lg">Can more than one person in my home get Lifeline?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Lifeline generally allows one benefit per household, not per person. If another adult at your address already gets Lifeline, you may need to complete a household worksheet to show your household is separate.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-green-100 text-success text-xs font-bold uppercase tracking-wider">Eligibility</span>
-                <span class="text-lg">Are veterans eligible for tablet help?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Some eligible veterans may receive support through VA telehealth connectivity resources, including possible device support through the Digital Divide Consult process when medically appropriate and eligible.
-            </div>
-          </details>
-
-          <!-- Category: Devices -->
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-purple-100 text-purple-600 text-xs font-bold uppercase tracking-wider">Devices</span>
-                <span class="text-lg">Will I get a free Android tablet or a free iPad?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Most device offers are Android-based, and inventory varies by provider. A free iPad is not guaranteed and is usually limited to certain programs, markets, or special circumstances. Always check current provider inventory and terms before applying.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-purple-100 text-purple-600 text-xs font-bold uppercase tracking-wider">Devices</span>
-                <span class="text-lg">Are the tablets new or refurbished?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Both are possible. Many entry-level offers use refurbished devices, while some providers offer newer tablets with a small co-pay.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-purple-100 text-purple-600 text-xs font-bold uppercase tracking-wider">Devices</span>
-                <span class="text-lg">Can I choose my tablet model?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Usually no. Most providers ship based on current stock and your service area. Some may show model options during checkout, but many do not guarantee a specific brand or model.
-            </div>
-          </details>
-
-          <!-- Category: Shipping and Processing -->
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-orange-100 text-accent text-xs font-bold uppercase tracking-wider">Processing</span>
-                <span class="text-lg">How long does approval take?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Timing depends on provider processing, document verification, and shipping. Some applications are reviewed quickly, while others take longer if additional documents are required.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-orange-100 text-accent text-xs font-bold uppercase tracking-wider">Processing</span>
-                <span class="text-lg">Do I need to upload documents?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Maybe. Many applicants can be verified automatically, but others may be asked to provide proof of identity, address, or program participation. USAC documentation pages list common examples and requirements.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-orange-100 text-accent text-xs font-bold uppercase tracking-wider">Processing</span>
-                <span class="text-lg">What documents are commonly requested?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Common requests may include identity, address, and eligibility proof. Examples can include a government ID, program documents, tax documents, utility bills, or other official records depending on what needs verification.
-            </div>
-          </details>
-
-          <!-- Category: Scams and Safety -->
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wider">Safety</span>
-                <span class="text-lg">Why do some sites ask for a payment if the offer says free?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Sometimes the service benefit is subsidized, but the device may require a small co-pay, shipping fee, or upgrade fee depending on the provider. This should be disclosed clearly before payment.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wider">Safety</span>
-                <span class="text-lg">How do I know if a site is safe?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Look for clear program explanations, updated 2026 content, provider verification, and realistic language. Be cautious of pages promising guaranteed approval, same-day premium tablets, or ACP-only offers in 2026.
-            </div>
-          </details>
-
-          <details class="faq-item group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span class="inline-flex w-fit px-2.5 py-1 rounded-md bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wider">Safety</span>
-                <span class="text-lg">Do you guarantee approval?</span>
-              </div>
-              <span class="transition duration-300 group-open:-rotate-180 text-primary shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              No. Approval depends on eligibility, document verification, provider rules, and service area availability.
-            </div>
-          </details>
-
+    <section id="scams" class="py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl border border-orange-200 bg-orange-50 p-8 shadow-sm lg:p-10">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-orange-700">Trust & safety</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Avoid Free Tablet Scams</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/80">Be careful with websites that ask for unusual fees, promise instant or guaranteed approval, claim everyone gets a free iPad, use fake government branding, or pressure you to submit personal information fast.</p>
+          <p class="mt-4 text-lg leading-relaxed text-foreground/80">Before applying, verify provider terms, check whether Lifeline or National Verifier steps are required, read co-pay and shipping details, and make sure the application path belongs to the provider or official program you intended to use.</p>
         </div>
       </div>
     </section>
 
-   <!-- FAQ Search Logic (Non-blocking, Ultra-fast) -->
-    <script is:inline defer>
-      document.addEventListener('astro:page-load', () => {
-        const searchInput = document.getElementById('faq-search');
-        if (!searchInput) return;
-
-        searchInput.addEventListener('input', (e) => {
-          if (!e.target) return;
-          
-          const term = e.target.value.toLowerCase();
-          const items = document.querySelectorAll('.faq-item');
-          
-          items.forEach((item) => {
-            const text = item.textContent ? item.textContent.toLowerCase() : '';
-            if (text.includes(term)) {
-              item.style.display = 'block';
-            } else {
-              item.style.display = 'none';
-            }
-          });
-        });
-      });
-    </script>
-
-    <!-- ==========================================
-         SECTION 11: FINAL CTA & E-E-A-T TRUST BLOCK
-    =========================================== -->
-    <section id="final-cta" class="relative w-full py-20 lg:py-28 bg-[#0f172a] text-white border-t border-border overflow-hidden">
-      
-      <!-- Performance optimized CSS gradient instead of blur -->
-      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" style="background-image: radial-gradient(circle at top center, rgba(37, 99, 235, 0.2), transparent 60%);"></div>
-
-      <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <!-- Main CTA Area -->
-        <div class="text-center max-w-4xl mx-auto mb-20">
-          <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6 text-white">
-            Do Not Let the Digital Divide Hold You Back
-          </h2>
-          <p class="text-lg text-blue-100 leading-relaxed mb-10 max-w-3xl mx-auto">
-            Whether you are a senior needing telehealth access, a student needing a reliable device for school, or a family searching for a <strong>free government tablet</strong>, we are here to help you find the safest and most realistic path. Check eligibility, compare providers, and apply with confidence using up-to-date 2026 guidance.
-          </p>
-          
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <a href="#checker" aria-label="Apply now by navigating to the eligibility checker" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-10 py-5 text-xl font-bold text-white shadow-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto">
-              Apply Now - It Is Free to Check
-            </a>
-            <a href="mailto:support@freetablet.click" aria-label="Send an email to contact support" class="inline-flex items-center justify-center rounded-lg border-2 border-white/20 bg-white/5 backdrop-blur-sm px-10 py-5 text-xl font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-              Contact Support
-            </a>
-          </div>
-
-          <p class="mt-8 text-sm text-blue-200 leading-relaxed max-w-3xl mx-auto font-medium">
-            Updated guidance based on federal Lifeline information, HUD ConnectHomeUSA digital inclusion resources, and VA telehealth connectivity pathways. Provider offers and local availability vary. (Universal Service Administrative Company)
-          </p>
+    <section id="faq" class="border-t border-border bg-muted py-20 lg:py-28">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 text-center">
+          <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary-light">AEO answers</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Free Tablet FAQs</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Short, direct answers for people comparing real free or low-cost tablet options in 2026.</p>
         </div>
 
-        <!-- E-E-A-T Microcopy & Contact Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-white/10 text-left">
-          
-          <!-- E-E-A-T Block 1 -->
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2 text-blue-400 mb-1">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-              <h3 class="font-bold text-white uppercase tracking-wider text-sm">How We Keep This Page Updated</h3>
-            </div>
-            <p class="text-sm text-blue-100 leading-relaxed font-medium">
-              We review official program information, provider changes, and public agency updates regularly so users are not misled by outdated ACP-era pages.
-            </p>
-          </div>
-
-          <!-- E-E-A-T Block 2 -->
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2 text-blue-400 mb-1">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-              <h3 class="font-bold text-white uppercase tracking-wider text-sm">Editorial Standards</h3>
-            </div>
-            <p class="text-sm text-blue-100 leading-relaxed font-medium">
-              This page is written for educational and informational purposes to help users understand eligibility pathways and compare options. Final approval, device inventory, and plan details are determined by participating providers.
-            </p>
-          </div>
-
-          <!-- Professional Contact Block -->
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2 text-blue-400 mb-1">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-              <h3 class="font-bold text-white uppercase tracking-wider text-sm">Official Contact Channels</h3>
-            </div>
-            <ul class="text-sm text-blue-100 space-y-2 font-medium">
-              <li class="flex items-center justify-between">
-                <span>General Support:</span>
-                <a href="mailto:support@freetablet.click" class="text-blue-300 hover:text-white transition-colors">support@freetablet.click</a>
-              </li>
-              <li class="flex items-center justify-between">
-                <span>Compliance & Legal:</span>
-                <a href="mailto:compliance@freetablet.click" class="text-blue-300 hover:text-white transition-colors">compliance@freetablet.click</a>
-              </li>
-              <li class="flex items-center justify-between">
-                <span>Editorial Team:</span>
-                <a href="mailto:editorial@freetablet.click" class="text-blue-300 hover:text-white transition-colors">editorial@freetablet.click</a>
-              </li>
-            </ul>
-          </div>
-
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group overflow-hidden rounded-xl border border-border bg-white shadow-sm [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 font-bold text-foreground transition-colors hover:bg-white/70">
+                <span class="text-lg">{faq.question}</span>
+                <span class="shrink-0 text-primary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <div class="border-t border-border p-6 pt-4 leading-relaxed text-foreground/75">{faq.answer}</div>
+            </details>
+          ))}
         </div>
       </div>
     </section>
-
   </main>
-  
+
   <Footer />
 </Layout>
-
-<!-- Eligibility Checker Logic -->
-<script is:inline defer>
-  const initChecker = () => {
-    const verifyBtn = document.getElementById("verify-btn");
-    const programCbs = document.querySelectorAll(".program-cb");
-    const householdSizeInput = document.getElementById("household-size");
-    const incomeInput = document.getElementById("annual-income");
-    const resultBox = document.getElementById("result-box");
-    const resultIcon = document.getElementById("result-icon");
-    const resultTitle = document.getElementById("result-title");
-    const resultMessage = document.getElementById("result-message");
-    const resultAction = document.getElementById("result-action");
-
-    if(!verifyBtn || !householdSizeInput || !incomeInput || !resultBox || !resultIcon || !resultTitle || !resultMessage || !resultAction) return; 
-
-    const baseIncomeLimit = 21128;
-    const additionalPersonLimit = 7425;
-
-    verifyBtn.addEventListener("click", () => {
-      let isEligible = false;
-      let reason = "";
-
-      const isProgramChecked = Array.from(programCbs).some(cb => cb.checked);
-      
-      if (isProgramChecked) {
-        isEligible = true;
-        reason = "Based on your participation in a qualifying government program, you are highly likely to be eligible for a free government tablet and internet discounts.";
-      } else {
-        const size = parseInt(householdSizeInput.value) || 1;
-        const incomeValue = incomeInput.value.trim();
-        
-        if (incomeValue !== "") {
-          const income = parseFloat(incomeValue);
-          const incomeThreshold = baseIncomeLimit + ((size - 1) * additionalPersonLimit);
-          
-          if (income <= incomeThreshold) {
-            isEligible = true;
-            reason = `Based on your household size of ${size} and estimated income, you fall below the 135% Federal Poverty Guideline limit (approx. $${incomeThreshold.toLocaleString()}), meaning you are likely eligible.`;
-          } else {
-            reason = `Based on the provided income and household size, your income appears to be above the standard 135% Federal Poverty Guideline threshold (approx. $${incomeThreshold.toLocaleString()}). However, local programs may still be available.`;
-          }
-        } else {
-           resultBox.classList.remove("hidden", "bg-green-50", "border-green-200", "bg-red-50", "border-red-200");
-           resultBox.classList.add("bg-orange-50", "border-orange-200", "text-orange-900");
-           resultIcon.innerHTML = `<svg class="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>`;
-           resultTitle.innerText = "Information Needed";
-           resultTitle.className = "text-lg font-bold text-orange-800";
-           resultMessage.innerText = "Please either select a qualifying program or enter your household income to check eligibility.";
-           resultMessage.className = "text-sm mt-2 font-medium leading-relaxed text-orange-800";
-           resultAction.classList.add("hidden");
-           return;
-        }
-      }
-
-      resultBox.classList.remove("hidden", "bg-orange-50", "border-orange-200");
-      if (isEligible) {
-        resultBox.classList.add("bg-green-50", "border-green-200");
-        resultBox.classList.remove("bg-red-50", "border-red-200");
-        
-        resultIcon.innerHTML = `<svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
-        resultTitle.innerText = "Great News! You Are Likely Eligible.";
-        resultTitle.className = "text-lg font-bold text-green-800";
-        resultMessage.innerText = reason;
-        resultMessage.className = "text-sm mt-2 font-medium leading-relaxed text-green-800";
-        resultAction.classList.remove("hidden");
-      } else {
-        resultBox.classList.add("bg-red-50", "border-red-200");
-        resultBox.classList.remove("bg-green-50", "border-green-200");
-        
-        resultIcon.innerHTML = `<svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>`;
-        resultTitle.innerText = "Eligibility Not Confirmed";
-        resultTitle.className = "text-lg font-bold text-red-800";
-        resultMessage.innerText = reason;
-        resultMessage.className = "text-sm mt-2 font-medium leading-relaxed text-red-800";
-        resultAction.classList.add("hidden");
-      }
-    });
-  };
-
-  document.addEventListener('astro:page-load', () => requestAnimationFrame(initChecker));
-  document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(initChecker));
-</script>
