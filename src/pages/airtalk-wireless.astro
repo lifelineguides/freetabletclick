@@ -2,362 +2,625 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+type QuickFact = {
+  label: string;
+  value: string;
+};
+
+type TextCard = {
+  title: string;
+  body: string;
+};
+
+type ProviderCompare = {
+  provider: string;
+  angle: string;
+  bestFor: string;
+  note: string;
+  url: string;
+  anchor: string;
+};
+
+const pageUrl = "https://freetablet.click/airtalk-wireless/";
+const siteUrl = "https://freetablet.click";
+const officialAirTalkUrl = "https://airtalkwireless.com/";
+const usacEligibilityUrl = "https://www.usac.org/lifeline/consumer-eligibility/";
+const fccLifelineUrl = "https://www.fcc.gov/lifeline-consumers";
+const isoDate = "2026-06-09";
+const displayDate = "June 9, 2026";
+const pageTitle = "AirTalk Wireless Free Tablet 2026: Eligibility & Apply";
+const pageDescription =
+  "Check AirTalk Wireless tablet options, Lifeline eligibility, EBT/Medicaid rules, documents, possible co-pay, shipping and how to apply safely.";
+
+const quickFacts: QuickFact[] = [
+  {
+    label: "Program type",
+    value: "Lifeline-supported wireless provider",
+  },
+  {
+    label: "Device options",
+    value: "Phones or tablets may be available, stock varies",
+  },
+  {
+    label: "Eligibility paths",
+    value: "SNAP/EBT, Medicaid, SSI, FPHA, Veterans/Survivors benefit, income-based Lifeline",
+  },
+  {
+    label: "Internet/data",
+    value: "Plan data varies by current provider terms and state",
+  },
+  {
+    label: "Shipping/tracking",
+    value: "Confirm on official AirTalk account/status page",
+  },
+  {
+    label: "Important note",
+    value: "Device approval and model are not guaranteed",
+  },
+];
+
+const deviceCards: TextCard[] = [
+  {
+    title: "AirTalk Wireless free tablet",
+    body: "An AirTalk Wireless free tablet may be advertised when inventory and local rules allow, but a tablet is not guaranteed for every Lifeline applicant.",
+  },
+  {
+    title: "AirTalk Wireless tablet options",
+    body: "Device choice may vary by ZIP code, state, eligibility path, provider stock, plan terms, shipping rules, and possible co-pay.",
+  },
+  {
+    title: "AirTalk Wireless free government tablet",
+    body: "This search usually refers to Lifeline-connected device offers, not a universal government tablet giveaway. Review official provider terms before applying.",
+  },
+  {
+    title: "AirTalk Wireless tablet with internet",
+    body: "Tablet with internet, service, or data options depend on plan availability, data allowance, device stock, activation, and provider rules.",
+  },
+  {
+    title: "AirTalk Wireless free phone and tablet",
+    body: "Some users compare phone and tablet offers together, but receiving both is not guaranteed and may depend on current terms and eligibility.",
+  },
+  {
+    title: "AirTalk Wireless iPhone or iPad",
+    body: "Older or refurbished iPhone options may appear when available. iPads or iPad-style offers are not guaranteed, and Android tablets are often more common.",
+  },
+];
+
+const eligibilityItems = [
+  "SNAP / EBT",
+  "Medicaid",
+  "Supplemental Security Income (SSI)",
+  "Federal Public Housing Assistance (FPHA)",
+  "Veterans Pension / Survivors Benefit",
+  "Income at or below 135% of the Federal Poverty Guidelines",
+  "Tribal programs where applicable",
+  "One Lifeline benefit per household rule",
+];
+
+const documentItems = [
+  "Government ID",
+  "Proof of address",
+  "Proof of SNAP/EBT, Medicaid, SSI, FPHA, veteran benefit, or income",
+  "Household worksheet or household details if required",
+  "Last four SSN or identity details if required by the official application flow",
+];
+
+const applySteps = [
+  "Go to the official AirTalk Wireless website.",
+  "Enter your ZIP code and check coverage or state availability.",
+  "Review available plan and device options before choosing anything.",
+  "Verify Lifeline eligibility through the required official/provider flow.",
+  "Upload required documents if the application asks for proof.",
+  "Review any co-pay, shipping, activation, or plan terms before submitting.",
+  "Track application or order status through AirTalk account/status tools.",
+];
+
+const providerRows: ProviderCompare[] = [
+  {
+    provider: "AirTalk Wireless",
+    angle: "Phone or tablet options may be available when stock allows.",
+    bestFor: "Users focused on AirTalk Wireless application, device options, and order status.",
+    note: "Model, shipping, activation, data, and possible co-pay vary.",
+    url: "/airtalk-wireless/",
+    anchor: "AirTalk Wireless guide",
+  },
+  {
+    provider: "Assurance Wireless",
+    angle: "Lifeline phone service and device options may be available.",
+    bestFor: "Users comparing another established Lifeline provider.",
+    note: "Device options and tablet availability are not guaranteed.",
+    url: "/assurance-wireless/",
+    anchor: "compare Assurance Wireless",
+  },
+  {
+    provider: "SafeLink Wireless",
+    angle: "Phone service and device options depend on area and provider terms.",
+    bestFor: "Users comparing SafeLink Wireless options before applying.",
+    note: "Check ZIP code, plan terms, and current device rules.",
+    url: "/safelink-wireless/",
+    anchor: "compare SafeLink Wireless",
+  },
+  {
+    provider: "StandUp Wireless",
+    angle: "Lifeline service and device promotions may vary by location.",
+    bestFor: "Users who want another provider comparison before choosing.",
+    note: "Availability changes by ZIP code, eligibility, and inventory.",
+    url: "/standup-wireless/",
+    anchor: "compare StandUp Wireless",
+  },
+];
+
+const searchCards: TextCard[] = [
+  {
+    title: "AirTalk Wireless free tablet",
+    body: "This guide explains when an AirTalk Wireless free tablet may be available and why approval, device model, shipping, and co-pay are not guaranteed.",
+  },
+  {
+    title: "AirTalk Wireless free government tablet",
+    body: "Most users mean a Lifeline-connected provider device offer, not a single government tablet program for everyone.",
+  },
+  {
+    title: "AirTalk Wireless EBT and Medicaid",
+    body: "SNAP/EBT and Medicaid may help prove Lifeline eligibility, but AirTalk still reviews state, ZIP code, documents, and current terms.",
+  },
+  {
+    title: "AirTalk Wireless application and apply online",
+    body: "Applicants should use the official AirTalk Wireless website, check coverage, review terms, and upload documents only through the official flow.",
+  },
+  {
+    title: "AirTalk Wireless tablet with internet",
+    body: "Tablet with internet, data, or service depends on current plan terms, ZIP code, device stock, shipping, activation, and possible co-pay.",
+  },
+  {
+    title: "AirTalk Wireless free phone and tablet",
+    body: "AirTalk may show phone and tablet device options, but getting both a free phone and tablet is not guaranteed for every applicant.",
+  },
+  {
+    title: "AirTalk Wireless iPhone or iPad",
+    body: "Older or refurbished iPhone options may appear when available. iPads are not guaranteed, and Android tablets may be more common.",
+  },
+  {
+    title: "AirTalk Wireless order status and tracking",
+    body: "If you already applied, check AirTalk account/status tools or contact AirTalk directly for tracking, shipping, activation, SIM, or application updates.",
+  },
+];
+
+const faqItems: FaqItem[] = [
+  {
+    question: "Does AirTalk Wireless offer free tablets in 2026?",
+    answer:
+      "AirTalk Wireless may offer tablet or phone options to eligible Lifeline users when available, but a free tablet is not guaranteed for every applicant. Availability depends on ZIP code, state rules, eligibility, documents, provider inventory, shipping, activation, plan terms, and possible co-pay.",
+  },
+  {
+    question: "Can I get an AirTalk Wireless tablet with EBT?",
+    answer:
+      "SNAP or EBT participation may help prove Lifeline eligibility, but it does not automatically guarantee an AirTalk Wireless tablet. You still need to check AirTalk availability, documents, ZIP-code rules, current inventory, and possible co-pay.",
+  },
+  {
+    question: "Can I get an AirTalk Wireless tablet with Medicaid?",
+    answer:
+      "Medicaid may be a Lifeline eligibility path, but tablet availability is still provider-dependent. AirTalk Wireless device options can vary by state, ZIP code, stock, plan terms, shipping, and application review.",
+  },
+  {
+    question: "Does AirTalk Wireless offer iPhones or iPads?",
+    answer:
+      "AirTalk Wireless may advertise rotating phone and tablet options, including older or refurbished iPhone-style options when available. iPads are not guaranteed, and Android tablets may be more common in tablet offers.",
+  },
+  {
+    question: "Is an AirTalk Wireless free tablet guaranteed?",
+    answer:
+      "No. An AirTalk Wireless free tablet is not guaranteed. Device approval, model, stock, plan terms, shipping, activation, and possible co-pay depend on the official provider application and current availability.",
+  },
+  {
+    question: "Does AirTalk Wireless include internet or data?",
+    answer:
+      "AirTalk Wireless plan data and service details vary by current provider terms, state, ZIP code, and Lifeline rules. Review the official plan details before relying on any tablet with internet, data, or service claim.",
+  },
+  {
+    question: "How do I apply for AirTalk Wireless?",
+    answer:
+      "Go to the official AirTalk Wireless website, enter your ZIP code, review available plans and device options, verify Lifeline eligibility, upload required documents if asked, and review any co-pay, shipping, activation, or plan terms before submitting.",
+  },
+  {
+    question: "What documents does AirTalk Wireless need?",
+    answer:
+      "Common documents may include government ID, proof of address, proof of SNAP/EBT, Medicaid, SSI, FPHA, Veterans Pension or Survivors Benefit, proof of income, household information, or identity details required by the official application flow.",
+  },
+  {
+    question: "How do I track my AirTalk Wireless application or order?",
+    answer:
+      "Use AirTalk Wireless official account or status tools, or contact AirTalk directly for application updates, order status, tracking, shipping, activation, SIM issues, or device support. FreeTablet.click cannot access or update your AirTalk order.",
+  },
+  {
+    question: "Is AirTalk Wireless legit?",
+    answer:
+      "AirTalk Wireless is a real Lifeline provider, but users should still apply only through the official AirTalk website, verify the URL, review current terms, and avoid fake pages promising guaranteed iPhones, iPads, tablets, or instant approval.",
+  },
+  {
+    question: "Does AirTalk Wireless charge a co-pay or shipping fee?",
+    answer:
+      "Costs can vary by provider terms, device option, state, shipping, activation, and current offer. Review AirTalk Wireless official terms before submitting an application or paying any co-pay or shipping fee.",
+  },
+  {
+    question: "Can I get both a free phone and tablet from AirTalk Wireless?",
+    answer:
+      "Some users may see phone and tablet options, but getting both a free phone and tablet is not guaranteed. Device choice, model, stock, eligibility, plan terms, and possible co-pay depend on AirTalk's current rules.",
+  },
+  {
+    question: "What if AirTalk Wireless is not available in my state or ZIP code?",
+    answer:
+      "Check tablet availability by state and compare other providers such as Assurance Wireless, SafeLink Wireless, and StandUp Wireless. Coverage, eligibility rules, and device options can change by ZIP code.",
+  },
+  {
+    question: "Is FreeTablet.click AirTalk Wireless?",
+    answer:
+      "No. FreeTablet.click is independent. We are not AirTalk Wireless, FCC, USAC, Lifeline, National Verifier, or a government agency. We do not approve applications, ship devices, or provide AirTalk customer support.",
+  },
+  {
+    question: "How can I compare AirTalk with other providers?",
+    answer:
+      "Compare AirTalk Wireless with Assurance Wireless, SafeLink Wireless, and StandUp Wireless by checking ZIP-code coverage, device availability, plan data, documents, shipping, activation, possible co-pay, and current provider terms.",
+  },
+];
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "FreeTablet.click",
+      "url": `${siteUrl}/`,
+      "email": "support@freetablet.click",
+      "description": "Independent informational guide for Lifeline, provider, free tablet, eligibility, and state assistance information.",
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      "url": pageUrl,
+      "name": pageTitle,
+      "headline": "AirTalk Wireless Free Tablet 2026: Eligibility, Devices & Apply",
+      "description": pageDescription,
+      "datePublished": isoDate,
+      "dateModified": isoDate,
+      "isPartOf": { "@id": `${siteUrl}/#website` },
+      "publisher": { "@id": `${siteUrl}/#organization` },
+      "about": [
+        { "@type": "Organization", "name": "AirTalk Wireless", "url": officialAirTalkUrl },
+        { "@type": "Thing", "name": "Lifeline" },
+        { "@type": "Organization", "name": "Federal Communications Commission", "alternateName": "FCC" },
+        { "@type": "Organization", "name": "Universal Service Administrative Company", "alternateName": "USAC" },
+        { "@type": "Thing", "name": "National Verifier" },
+        { "@type": "Thing", "name": "EBT" },
+        { "@type": "Thing", "name": "SNAP" },
+        { "@type": "Thing", "name": "Medicaid" },
+        { "@type": "Thing", "name": "SSI" },
+        { "@type": "Thing", "name": "Federal Public Housing Assistance", "alternateName": "FPHA" },
+        { "@type": "Thing", "name": "Veterans Pension" },
+        { "@type": "Thing", "name": "Survivors Benefit" },
+        { "@type": "Thing", "name": "Federal Poverty Guidelines" },
+        { "@type": "Thing", "name": "ZIP code eligibility" },
+        { "@type": "Thing", "name": "tablet options" },
+        { "@type": "Thing", "name": "phone options" },
+        { "@type": "Thing", "name": "wireless service" },
+        { "@type": "Thing", "name": "provider inventory" },
+        { "@type": "Thing", "name": "shipping" },
+        { "@type": "Thing", "name": "activation" },
+        { "@type": "Thing", "name": "co-pay" },
+      ],
+      "inLanguage": "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+        { "@type": "ListItem", "position": 2, "name": "AirTalk Wireless", "item": pageUrl },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      "mainEntity": faqItems.map((item) => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer,
+        },
+      })),
+    },
+  ],
+};
 ---
 
-<Layout title="AirTalk Wireless Free Tablet & Premium Phone Program | 2026 Guide">
+<Layout title={pageTitle} description={pageDescription} modDatetime={new Date("2026-06-09T00:00:00Z")} structuredData={schemaGraph}>
   <Header />
-  
-  <main id="main-content" class="w-full flex-1 flex flex-col items-center">
-    
-    <!-- ==========================================
-         SECTION 1: PREMIUM HERO
-    =========================================== -->
-    <section class="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#0f172a] text-white pt-20 pb-32 lg:pt-28 lg:pb-40" style="background-image: radial-gradient(circle at top right, rgba(220, 38, 38, 0.15), transparent 45%), radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.2), transparent 45%);">
-      <div class="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-        
-        <!-- Trust Badge -->
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-blue-100 mb-6 shadow-sm">
-          <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>FCC Authorized Lifeline Provider</span>
+
+  <main id="main-content" class="flex w-full flex-1 flex-col items-center">
+    <section class="relative flex w-full flex-col items-center justify-center overflow-hidden bg-[#0f172a] pt-20 pb-28 text-white lg:pt-28 lg:pb-36" style="background-image: radial-gradient(circle at top right, rgba(220, 38, 38, 0.16), transparent 45%), radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.2), transparent 45%);">
+      <div class="relative z-10 mx-auto w-full max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-blue-100 shadow-sm">
+          <span>AirTalk Wireless Lifeline provider guide • Last updated {displayDate}</span>
         </div>
 
-        <!-- H1 Headline -->
-        <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-white mb-6">
-          AirTalk Wireless <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-blue-300">Free Tablet & Premium Phone Program</span>
+        <h1 class="mx-auto max-w-5xl text-4xl leading-tight font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          AirTalk Wireless Free Tablet 2026: <span class="bg-gradient-to-r from-red-400 to-blue-300 bg-clip-text text-transparent">Eligibility, Devices & Apply</span>
         </h1>
-        
-        <!-- Subtitle -->
-        <p class="text-lg text-blue-100 sm:text-xl leading-relaxed font-medium max-w-3xl mx-auto mb-10">
-          Experience the best in government assistance. Get a free Apple iPhone, Samsung Galaxy, or connected Tablet with unlimited 5G data, talk, and text—shipped directly to your door for free.
+
+        <p class="mx-auto mt-6 max-w-4xl text-lg leading-relaxed font-medium text-blue-100 sm:text-xl">
+          AirTalk Wireless may offer Lifeline-supported phone or tablet options to eligible users, depending on state, ZIP code, eligibility, provider stock, plan terms, shipping rules, and possible co-pay. This guide explains AirTalk Wireless tablet options, EBT/Medicaid eligibility paths, documents, application steps, tracking, customer service, and scam-safe checks.
         </p>
 
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-          <a href="https://airtalkwireless.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-red-600 px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto group">
-            Apply Now on Official Site
-            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          </a>
-          <a href="/eligibility" class="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-            Check Eligibility First
-          </a>
+        <div class="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
+          <a href={officialAirTalkUrl} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center rounded-lg bg-red-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 sm:w-auto">Apply Now on Official Site</a>
+          <a href="/eligibility/" class="inline-flex w-full items-center justify-center rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:w-auto">Check Eligibility First</a>
         </div>
 
+        <p class="mx-auto mt-6 max-w-3xl text-xs leading-relaxed text-blue-200/70">
+          FreeTablet.click is independent. We are not AirTalk Wireless, FCC, USAC, Lifeline, or a government agency. We do not approve applications or ship devices.
+        </p>
       </div>
     </section>
 
-    <!-- ==========================================
-         SECTION 2: QUICK OVERVIEW & RATING CARD
-    =========================================== -->
-    <section class="relative w-full bg-muted/30 pb-16 lg:pb-24" style="content-visibility: auto;">
-      <div class="relative z-20 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 -mt-16 sm:-mt-20 mb-8">
-        <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-border flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          <!-- Rating -->
-          <div class="flex flex-col items-center md:items-start text-center md:text-left shrink-0">
-            <span class="text-sm font-bold text-foreground/50 uppercase tracking-wider mb-2">Provider Rating</span>
-            <div class="flex items-center gap-2">
-              <span class="text-4xl font-extrabold text-foreground">4.6</span>
-              <div class="flex text-yellow-400">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28z"/></svg>
-              </div>
-            </div>
-            <span class="text-sm text-foreground/60 font-medium mt-1">Known for better device choices</span>
-          </div>
-          
-          <div class="hidden md:block w-px h-16 bg-border"></div>
-
-          <!-- Key Specs -->
-          <div class="grid grid-cols-2 sm:flex sm:flex-row gap-6 sm:gap-10 w-full md:w-auto justify-around">
-            <div class="flex flex-col items-center md:items-start text-center md:text-left">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" /></svg>
-                <span class="font-bold text-foreground">Network</span>
-              </div>
-              <span class="text-foreground/75 font-medium text-sm">AT&T / T-Mobile 5G</span>
-            </div>
-            
-            <div class="flex flex-col items-center md:items-start text-center md:text-left">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.82 1.508-2.316a7.5 7.5 0 10-7.516 0c.85.496 1.508 1.333 1.508 2.316V18" /></svg>
-                <span class="font-bold text-foreground">Plan Specs</span>
-              </div>
-              <span class="text-foreground/75 font-medium text-sm">Unlimited Options</span>
-            </div>
-
-            <div class="flex flex-col items-center md:items-start text-center md:text-left">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
-                <span class="font-bold text-foreground">Best Feature</span>
-              </div>
-              <span class="text-foreground/75 font-medium text-sm">iPhones & iPads</span>
-            </div>
-
-            <div class="flex flex-col items-center md:items-start text-center md:text-left">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
-                <span class="font-bold text-foreground">Delivery</span>
-              </div>
-              <span class="text-foreground/75 font-medium text-sm">Free Shipping</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 3: WHAT MAKES AIRTALK DIFFERENT?
-    =========================================== -->
-    <section class="relative w-full py-16 bg-white border-t border-border">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            What Makes AirTalk Wireless Different?
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            Unlike many providers that only offer basic, entry-level devices, AirTalk Wireless stands out by providing qualifying consumers with a selection of premium, iconic devices.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
-          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm flex flex-col hover:border-red-300 transition-colors">
-            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">Premium Device Selection</h3>
-            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              AirTalk is famous for its inventory. Depending on availability, eligible users can choose from refurbished Apple iPhones and Samsung Galaxy devices rather than unbranded entry-level phones.
-            </p>
-          </div>
-
-          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm flex flex-col hover:border-red-300 transition-colors">
-            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" /></svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">Free Tablet Options</h3>
-            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              Users can opt for an internet-connected tablet instead of a phone. Depending on your state's Lifeline rules and current stock, this can include Android tablets and occasionally refurbished iPads.
-            </p>
-          </div>
-
-          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm flex flex-col hover:border-red-300 transition-colors">
-            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">Free Shipping</h3>
-            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              AirTalk Wireless ships your approved premium device or tablet directly to your door completely free of charge. There are no hidden activation fees or surprise shipping costs.
-            </p>
-          </div>
-
-          <div class="bg-muted/30 rounded-2xl p-8 border border-border shadow-sm flex flex-col hover:border-red-300 transition-colors">
-            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-            </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">No Contracts</h3>
-            <p class="text-foreground/75 leading-relaxed text-sm font-medium">
-              Enjoy your connectivity with absolute peace of mind. There are zero credit checks, no monthly bills for approved basic Lifeline plans, and no binding long-term contracts.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         SECTION 4: HOW TO QUALIFY
-    =========================================== -->
-    <section class="relative w-full py-16 lg:py-24 bg-slate-50 border-t border-border" style="content-visibility: auto;">
+    <section id="quick-answer" class="w-full border-b border-border bg-red-50/40 py-14">
       <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            How to Qualify for AirTalk Wireless
-          </h2>
-          <p class="text-lg text-foreground/75 leading-relaxed">
-            As an FCC-authorized Lifeline provider, AirTalk Wireless follows standard federal eligibility guidelines. You can qualify instantly through two primary methods:
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <!-- Income Based -->
-          <div class="bg-white rounded-2xl border border-border p-8 shadow-sm">
-            <div class="flex items-center gap-4 mb-6 border-b border-border pb-4">
-              <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              </div>
-              <h3 class="text-xl font-bold text-foreground">Income-Based Qualification</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed font-medium mb-6">
-              You are eligible if your total household income is at or below <strong>135% of the Federal Poverty Guidelines</strong>.
-            </p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3 text-sm text-foreground/80 font-medium">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Requires proof of income (tax return, 3 consecutive pay stubs).
-              </li>
-              <li class="flex items-start gap-3 text-sm text-foreground/80 font-medium">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Limits depend entirely on the number of people in your household.
-              </li>
-            </ul>
+        <div class="rounded-3xl border border-red-100 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Quick Answer</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Quick Answer: Does AirTalk Wireless Offer Free Tablets in 2026?</h2>
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-foreground/80">
+            <p>AirTalk Wireless may offer tablet or phone options to eligible Lifeline users when available, but a free tablet is not guaranteed for every applicant. Availability depends on your ZIP code, state rules, eligibility, documents, current provider inventory, shipping, activation, plan terms, and possible co-pay.</p>
+            <p>Check AirTalk’s official site before submitting personal information. You can also review <a href="/eligibility/" class="font-bold text-red-600 hover:text-red-700">AirTalk Wireless eligibility</a>, learn <a href="/how-to-apply/" class="font-bold text-red-600 hover:text-red-700">how to apply for a free tablet</a>, <a href="/states/" class="font-bold text-red-600 hover:text-red-700">check tablet availability by state</a>, compare the <a href="/" class="font-bold text-red-600 hover:text-red-700">free government tablet guide</a>, <a href="/assurance-wireless/" class="font-bold text-red-600 hover:text-red-700">compare Assurance Wireless tablet options</a>, <a href="/safelink-wireless/" class="font-bold text-red-600 hover:text-red-700">compare SafeLink Wireless options</a>, and <a href="/standup-wireless/" class="font-bold text-red-600 hover:text-red-700">compare StandUp Wireless</a>.</p>
           </div>
-
-          <!-- Program Based -->
-          <div class="bg-white rounded-2xl border border-border p-8 shadow-sm">
-            <div class="flex items-center gap-4 mb-6 border-b border-border pb-4">
-              <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-              </div>
-              <h3 class="text-xl font-bold text-foreground">Program-Based Qualification</h3>
-            </div>
-            <p class="text-foreground/75 leading-relaxed font-medium mb-6">
-              You automatically qualify if you currently participate in any of these government assistance programs:
-            </p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3 text-sm text-foreground/80 font-medium">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                SNAP (Food Stamps / EBT)
-              </li>
-              <li class="flex items-start gap-3 text-sm text-foreground/80 font-medium">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Medicaid
-              </li>
-              <li class="flex items-start gap-3 text-sm text-foreground/80 font-medium">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Supplemental Security Income (SSI)
-              </li>
-              <li class="flex items-start gap-3 text-sm text-foreground/80 font-medium">
-                <svg class="w-5 h-5 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                Veterans Pension and Survivors Benefit
-              </li>
-            </ul>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ==========================================
-         SECTION 5: OFFICIAL CONTACT INFORMATION
-    =========================================== -->
-    <section class="relative w-full py-12 lg:py-16 bg-white border-t border-border">
-      <div class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="bg-slate-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-          <div class="absolute inset-0 z-0 bg-gradient-to-r from-red-600/20 to-transparent pointer-events-none"></div>
-          
-          <div class="max-w-lg text-center md:text-left relative z-10">
-            <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 border border-white/20">
-              <svg class="w-4 h-4 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              Official Contact Info
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">Track Your Application Directly</h2>
-            <p class="text-slate-300 font-medium leading-relaxed m-0">
-              We provide information, not devices. If you have applied with AirTalk Wireless and need to check your status, track shipping, or activate your new iPhone/Tablet, contact them directly.
-            </p>
-          </div>
-
-          <div class="flex flex-col gap-4 w-full md:w-auto shrink-0 relative z-10">
-            <a href="tel:18559247825" class="flex items-center justify-center gap-3 bg-red-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-red-500 transition-colors shadow-md">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              +1 (855) 924-7825
-            </a>
-            <a href="https://airtalkwireless.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 bg-white text-slate-900 px-6 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors shadow-md">
-              <svg class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-              airtalkwireless.com
-            </a>
-          </div>
+    <section id="quick-facts" class="w-full bg-muted/30 py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 text-center">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">AirTalk Wireless Quick Facts</h2>
+          <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-foreground/75">A factual snapshot without fake ratings, fake reviews, or guaranteed device claims.</p>
         </div>
-
+        <div class="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+          <table class="w-full text-left text-sm">
+            <tbody class="divide-y divide-border">
+              {quickFacts.map((fact) => (
+                <tr>
+                  <th class="w-1/3 bg-muted/40 px-5 py-4 font-bold text-foreground">{fact.label}</th>
+                  <td class="px-5 py-4 leading-relaxed text-foreground/75">{fact.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- ==========================================
-         SECTION 6: PROVIDER FAQ
-    =========================================== -->
-    <section class="relative w-full py-16 lg:py-24 bg-muted/30 border-t border-border" style="content-visibility: auto;">
-      <div class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-4">
-            AirTalk Wireless FAQ
-          </h2>
+    <section id="legit" class="w-full border-t border-border bg-white py-16 lg:py-24">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Legitimacy check</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Is AirTalk Wireless Legit?</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">AirTalk Wireless is a real Lifeline provider, but users should still apply only through the official AirTalk site, verify the URL, review current terms, and avoid fake pages promising guaranteed iPhones, iPads, tablets, or instant approval.</p>
         </div>
+        <div class="grid gap-5 lg:col-span-7">
+          <div class="rounded-2xl border border-border bg-muted/30 p-6"><h3 class="font-bold text-foreground">Use official pages only</h3><p class="mt-2 leading-relaxed text-foreground/75">Start with <a href={officialAirTalkUrl} target="_blank" rel="noopener noreferrer" class="font-bold text-red-600 hover:text-red-700">AirTalk Wireless official website</a> and avoid lookalike pages or social ads asking for unusual fees.</p></div>
+          <div class="rounded-2xl border border-border bg-muted/30 p-6"><h3 class="font-bold text-foreground">Verify Lifeline eligibility</h3><p class="mt-2 leading-relaxed text-foreground/75">USAC explains that Lifeline eligibility can be based on income or qualifying programs, and that the National Verifier is used in most states, with Texas and Oregon handled differently.</p></div>
+          <div class="rounded-2xl border border-border bg-muted/30 p-6"><h3 class="font-bold text-foreground">Avoid guaranteed device promises</h3><p class="mt-2 leading-relaxed text-foreground/75">Treat “free iPad guaranteed,” “premium device guaranteed,” or “instant approval” pages as red flags unless the official provider terms clearly support the offer.</p></div>
+        </div>
+      </div>
+    </section>
 
+    <section id="device-options" class="w-full border-y border-border bg-slate-50 py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Devices and tablets</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">AirTalk Wireless Tablet and Device Options</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">AirTalk Wireless device options rotate. Tablet, phone, iPhone, iPad-style, internet, and data wording should always be checked against current provider terms before applying.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {deviceCards.map((card) => <div class="rounded-2xl border border-border bg-white p-6 shadow-sm"><h3 class="text-xl font-bold text-foreground">{card.title}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{card.body}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="eligibility" class="w-full bg-white py-16 lg:py-24">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Eligibility</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">AirTalk Wireless Eligibility: EBT, SNAP, Medicaid, SSI and Income</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Lifeline eligibility can be based on qualifying assistance programs or household income. AirTalk Wireless eligibility and device availability still depend on application review, ZIP code, state handling, and provider terms.</p>
+          <p class="mt-4 text-sm leading-relaxed text-foreground/70">Texas and Oregon may use special Lifeline eligibility handling instead of the standard National Verifier flow, so applicants in those states should follow the provider or state-specific instructions carefully.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {eligibilityItems.map((item) => <div class="rounded-xl border border-border bg-muted/30 p-5 shadow-sm"><p class="font-bold text-foreground">{item}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="documents" class="w-full border-y border-border bg-muted/30 py-16 lg:py-24">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Application proof</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Documents Needed for AirTalk Wireless</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Required documents can vary. Prepare proof before starting an AirTalk Wireless application so you do not upload the wrong file or delay review.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {documentItems.map((item) => <div class="rounded-xl border border-border bg-white p-5 shadow-sm"><p class="font-bold text-foreground">{item}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="apply" class="w-full bg-white py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Apply safely</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">How to Apply for AirTalk Wireless Step by Step</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Use this checklist before submitting an AirTalk Wireless application or trying to apply online for a tablet, phone, or service plan.</p>
+        </div>
+        <ol class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {applySteps.map((step, index) => <li class="rounded-2xl border border-border bg-muted/30 p-6 shadow-sm"><div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-lg font-extrabold text-white">{index + 1}</div><p class="font-semibold leading-relaxed text-foreground/80">{step}</p></li>)}
+        </ol>
+        <div class="mt-10 text-center"><a href={officialAirTalkUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-red-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-colors hover:bg-red-500">Apply Now on Official Site</a></div>
+      </div>
+    </section>
+
+    <section id="service" class="w-full border-y border-border bg-slate-50 py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div class="rounded-2xl border border-border bg-white p-8 shadow-sm">
+            <h2 class="text-2xl font-extrabold text-foreground">AirTalk Wireless Tablet With Internet, Data or Service</h2>
+            <p class="mt-4 leading-relaxed text-foreground/75">AirTalk Wireless tablet with internet, free tablet with service, and free tablet with data searches usually depend on current Lifeline plan terms, state, ZIP code, provider inventory, activation rules, and possible co-pay. Do not assume unlimited 5G data or a tablet with internet is included unless current official AirTalk terms say so.</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-white p-8 shadow-sm">
+            <h2 class="text-2xl font-extrabold text-foreground">Phone, iPhone, iPad and Tablet Safety Notes</h2>
+            <p class="mt-4 leading-relaxed text-foreground/75">AirTalk Wireless free phone and tablet, free iPhone, or iPad searches can reflect rotating provider offers. Older or refurbished iPhone options may appear when available, but premium devices and iPads are not guaranteed. Android tablets are often more common in tablet-style offers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracking" class="w-full bg-white py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl bg-slate-900 p-8 text-white shadow-xl sm:p-10">
+          <div class="grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <p class="mb-3 text-sm font-bold tracking-wide text-red-300 uppercase">Status and support</p>
+              <h2 class="text-3xl font-extrabold">Tracking, Customer Service and Order Status</h2>
+              <p class="mt-4 leading-relaxed text-slate-300">Users who already applied should check AirTalk’s official account/status tools or contact AirTalk directly for order tracking, shipping, activation, SIM/device issues, customer service, and application updates. FreeTablet.click cannot access your order or provide provider support.</p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <a href={officialAirTalkUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-4 font-bold text-white transition-colors hover:bg-red-500">Open AirTalk Official Site</a>
+              <a href="/how-to-apply/" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-4 font-bold text-slate-900 transition-colors hover:bg-slate-100">apply for a free tablet online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coverage" class="w-full border-y border-border bg-muted/30 py-16 lg:py-24">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Coverage by ZIP code</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">AirTalk Wireless Coverage by ZIP Code and State</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">AirTalk Wireless coverage, device availability, plan terms, shipping, and eligibility handling can change by state and ZIP code. Check your ZIP code before choosing a device option.</p>
+        </div>
+        <div class="grid gap-5 lg:col-span-7">
+          <a href="/states/" class="rounded-2xl border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"><h3 class="text-xl font-bold text-foreground">tablet availability by state</h3><p class="mt-2 leading-relaxed text-foreground/75">Use the state directory when AirTalk Wireless is unavailable or when another provider has better local coverage.</p></a>
+          <a href="/" class="rounded-2xl border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"><h3 class="text-xl font-bold text-foreground">free government tablet guide</h3><p class="mt-2 leading-relaxed text-foreground/75">Compare AirTalk with broader tablet, Lifeline, EBT, Medicaid, local program, and provider options.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="w-full bg-white py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-10 max-w-3xl text-center">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Provider comparison</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Compare Provider Options</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Compare AirTalk Wireless with other provider pages before applying. Device offers are not guaranteed and can change by ZIP code.</p>
+        </div>
+        <div class="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-900 text-white">
+              <tr>
+                <th class="px-4 py-4 font-bold">Provider</th>
+                <th class="px-4 py-4 font-bold">Tablet/device angle</th>
+                <th class="px-4 py-4 font-bold">Best for</th>
+                <th class="px-4 py-4 font-bold">Important note</th>
+                <th class="px-4 py-4 font-bold">Link</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {providerRows.map((row) => (
+                <tr>
+                  <td class="px-4 py-4 font-bold text-foreground">{row.provider}</td>
+                  <td class="px-4 py-4 leading-relaxed text-foreground/75">{row.angle}</td>
+                  <td class="px-4 py-4 leading-relaxed text-foreground/75">{row.bestFor}</td>
+                  <td class="px-4 py-4 leading-relaxed text-foreground/75">{row.note}</td>
+                  <td class="px-4 py-4"><a href={row.url} class="font-bold text-red-600 hover:text-red-700">{row.anchor}</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="popular-searches" class="w-full border-y border-border bg-red-50/40 py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-10 max-w-3xl text-center">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">GSC query coverage</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Popular AirTalk Wireless Searches Covered</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/75">Short, safe answers for common AirTalk Wireless tablet, application, device, and tracking searches.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {searchCards.map((card) => <div class="rounded-2xl border border-border bg-white p-6 shadow-sm"><h3 class="text-lg font-bold text-foreground">{card.title}</h3><p class="mt-3 text-sm leading-relaxed text-foreground/75">{card.body}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="scams" class="w-full bg-white py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl border border-red-100 bg-red-50 p-8 shadow-sm sm:p-10">
+          <p class="mb-3 text-sm font-bold tracking-wide text-red-600 uppercase">Scam warning</p>
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Avoid Fake AirTalk Wireless Tablet Pages</h2>
+          <p class="mt-5 text-lg leading-relaxed text-foreground/80">Avoid pages that promise a free iPad guaranteed, instant approval, premium devices guaranteed, unlimited 5G data, or automatic qualification. Apply only on the official AirTalk Wireless website, review current terms, and use official Lifeline or National Verifier steps when required.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="w-full border-y border-border bg-muted/30 py-16 lg:py-24">
+      <div class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 text-center">
+          <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">AirTalk Wireless FAQ</h2>
+          <p class="mt-4 text-lg leading-relaxed text-foreground/75">Visible answers below match the FAQPage schema exactly.</p>
+        </div>
         <div class="space-y-4">
-          
-          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
-              Does AirTalk really give free iPhones and iPads?
-              <span class="transition duration-300 group-open:-rotate-180 text-red-600 shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              Yes, AirTalk Wireless is well-known for offering refurbished premium devices, including older model Apple iPhones and iPads, as well as Samsung Galaxy phones. However, the exact models available to you depend entirely on their current warehouse inventory and the specific Lifeline regulations in your state at the time you apply.
-            </div>
-          </details>
-
-          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
-              Does AirTalk charge for shipping?
-              <span class="transition duration-300 group-open:-rotate-180 text-red-600 shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              No. Once your application is fully approved through the National Verifier and by AirTalk, they offer 100% free shipping. Your new device and SIM card will be mailed directly to your registered residential address.
-            </div>
-          </details>
-
-          <details class="group bg-white border border-border rounded-xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-foreground hover:bg-muted/50 transition-colors text-lg">
-              How long does approval and shipping take?
-              <span class="transition duration-300 group-open:-rotate-180 text-red-600 shrink-0 ml-4">
-                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-              </span>
-            </summary>
-            <div class="text-foreground/75 p-6 pt-0 leading-relaxed font-medium border-t border-border mt-2">
-              If your documentation is in order, initial approval usually takes a few business days. Once approved, order processing and shipping generally take 5 to 7 business days. You will receive a tracking number from AirTalk to monitor your delivery.
-            </div>
-          </details>
-
+          {faqItems.map((item) => (
+            <details class="group overflow-hidden rounded-xl border border-border bg-white shadow-sm [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 text-lg font-bold text-foreground transition-colors hover:bg-muted/50">
+                <span>{item.question}</span>
+                <span class="shrink-0 text-red-600 transition duration-300 group-open:-rotate-180">⌄</span>
+              </summary>
+              <div class="border-t border-border p-6 pt-4 leading-relaxed font-medium text-foreground/75">{item.answer}</div>
+            </details>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- ==========================================
-         SECTION 7: BOTTOM CTA & DISCLAIMER
-    =========================================== -->
-    <section class="relative w-full py-20 lg:py-24 bg-[#0f172a] text-white overflow-hidden">
-      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" style="background-image: radial-gradient(circle at center, rgba(220, 38, 38, 0.15), transparent 50%);"></div>
-
-      <div class="relative z-10 mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8 text-white">
-          Ready to choose your premium device with AirTalk?
-        </h2>
-        
-        <a href="https://airtalkwireless.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-red-600 px-10 py-5 text-xl font-bold text-white shadow-xl hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto mb-10">
-          Apply Now on Official Site
-        </a>
-
-        <div class="border-t border-white/20 pt-8 mt-4">
-          <p class="text-xs text-blue-200/60 leading-relaxed max-w-3xl mx-auto font-medium">
-            <strong>Disclaimer:</strong> FreeTablet.click is an independent informational site. We are not affiliated with AirTalk Wireless or the federal government. Device models, iPads, and iPhones are strictly subject to availability and provider inventory, which fluctuates daily. Always verify final terms on the official provider website before submitting your information.
-          </p>
+    <section class="relative w-full overflow-hidden bg-[#0f172a] py-20 text-white lg:py-24">
+      <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden" style="background-image: radial-gradient(circle at center, rgba(220, 38, 38, 0.15), transparent 50%);"></div>
+      <div class="relative z-10 mx-auto w-full max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Ready to Check AirTalk Wireless Options?</h2>
+        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+          <a href={officialAirTalkUrl} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center rounded-lg bg-red-600 px-10 py-5 text-xl font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 sm:w-auto">Apply Now on Official Site</a>
+          <a href="/eligibility/" class="inline-flex w-full items-center justify-center rounded-lg border border-white/30 bg-white/5 px-10 py-5 text-xl font-bold text-white transition-colors hover:bg-white/10 sm:w-auto">Check Eligibility First</a>
+        </div>
+        <div class="mt-10 border-t border-white/20 pt-8">
+          <p class="mx-auto max-w-3xl text-xs leading-relaxed font-medium text-blue-200/70"><strong>Disclaimer:</strong> FreeTablet.click is an independent informational site. We are not AirTalk Wireless, FCC, USAC, Lifeline, National Verifier, or a government agency. We do not approve applications, ship devices, provide AirTalk customer service, or guarantee any phone, tablet, iPhone, iPad, data plan, shipping timeline, or approval outcome.</p>
         </div>
       </div>
     </section>
 
+    <section id="sources" class="w-full bg-white py-12">
+      <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-extrabold text-foreground">Official resources</h2>
+        <ul class="mt-4 space-y-2 text-sm leading-relaxed text-foreground/75">
+          <li><a href={officialAirTalkUrl} target="_blank" rel="noopener noreferrer" class="font-bold text-red-600 hover:text-red-700">AirTalk Wireless official website</a></li>
+          <li><a href={usacEligibilityUrl} target="_blank" rel="noopener noreferrer" class="font-bold text-red-600 hover:text-red-700">USAC Lifeline eligibility and National Verifier information</a></li>
+          <li><a href={fccLifelineUrl} target="_blank" rel="noopener noreferrer" class="font-bold text-red-600 hover:text-red-700">FCC Lifeline consumer information</a></li>
+        </ul>
+      </div>
+    </section>
   </main>
-  
+
   <Footer />
 </Layout>
