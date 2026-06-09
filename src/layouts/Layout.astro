@@ -11,10 +11,11 @@ type Props = {
   profile?: string;
   description?: string;
   ogImage?: string;
-  canonicalURL?: string;
+  canonicalURL?: string | URL;
   pubDatetime?: Date;
   modDatetime?: Date | null;
   scrollSmooth?: boolean;
+  structuredData?: Record<string, unknown>;
 };
 
 const {
@@ -27,12 +28,12 @@ const {
   pubDatetime,
   modDatetime,
   scrollSmooth = false,
+  structuredData: structuredDataOverride,
 } = Astro.props;
 
 const socialImageURL = new URL(ogImage, Astro.url);
 
-// ADVANCED SEO SCHEMA (Organization + WebSite + WebPage/Article)
-const structuredData = {
+const defaultStructuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -52,19 +53,14 @@ const structuredData = {
       "@id": `${Astro.site}#organization`,
       "name": SITE.title,
       "url": `${Astro.site}`,
+      "email": "support@freetablet.click",
       "logo": {
         "@type": "ImageObject",
         "url": `${new URL("favicon.svg", Astro.site || "https://freetablet.click")}`
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-800-234-9473",
-        "contactType": "customer support",
-        "email": "support@freetablet.click"
       }
     },
     {
-      "@type": pubDatetime ? "Article" : "WebPage", // Dynamically chooses Article if it's a blog post, otherwise WebPage
+      "@type": pubDatetime ? "Article" : "WebPage",
       "@id": `${canonicalURL}#webpage`,
       "url": `${canonicalURL}`,
       "name": title,
@@ -85,12 +81,14 @@ const structuredData = {
     }
   ]
 };
+
+const pageStructuredData = structuredDataOverride ?? defaultStructuredData;
 ---
 
 <!doctype html>
 <html
   dir={SITE.dir}
-  lang=`${SITE.lang ?? "en"}`
+  lang={`${SITE.lang ?? "en"}`}
   class={`${scrollSmooth && "scroll-smooth"}`}
 >
   <head>
@@ -142,7 +140,7 @@ const structuredData = {
     <script
       type="application/ld+json"
       is:inline
-      set:html={JSON.stringify(structuredData)}
+      set:html={JSON.stringify(pageStructuredData)}
     />
 
     <link
@@ -155,9 +153,6 @@ const structuredData = {
     <meta name="theme-color" content="" />
 
     {
-      // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
-      // include google-site-verification tag in the heading
-      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
       PUBLIC_GOOGLE_SITE_VERIFICATION && (
         <meta
           name="google-site-verification"
@@ -170,7 +165,7 @@ const structuredData = {
 
     <script is:inline>
       (function () {
-        const initialColorScheme = ""; // "light" | "dark"
+        const initialColorScheme = "";
         const currentTheme = localStorage.getItem("theme");
 
         function getPreferTheme() {
@@ -183,10 +178,8 @@ const structuredData = {
 
         const themeValue = getPreferTheme();
 
-        // Set theme immediately to prevent flash
         document.firstElementChild?.setAttribute("data-theme", themeValue);
 
-        // Export minimal API for external script
         window.theme = {
           themeValue: themeValue,
           getTheme: () => window.theme.themeValue,
